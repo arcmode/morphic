@@ -1,0 +1,95 @@
+#+TITLE: Morphic Stack: The future of auto scaling is auto containerization
+
+An experiment about auto scaling and microservices patterns in kubernetes
+
+
+
+Similar Projects
+- [[https://github.com/GoogleContainerTools/jib][Jib]]
+
+* TODOs
+***** TODO NPM Tarball Functor Server / Package as a Service
+****** TODO npm i --save http://morphic-packages/rpc-client/hello-world?v=0.0.0
+       From our heart to your node-modules
+***** TODO HATEOAS codegen
+****** TODO hygen rest-mod new --in examples --name hello-rest
+****** TODO hygen rest-api new --in examples --name rest-simple
+***** DONE RPC codegen
+      CLOSED: [2019-11-17 Sun 19:47]
+****** DONE hygen rpc-mod new --in examples --name hello-rpc
+       CLOSED: [2019-11-17 Sun 19:43]
+****** DONE hygen rpc-api new --in examples --name rpc-simple
+       CLOSED: [2019-11-17 Sun 19:43]
+***** DONE REST codegen
+      CLOSED: [2019-11-17 Sun 19:47]
+****** DONE hygen rest-mod new --in examples --name hello-rest
+       CLOSED: [2019-11-17 Sun 19:43]
+****** DONE hygen rest-api new --in examples --name rest-simple
+       CLOSED: [2019-11-17 Sun 19:43]
+***** TODO GraphQL codegen
+***** TODO K8s codegen
+***** TODO Instrumentation
+***** TODO Auto partitioning
+
+** The future of auto scaling is auto partitioning
+The explosive success of containerized patterns powered by orchestrators like k8s or mesos is here to stay.
+Nevertheless at the moment of writing this there is space not yet fully explored in the containerized cloud world.
+That space is best described by applying the concept of auto-scaling not to the multiplication or reduction of identical deployments
+but to the division of a deployment into smaller modules. 
+The degree of partitioning of a stack can be called its "modularity".
+
+A new deployment starts with zero performance metrics therefore partitioning is resolved by configuration.
+Instrumentation drives auto scaling and auto partitioning according to configuration.
+Project-level configuration 
+
+Auto-scaling manages the replication numbers.
+Auto-containerization manages degrees of modularity.
+
+** How it works
+Morphic CLI is not meant to operate during development
+Instead it is designed as a build tool with a focus on automation
+
+The CLI empowers CI and automation of kubernetes operations for auto scaling and auto containerization.
+
+#+begin_src bash
+morphic partition utils packages/utils
+#+end_src
+
+- Modules
+  Basic features and business logic
+- Services
+  Public APIs and internal APIs of any kind like GraphQL or REST
+  Partitioning containerize and wraps modules providing internal APIs 
+  - Public
+  - Internal
+- Applications
+  Allow users interact with your applications
+  - Web Apps
+  - Mobile Apps
+  - Command Line Applications
+  - SDKs
+  
+
+* Goals
+In isomorphic stacks you can share
+
+- patterns
+- schemas
+- development techniques in general
+
+* Focus
+
+- flexibility
+
+* TODO Features
+  - Definitions: pre-defined resources
+    - Schemas
+      - JSON Schema
+      - Avro
+    - Handlers
+      - Nodejs
+      - Java
+      - Python
+      - Ruby
+    - Effects (find a better name)
+  - Schemas:

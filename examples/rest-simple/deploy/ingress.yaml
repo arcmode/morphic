@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: rest-simple-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+  - host: rest-simple.com
+    http:
+      paths:
+      - path: /hello-rest/[a-zA-Z0-9_-]
+        backend:
+          serviceName: @morphic-examples/hello-rest-service
+          servicePort: 80
+

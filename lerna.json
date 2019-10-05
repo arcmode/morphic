@@ -1,0 +1,8 @@
+{
+    "packages": [
+        "modules/*",
+        "cli/*",
+        "examples/*"
+    ],
+    "version": "0.0.0"
+}
