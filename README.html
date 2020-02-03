@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2019-11-23 Sat 15:01 -->
+<!-- 2020-02-02 Sun 21:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Morphic Stack: The future of auto scaling is auto containerization</title>
+<title>An experiment on modularity as a framework</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="David Rojas" />
 <style type="text/css">
@@ -193,6 +193,7 @@
   .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
+<link rel="stylesheet" type="text/css" href="https://drojas.github.io/org-html-dracula/styles/org.css">
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -242,209 +243,229 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Morphic Stack: The future of auto scaling is auto containerization</h1>
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#orgea75497">1. TODOs</a>
-<ul>
-<li><a href="#orgd81173d">1.1. The future of auto scaling is auto partitioning</a></li>
-<li><a href="#org216a6a8">1.2. How it works</a></li>
-</ul>
-</li>
-<li><a href="#orgcddd405">2. Goals</a></li>
-<li><a href="#org65c87b4">3. Focus</a></li>
-<li><a href="#org6973d2a">4. <span class="todo TODO">TODO</span> Features</a></li>
-</ul>
-</div>
-</div>
+<h1 class="title">
+  <span class="accent">></span> azlo-create modul<span class="inverse">e</span>
+</h2>
+
+<div class="abstract">
 <p>
-An experiment about auto scaling and microservices patterns in kubernetes
+One of the growing problems in web development is accidental complexity for example in the form of boilerplate code and other
+chunks of code that that can be extracted away as library code plus configuration instead of being part of the <i>main</i>, specially
+when the pattern at exercise involves multiple <i>main</i> programs (faas, microservices, or distributed systems for example). When
+a solution becomes too complicated then the cost of experimentation within and also outside of the current design can be
+significantly increased. Enter biomimicry, software development and biological development share a pattern in their apparent
+toolkits for finding the shortest path to success: modularity. 
+This document proposes the foundation for a pattern on building modular platforms in the web stack following the goal of
+contributing to the shared goal of finding the shortest and happiest path to success in software engineering.  
 </p>
 
+</div>
 
-
-<p>
-Similar Projects
-</p>
-<ul class="org-ul">
-<li><a href="https://github.com/GoogleContainerTools/jib">Jib</a></li>
-</ul>
-
-<div id="outline-container-orgea75497" class="outline-2">
-<h2 id="orgea75497"><span class="section-number-2">1</span> TODOs</h2>
+<div id="outline-container-org9a44cad" class="outline-2">
+<h2 id="org9a44cad"><span class="section-number-2">1</span> Problem</h2>
 <div class="outline-text-2" id="text-1">
 </div>
-<ol class="org-ol">
-<li><a id="orge5cab3e"></a><span class="todo TODO">TODO</span> NPM Tarball Functor Server / Package as a Service<br />
-<ol class="org-ol">
-<li><a id="orgebdb8d1"></a><span class="todo TODO">TODO</span> npm i &#x2013;save <a href="http://morphic-packages/rpc-client/hello-world?v=0.0.0">http://morphic-packages/rpc-client/hello-world?v=0.0.0</a><br />
-<div class="outline-text-7" id="text-1-0-0-0-1-1">
-<p>
-From our heart to your node-modules
-</p>
-</div>
-</li>
-</ol>
-</li>
-<li><a id="orgd5afc0a"></a><span class="todo TODO">TODO</span> HATEOAS codegen<br />
-<ol class="org-ol">
-<li><a id="orgca1aec1"></a><span class="todo TODO">TODO</span> hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest<br /></li>
-<li><a id="orgf83b39c"></a><span class="todo TODO">TODO</span> hygen rest-api new &#x2013;in examples &#x2013;name rest-simple<br /></li>
-</ol>
-</li>
-<li><a id="orgf832364"></a><span class="done DONE">DONE</span> RPC codegen<br />
-<div class="outline-text-6" id="text-1-0-0-0-3">
-</div>
-<ol class="org-ol">
-<li><a id="orgc3f2106"></a><span class="done DONE">DONE</span> hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc<br />
-<div class="outline-text-7" id="text-1-0-0-0-3-1">
-</div>
-</li>
-<li><a id="org19de197"></a><span class="done DONE">DONE</span> hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple<br />
-<div class="outline-text-7" id="text-1-0-0-0-3-2">
-</div>
-</li>
-</ol>
-</li>
-<li><a id="org408b6c2"></a><span class="done DONE">DONE</span> REST codegen<br />
-<div class="outline-text-6" id="text-1-0-0-0-4">
-</div>
-<ol class="org-ol">
-<li><a id="orge51e923"></a><span class="done DONE">DONE</span> hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest<br />
-<div class="outline-text-7" id="text-1-0-0-0-4-1">
-</div>
-</li>
-<li><a id="orgb455974"></a><span class="done DONE">DONE</span> hygen rest-api new &#x2013;in examples &#x2013;name rest-simple<br />
-<div class="outline-text-7" id="text-1-0-0-0-4-2">
-</div>
-</li>
-</ol>
-</li>
-<li><a id="org4b3e861"></a><span class="todo TODO">TODO</span> GraphQL codegen<br /></li>
-<li><a id="org948b12c"></a><span class="todo TODO">TODO</span> K8s codegen<br /></li>
-<li><a id="org41036d3"></a><span class="todo TODO">TODO</span> Instrumentation<br /></li>
-<li><a id="org0a3514a"></a><span class="todo TODO">TODO</span> Auto partitioning<br /></li>
-</ol>
-
-<div id="outline-container-orgd81173d" class="outline-3">
-<h3 id="orgd81173d"><span class="section-number-3">1.1</span> The future of auto scaling is auto partitioning</h3>
+<div id="outline-container-orge5f2379" class="outline-3">
+<h3 id="orge5f2379"><span class="section-number-3">1.1</span> Modularity vs consistency</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-The explosive success of containerized patterns powered by orchestrators like k8s or mesos is here to stay.
-Nevertheless at the moment of writing this there is space not yet fully explored in the containerized cloud world.
-That space is best described by applying the concept of auto-scaling not to the multiplication or reduction of identical deployments
-but to the division of a deployment into smaller modules. 
-The degree of partitioning of a stack can be called its "modularity".
+Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
+of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
+boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
+yet defined within the "boilerplate-free" area of library and framework code.
 </p>
 
 <p>
-A new deployment starts with zero performance metrics therefore partitioning is resolved by configuration.
-Instrumentation drives auto scaling and auto partitioning according to configuration.
-Project-level configuration 
+This is a tech-oriented definition for modulerity from: <a href="https://en.wikipedia.org/wiki/Modularity">https://en.wikipedia.org/wiki/Modularity</a>
+</p>
+<blockquote>
+<p>
+In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.
+In software design, modularity refers to a logical partitioning of the "software design" that allows complex software to be manageable
+for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
+considerations, data links, or other criteria.
+</p>
+</blockquote>
+
+<p>
+One key aspect of it is the idea that somehow the relationship between complexity and softare being manageable is critical
+and worth paying attention to. 
 </p>
 
 <p>
-Auto-scaling manages the replication numbers.
-Auto-containerization manages degrees of modularity.
+Let's compare this definition to a biological one from: <a href="https://en.wikipedia.org/wiki/Modularity_(biology)">https://en.wikipedia.org/wiki/Modularity_(biology)</a>
+</p>
+<blockquote>
+<p>
+Modularity refers to the ability of a system to organize discrete, individual units that can overall increase the efficiency of network
+activity and, in a biological sense, facilitates selective forces upon the network. Modularity is observed in all model systems, and can
+be studied at nearly every scale of biological organization, from molecular interactions all the way up to the whole organism.
+</p>
+</blockquote>
+
+<p>
+The ideas behind "to be manageable" in the former definition and of "selective forces" seem aligned with the "shortest path" mentality
+of both nature and the agile movement within the tech industry.
+</p>
+
+<p>
+That sounds cool but how do biological systems escape the trap of infinite inconsistency and how software development can benefit from it? 
+Arguably there is no short answer to the first part but at the same time is impossible not to recognize a possible solution for the
+second part of this question. In biological systems modularity is a built-in property of the system, not like most modular software
+where the ecosystem is not really much more than the sum of all of its parts (except in systems like Erlang where the ecosystem embraces
+modularity as a framework).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org216a6a8" class="outline-3">
-<h3 id="org216a6a8"><span class="section-number-3">1.2</span> How it works</h3>
+<div id="outline-container-org2d4ac46" class="outline-3">
+<h3 id="org2d4ac46"><span class="section-number-3">1.2</span> Modularity vs Evolvability</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-Morphic CLI is not meant to operate during development
-Instead it is designed as a build tool with a focus on automation
+In software development, the idea of evolution can be seen as the process of (sometimes very slowly) adapting
 </p>
 
 <p>
-The CLI empowers CI and automation of kubernetes operations for auto scaling and auto containerization.
+From: <a href="https://en.wikipedia.org/wiki/Evolvability">https://en.wikipedia.org/wiki/Evolvability</a>
 </p>
-
-<div class="org-src-container">
-<pre class="src src-bash">morphic partition utils packages/utils
-</pre>
-</div>
-
-<ul class="org-ul">
-<li>Modules
-Basic features and business logic</li>
-<li>Services
-Public APIs and internal APIs of any kind like GraphQL or REST
-Partitioning containerize and wraps modules providing internal APIs 
-<ul class="org-ul">
-<li>Public</li>
-<li>Internal</li>
-</ul></li>
-<li>Applications
-Allow users interact with your applications
-<ul class="org-ul">
-<li>Web Apps</li>
-<li>Mobile Apps</li>
-<li>Command Line Applications</li>
-<li>SDKs</li>
-</ul></li>
-</ul>
+<blockquote>
+<p>
+Evolvability is defined as the capacity of a system for adaptive evolution.
+Evolvability is the ability of a population of organisms to not merely generate genetic diversity,
+but to generate adaptive genetic diversity, and thereby evolve through natural selection.
+</p>
+</blockquote>
 </div>
 </div>
 </div>
 
-
-<div id="outline-container-orgcddd405" class="outline-2">
-<h2 id="orgcddd405"><span class="section-number-2">2</span> Goals</h2>
+<div id="outline-container-org3a12ae9" class="outline-2">
+<h2 id="org3a12ae9"><span class="section-number-2">2</span> Biomimicry</h2>
 <div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-org42affd7" class="outline-3">
+<h3 id="org42affd7"><span class="section-number-3">2.1</span> Contracts</h3>
+<div class="outline-text-3" id="text-2-1">
+</div>
+<div id="outline-container-org4b17d48" class="outline-4">
+<h4 id="org4b17d48">Modularity Model</h4>
+<div class="outline-text-4" id="text-org4b17d48">
 <p>
-In isomorphic stacks you can share
+The module/framework relationship is modeled as inspired by the organism/niche relationship.
 </p>
-
-<ul class="org-ul">
-<li>patterns</li>
-<li>schemas</li>
-<li>development techniques in general</li>
-</ul>
 </div>
 </div>
+<div id="outline-container-orge0ead28" class="outline-4">
+<h4 id="orge0ead28">The network defines the ecosystem</h4>
+<div class="outline-text-4" id="text-orge0ead28">
+<p>
+The difference between an ecosystem and the niche is the emphasis of point-of-experience of the niche. Without twisting biology too much
+math into biology one could say the niche of an organism is the experience it has within the ecosystems it is embedded in plus the
+difference it produces in the experience of the other systems.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc01f52d" class="outline-4">
+<h4 id="orgc01f52d">Robustness</h4>
+</div>
+<div id="outline-container-org1ac3ea8" class="outline-4">
+<h4 id="org1ac3ea8">Adaptability</h4>
+</div>
+<div id="outline-container-org7807cfe" class="outline-4">
+<h4 id="org7807cfe">Extensibility</h4>
+<div class="outline-text-4" id="text-org7807cfe">
+<p>
+Diversity is a key aspect of successful (biological) ecosystems and common descriptions involve concepts like robusntess via redundancy
+and adaptive behavior.
+Hypothesis: A systemic modularity model will reduce complexity
+</p>
+</div>
+</div>
+<div id="outline-container-org286989c" class="outline-4">
+<h4 id="org286989c">Evolvability</h4>
+</div>
+<div id="outline-container-orgb2079a2" class="outline-4">
+<h4 id="orgb2079a2">Simplicity</h4>
+<div class="outline-text-4" id="text-orgb2079a2">
+<p>
+An apparent property of evolution is the reuse of solutions. The evolution of an organism (basically a lineage of
+cells) can be easily compared to the common idea of evolution of species and also to the development of eusocial colonies of insects.
+Hypothesis: A systemic modularity model will reduce complexity
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc36bbad" class="outline-3">
+<h3 id="orgc36bbad"><span class="section-number-3">2.2</span> Agile</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Modular development pairs naturally with paced or sprint based methodologies.
+Hypothesis: A systemic modularity model will increase productivity and improve the experience of actors in the agile process.
+</p>
+</div>
+</div>
+</div>
 
-<div id="outline-container-org65c87b4" class="outline-2">
-<h2 id="org65c87b4"><span class="section-number-2">3</span> Focus</h2>
+<div id="outline-container-org1615dd3" class="outline-2">
+<h2 id="org1615dd3"><span class="section-number-2">3</span> Roadmap</h2>
 <div class="outline-text-2" id="text-3">
+</div>
 <ul class="org-ul">
-<li>flexibility</li>
+<li><a id="org98bb4ea"></a><span class="done DONE">DONE</span> RPC codegen<br />
+<div class="outline-text-6" id="text-org98bb4ea">
+</div>
+<ul class="org-ul">
+<li><a id="org075a50d"></a><span class="done DONE">DONE</span> hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc<br />
+<div class="outline-text-7" id="text-org075a50d">
+</div>
+</li>
+<li><a id="org66d9452"></a><span class="done DONE">DONE</span> hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple<br />
+<div class="outline-text-7" id="text-org66d9452">
+</div>
+</li>
+</ul>
+</li>
+<li><a id="orgd5b7980"></a><span class="done DONE">DONE</span> REST codegen<br />
+<div class="outline-text-6" id="text-orgd5b7980">
+</div>
+<ul class="org-ul">
+<li><a id="orgf5cac27"></a><span class="done DONE">DONE</span> hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest<br />
+<div class="outline-text-7" id="text-orgf5cac27">
+</div>
+</li>
+<li><a id="org12f3a6b"></a><span class="done DONE">DONE</span> hygen rest-api new &#x2013;in examples &#x2013;name rest-simple<br />
+<div class="outline-text-7" id="text-org12f3a6b">
+</div>
+</li>
+</ul>
+</li>
+<li><a id="org66c692d"></a><span class="todo TODO">TODO</span> Database app example (MongoDB)<br /></li>
+<li><a id="org6ca6fe1"></a><span class="todo TODO">TODO</span> K8s codegen<br /></li>
+<li><a id="org7dd9eb4"></a><span class="todo TODO">TODO</span> Instrumentation<br /></li>
+<li><a id="orgcf1e50c"></a><span class="todo TODO">TODO</span> NPM Tarball Functor as a Service<br /></li>
+<li><a id="org23893a1"></a><span class="todo TODO">TODO</span> HATEOAS<br /></li>
+<li><a id="org1df5c9d"></a><span class="todo TODO">TODO</span> GraphQL codegen<br /></li>
+<li><a id="org059d1b1"></a><span class="todo TODO">TODO</span> Auto partitioning<br /></li>
+<li><a id="org6c1edad"></a><span class="todo TODO">TODO</span> Bring your own framework example<br /></li>
+<li><a id="org2a7c7d4"></a><span class="todo TODO">TODO</span> Plugins example<br /></li>
 </ul>
 </div>
-</div>
 
-<div id="outline-container-org6973d2a" class="outline-2">
-<h2 id="org6973d2a"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Features</h2>
+
+<div id="outline-container-org90e9fa1" class="outline-2">
+<h2 id="org90e9fa1"><span class="section-number-2">4</span> Inspired in</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
-<li>Definitions: pre-defined resources
-<ul class="org-ul">
-<li>Schemas
-<ul class="org-ul">
-<li>JSON Schema</li>
-<li>Avro</li>
-</ul></li>
-<li>Handlers
-<ul class="org-ul">
-<li>Nodejs</li>
-<li>Java</li>
-<li>Python</li>
-<li>Ruby</li>
-</ul></li>
-<li>Effects (find a better name)</li>
-</ul></li>
-<li>Schemas:</li>
+<li><a href="https://github.com/GoogleContainerTools/jib">Jib</a></li>
+<li>Biology</li>
+<li>Fractals</li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: David Rojas</p>
-<p class="date">Created: 2019-11-23 Sat 15:01</p>
+<p class="date">Created: 2020-02-02 Sun 21:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

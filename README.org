@@ -1,19 +1,95 @@
-#+TITLE: Morphic Stack: The future of auto scaling is auto containerization
+#+TITLE: An experiment on modularity as a framework
+#+AUTHOR: David Rojas
+#+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
-An experiment about auto scaling and microservices patterns in kubernetes
+#+OPTIONS: toc:nil num:2 H:3 ^:nil pri:t title:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://drojas.github.io/org-html-dracula/styles/org.css">
 
+#+BEGIN_export html
+<h1 class="title">
+  <span class="accent">></span> azlo-create modul<span class="inverse">e</span>
+</h2>
+#+END_export
 
+#+BEGIN_abstract
+One of the growing problems in web development is accidental complexity for example in the form of boilerplate code and other
+chunks of code that that can be extracted away as library code plus configuration instead of being part of the /main/, specially
+when the pattern at exercise involves multiple /main/ programs (faas, microservices, or distributed systems for example). When
+a solution becomes too complicated then the cost of experimentation within and also outside of the current design can be
+significantly increased. Enter biomimicry, software development and biological development share a pattern in their apparent
+toolkits for finding the shortest path to success: modularity. 
+This document proposes the foundation for a pattern on building modular platforms in the web stack following the goal of
+contributing to the shared goal of finding the shortest and happiest path to success in software engineering.  
+#+END_abstract
 
-Similar Projects
-- [[https://github.com/GoogleContainerTools/jib][Jib]]
+* Problem
+** Modularity vs consistency
+Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
+of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
+boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
+yet defined within the "boilerplate-free" area of library and framework code.
 
-* TODOs
-***** TODO NPM Tarball Functor Server / Package as a Service
-****** TODO npm i --save http://morphic-packages/rpc-client/hello-world?v=0.0.0
-       From our heart to your node-modules
-***** TODO HATEOAS codegen
-****** TODO hygen rest-mod new --in examples --name hello-rest
-****** TODO hygen rest-api new --in examples --name rest-simple
+This is a tech-oriented definition for modulerity from: https://en.wikipedia.org/wiki/Modularity
+#+BEGIN_QUOTE
+In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.
+In software design, modularity refers to a logical partitioning of the "software design" that allows complex software to be manageable
+for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
+considerations, data links, or other criteria.
+#+END_QUOTE
+
+One key aspect of it is the idea that somehow the relationship between complexity and softare being manageable is critical
+and worth paying attention to. 
+
+Let's compare this definition to a biological one from: https://en.wikipedia.org/wiki/Modularity_(biology)
+#+BEGIN_QUOTE
+Modularity refers to the ability of a system to organize discrete, individual units that can overall increase the efficiency of network
+activity and, in a biological sense, facilitates selective forces upon the network. Modularity is observed in all model systems, and can
+be studied at nearly every scale of biological organization, from molecular interactions all the way up to the whole organism.
+#+END_QUOTE
+
+The ideas behind "to be manageable" in the former definition and of "selective forces" seem aligned with the "shortest path" mentality
+of both nature and the agile movement within the tech industry.
+
+That sounds cool but how do biological systems escape the trap of infinite inconsistency and how software development can benefit from it? 
+Arguably there is no short answer to the first part but at the same time is impossible not to recognize a possible solution for the
+second part of this question. In biological systems modularity is a built-in property of the system, not like most modular software
+where the ecosystem is not really much more than the sum of all of its parts (except in systems like Erlang where the ecosystem embraces
+modularity as a framework).
+
+** Modularity vs Evolvability
+In software development, the idea of evolution can be seen as the process of (sometimes very slowly) adapting
+
+From: https://en.wikipedia.org/wiki/Evolvability
+#+BEGIN_QUOTE
+Evolvability is defined as the capacity of a system for adaptive evolution.
+Evolvability is the ability of a population of organisms to not merely generate genetic diversity,
+but to generate adaptive genetic diversity, and thereby evolve through natural selection.
+#+END_QUOTE
+
+* Biomimicry
+** Contracts
+*** Modularity Model
+   The module/framework relationship is modeled as inspired by the organism/niche relationship.
+*** The network defines the ecosystem
+   The difference between an ecosystem and the niche is the emphasis of point-of-experience of the niche. Without twisting biology too much
+   math into biology one could say the niche of an organism is the experience it has within the ecosystems it is embedded in plus the
+   difference it produces in the experience of the other systems.
+*** Robustness
+*** Adaptability
+*** Extensibility
+   Diversity is a key aspect of successful (biological) ecosystems and common descriptions involve concepts like robusntess via redundancy
+   and adaptive behavior.
+   Hypothesis: A systemic modularity model will reduce complexity
+*** Evolvability
+*** Simplicity
+   An apparent property of evolution is the reuse of solutions. The evolution of an organism (basically a lineage of
+   cells) can be easily compared to the common idea of evolution of species and also to the development of eusocial colonies of insects.
+   Hypothesis: A systemic modularity model will reduce complexity
+** Agile
+   Modular development pairs naturally with paced or sprint based methodologies.
+   Hypothesis: A systemic modularity model will increase productivity and improve the experience of actors in the agile process.
+   
+* Roadmap
 ***** DONE RPC codegen
       CLOSED: [2019-11-17 Sun 19:47]
 ****** DONE hygen rpc-mod new --in examples --name hello-rpc
@@ -26,70 +102,18 @@ Similar Projects
        CLOSED: [2019-11-17 Sun 19:43]
 ****** DONE hygen rest-api new --in examples --name rest-simple
        CLOSED: [2019-11-17 Sun 19:43]
-***** TODO GraphQL codegen
+***** TODO Database app example (MongoDB)
 ***** TODO K8s codegen
 ***** TODO Instrumentation
+***** TODO NPM Tarball Functor as a Service
+***** TODO HATEOAS
+***** TODO GraphQL codegen
 ***** TODO Auto partitioning
+***** TODO Bring your own framework example
+***** TODO Plugins example
 
-** The future of auto scaling is auto partitioning
-The explosive success of containerized patterns powered by orchestrators like k8s or mesos is here to stay.
-Nevertheless at the moment of writing this there is space not yet fully explored in the containerized cloud world.
-That space is best described by applying the concept of auto-scaling not to the multiplication or reduction of identical deployments
-but to the division of a deployment into smaller modules. 
-The degree of partitioning of a stack can be called its "modularity".
 
-A new deployment starts with zero performance metrics therefore partitioning is resolved by configuration.
-Instrumentation drives auto scaling and auto partitioning according to configuration.
-Project-level configuration 
-
-Auto-scaling manages the replication numbers.
-Auto-containerization manages degrees of modularity.
-
-** How it works
-Morphic CLI is not meant to operate during development
-Instead it is designed as a build tool with a focus on automation
-
-The CLI empowers CI and automation of kubernetes operations for auto scaling and auto containerization.
-
-#+begin_src bash
-morphic partition utils packages/utils
-#+end_src
-
-- Modules
-  Basic features and business logic
-- Services
-  Public APIs and internal APIs of any kind like GraphQL or REST
-  Partitioning containerize and wraps modules providing internal APIs 
-  - Public
-  - Internal
-- Applications
-  Allow users interact with your applications
-  - Web Apps
-  - Mobile Apps
-  - Command Line Applications
-  - SDKs
-  
-
-* Goals
-In isomorphic stacks you can share
-
-- patterns
-- schemas
-- development techniques in general
-
-* Focus
-
-- flexibility
-
-* TODO Features
-  - Definitions: pre-defined resources
-    - Schemas
-      - JSON Schema
-      - Avro
-    - Handlers
-      - Nodejs
-      - Java
-      - Python
-      - Ruby
-    - Effects (find a better name)
-  - Schemas:
+* Inspired in
+- [[https://github.com/GoogleContainerTools/jib][Jib]]
+- Biology
+- Fractals
