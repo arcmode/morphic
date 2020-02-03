@@ -4,6 +4,7 @@
 
 #+OPTIONS: toc:nil num:2 H:3 ^:nil pri:t title:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://drojas.github.io/org-html-dracula/styles/org.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles/org.css">
 
 #+BEGIN_export html
 <h1 class="title">
@@ -21,6 +22,9 @@ Enter biomimicry, software development and biological development share a patter
 shortest path to success: modularity. This document proposes the foundation for a pattern on building modular platforms in the
 web stack following the goal of contributing to the shared goal of finding the shortest and happiest path to success in software engineering.
 #+END_abstract
+
+#+TOC: headlines 2
+
 
 * Problem space
 ** Modularity vs Evolvability
@@ -91,32 +95,40 @@ the shortest path to success (or biological fitness) which is important for soft
    Modular development pairs naturally with paced or sprint based methodologies.\\
    Hypothesis: A systemic modularity model will reduce uncertainty and support the pace of agile methodologies.
    
-** Roadmap MVP
-***** DONE RPC codegen
+** MVP: Basic module systems
+   :PROPERTIES:
+   :ID:       38b345b1-681b-4528-8b88-d73980e383e6
+   :END:
+***** DONE RPC
       CLOSED: [2019-11-17 Sun 19:47]
 ****** DONE hygen rpc-mod new --in examples --name hello-rpc
        CLOSED: [2019-11-17 Sun 19:43]
 ****** DONE hygen rpc-api new --in examples --name rpc-simple
        CLOSED: [2019-11-17 Sun 19:43]
-***** DONE REST codegen
+***** DONE REST
       CLOSED: [2019-11-17 Sun 19:47]
 ****** DONE hygen rest-mod new --in examples --name hello-rest
        CLOSED: [2019-11-17 Sun 19:43]
 ****** DONE hygen rest-api new --in examples --name rest-simple
        CLOSED: [2019-11-17 Sun 19:43]
+***** TODO Job
+***** TODO Cronjob
+***** TODO Worker (Queue consumer)
+***** TODO Events producer
+***** TODO Events consumer
 ***** TODO Database app example (MongoDB)
 ***** TODO K8s codegen
 ***** TODO Instrumentation
 
-** Roadmap 1.0
-**** More systems and module models
-***** Client codegen
-***** Frontend components
-***** ETL processes
-***** Stream processing
-***** Vendor modules
-***** Platform extensions (Idea: module functors)
-***** Service Registry
+** Vision for v1.0
+   More systems and module models
+***** TODO Client codegen
+***** TODO Frontend components
+***** TODO ETL processes
+***** TODO Stream processing
+***** TODO Vendor modules
+***** TODO Platform extensions (Idea: module functors)
+***** TODO Service Registry
 
 ** Ideas
 ***** HATEOAS
