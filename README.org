@@ -23,6 +23,16 @@ web stack following the goal of contributing to the shared goal of finding the s
 #+END_abstract
 
 * Problem space
+** Modularity vs Evolvability
+In software development, the idea of evolution can be seen as the process of (sometimes very slowly) adapting
+
+From: https://en.wikipedia.org/wiki/Evolvability
+#+BEGIN_QUOTE
+Evolvability is defined as the capacity of a system for adaptive evolution.
+Evolvability is the ability of a population of organisms to not merely generate genetic diversity,
+but to generate adaptive genetic diversity, and thereby evolve through natural selection.
+#+END_QUOTE
+
 ** Modularity vs consistency
 Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
 of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
@@ -51,21 +61,10 @@ be studied at nearly every scale of biological organization, from molecular inte
 The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
 the "shortest path" mentality of both nature and the agile movement within the tech industry.
 
-That sounds cool but how do biological systems escape the trap of infinite inconsistency and how software development can benefit from it? 
-Arguably there is no short answer to the first part but at the same time is impossible not to recognize a possible solution for the
-second part of this question. In biological systems modularity is a built-in property of the system, not like most modular software
-where the ecosystem is not really much more than the sum of all of its parts (except in systems like Erlang where the ecosystem embraces
-modularity as a framework).
-
-** Modularity vs Evolvability
-In software development, the idea of evolution can be seen as the process of (sometimes very slowly) adapting
-
-From: https://en.wikipedia.org/wiki/Evolvability
-#+BEGIN_QUOTE
-Evolvability is defined as the capacity of a system for adaptive evolution.
-Evolvability is the ability of a population of organisms to not merely generate genetic diversity,
-but to generate adaptive genetic diversity, and thereby evolve through natural selection.
-#+END_QUOTE
+That sounded fancy, but how do biological systems escape as modular as they are from an increasing tendency to inconsistency and how
+software development can benefit from it?\\
+Let's pretend we can borrow properties from biological systems into a modular model of web development and improve our skills at finding
+the shortest path to success (or biological fitness) which is important for software management and evolution. 
 
 * Solution space
   Biological systems are modular in many ways. Let's try borrow some goodies from their /designs/.
@@ -127,6 +126,7 @@ but to generate adaptive genetic diversity, and thereby evolve through natural s
 ***** NPM Tarball Functor as a Service
 
 * Inspired partially by
-- [[https://github.com/GoogleContainerTools/jib][Jib]]
 - Biology
 - Fractals
+- 
+- [[https://github.com/GoogleContainerTools/jib][Jib]]
