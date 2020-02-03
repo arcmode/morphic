@@ -29,26 +29,27 @@ of modular systems is the bigger number of running programs. The combination of 
 boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
 yet defined within the "boilerplate-free" area of library and framework code.
 
-This is a tech-oriented definition for modulerity from: https://en.wikipedia.org/wiki/Modularity
+Following, a couple of tech-oriented definitions for modulerity from: https://en.wikipedia.org/wiki/Modularity
 #+BEGIN_QUOTE
-In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.
+In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.\\
+
 In software design, modularity refers to a logical partitioning of the "software design" that allows complex software to be manageable
 for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
 considerations, data links, or other criteria.
 #+END_QUOTE
 
-One key aspect of it is the idea that somehow the relationship between complexity and softare being manageable is critical
-and worth paying attention to. 
+One interesting aspect of the last definition is the idea the relationship between complexity and software being manageable is
+and worth paying close attention to and perhaps explore with "biomimicry lenses".
 
-Let's compare this definition to a biological one from: https://en.wikipedia.org/wiki/Modularity_(biology)
+Let's compare the previous definitions with a biological one from: https://en.wikipedia.org/wiki/Modularity_(biology)
 #+BEGIN_QUOTE
 Modularity refers to the ability of a system to organize discrete, individual units that can overall increase the efficiency of network
 activity and, in a biological sense, facilitates selective forces upon the network. Modularity is observed in all model systems, and can
 be studied at nearly every scale of biological organization, from molecular interactions all the way up to the whole organism.
 #+END_QUOTE
 
-The ideas behind "to be manageable" in the former definition and of "selective forces" seem aligned with the "shortest path" mentality
-of both nature and the agile movement within the tech industry.
+The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
+the "shortest path" mentality of both nature and the agile movement within the tech industry.
 
 That sounds cool but how do biological systems escape the trap of infinite inconsistency and how software development can benefit from it? 
 Arguably there is no short answer to the first part but at the same time is impossible not to recognize a possible solution for the
@@ -69,29 +70,29 @@ but to generate adaptive genetic diversity, and thereby evolve through natural s
 * Solution space
   Biological systems are modular in many ways. Let's try borrow some goodies from their /designs/.
 *** Modularity Model
-   The module/framework relationship is modeled as inspired by the organism/niche relationship.
+   The module/framework relationship is modeled as inspired by the organism/niche relationship.\\
    Hypothesis: A systemic modularity model will solve different problems improving productivity and quality
 *** Contracts: The network defines the ecosystem
    The difference between an ecosystem and the niche is the emphasis of point-of-experience of the niche. Without twisting biology too much
    math into biology one could say the niche of an organism is the experience it has within the ecosystems it is embedded in plus the
-   difference it produces in the experience of the other systems.
+   difference it produces in the experience of the other systems.\\
    Hypothesis: A systemic modularity model will improve the domain language by allowing the exercise of a more domain-focused interfaces
 *** Robustness
    Hypothesis: A systemic modularity model will reduce number of bugs
 *** Adaptability
    Hypothesis: A systemic modularity model will help increase productivity in terms of number of features, docs and tests per cycle
 *** Extensibility & Evolvability
-   Diversity is a key aspect of successful (biological) ecosystems and commonly associated to adaptation.
+   Diversity is a key aspect of successful (biological) ecosystems and commonly associated to adaptation.\\
    Hypothesis: A systemic modularity model will increase contributions to its own design and library/framework code
 *** Simplicity
    An apparent property of evolution is the reuse of solutions. The evolution of an organism (basically a lineage of
-   cells) can be easily compared to the common idea of evolution of species and also to the development of eusocial colonies of insects.
+   cells) can be easily compared to the common idea of evolution of species and also to the development of eusocial colonies of insects.\\
    Hypothesis: A systemic modularity model will reduce complexity
 *** Agile
-   Modular development pairs naturally with paced or sprint based methodologies.
+   Modular development pairs naturally with paced or sprint based methodologies.\\
    Hypothesis: A systemic modularity model will reduce uncertainty and support the pace of agile methodologies.
    
-** Roadmap
+** Roadmap MVP
 ***** DONE RPC codegen
       CLOSED: [2019-11-17 Sun 19:47]
 ****** DONE hygen rpc-mod new --in examples --name hello-rpc
@@ -107,13 +108,23 @@ but to generate adaptive genetic diversity, and thereby evolve through natural s
 ***** TODO Database app example (MongoDB)
 ***** TODO K8s codegen
 ***** TODO Instrumentation
-***** TODO NPM Tarball Functor as a Service
-***** TODO HATEOAS
-***** TODO GraphQL codegen
-***** TODO Auto partitioning
-***** TODO Bring your own framework example
-***** TODO Plugins example
 
+** Roadmap 1.0
+**** More systems and module models
+***** Client codegen
+***** Frontend components
+***** ETL processes
+***** Stream processing
+***** Vendor modules
+***** Platform extensions (Idea: module functors)
+***** Service Registry
+
+** Ideas
+***** HATEOAS
+***** GraphQL
+***** Auto partitioning
+***** Bring your own framework example
+***** NPM Tarball Functor as a Service
 
 * Inspired partially by
 - [[https://github.com/GoogleContainerTools/jib][Jib]]
