@@ -198,7 +198,7 @@ pre.src::before {
 }
 
 #postamble p {
-    color: var(--comment-color);
+    color: var(--html-bg-color);
 }
 
 #postamble {

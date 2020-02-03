@@ -3,6 +3,7 @@
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
 #+OPTIONS: toc:nil num:2 H:3 ^:nil pri:t title:nil
+#+EXPORT_FILE_NAME: index
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://drojas.github.io/org-html-dracula/styles/org.css">
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles/org.css">
 
@@ -25,8 +26,7 @@ web stack following the goal of contributing to the shared goal of finding the s
 
 #+TOC: headlines 2
 
-
-* Problem space
+* WIP: Problem space
 ** Modularity vs Evolvability
 In software development, the idea of evolution can be seen as the process of (sometimes very slowly) adapting
 
@@ -70,7 +70,7 @@ software development can benefit from it?\\
 Let's pretend we can borrow properties from biological systems into a modular model of web development and improve our skills at finding
 the shortest path to success (or biological fitness) which is important for software management and evolution. 
 
-* Solution space
+* WIP: Solution space
   Biological systems are modular in many ways. Let's try borrow some goodies from their /designs/.
 *** Modularity Model
    The module/framework relationship is modeled as inspired by the organism/niche relationship.\\
@@ -137,8 +137,13 @@ the shortest path to success (or biological fitness) which is important for soft
 ***** Bring your own framework example
 ***** NPM Tarball Functor as a Service
 
+* Technologies used for this work
+- Nodejs
+- Lerna
+- Typescript
+- Fastify
+- Hygen
 * Inspired partially by
 - Biology
 - Fractals
-- 
 - [[https://github.com/GoogleContainerTools/jib][Jib]]
