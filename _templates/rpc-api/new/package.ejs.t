@@ -20,7 +20,7 @@ to: <%=locals.in%>/<%=name%>/package.json
         "prebuild": "HYGEN_OVERWRITE=1 npx hygen server new --at lib/server.gen.ts",
         "build": "tsc",
         "start": "node lib/server.gen.js",
-        "debug": "node --inspect-brk lib/server.gen.js",
+        "debug": "tsc-watch --onSuccess \"node --inspect-brk lib/server.gen.js\"",
         "dev": "tsc-watch --onSuccess \"node lib/server.gen.js\""
     },
     "morphic-rpc-include": [

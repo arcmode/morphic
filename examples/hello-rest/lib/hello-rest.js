@@ -8,32 +8,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const direct = __importStar(require("@morphic-examples/hello-rpc"));
-const client = __importStar(require("@morphic-examples/rpc-client"));
+// import * as client from '@morphic-examples/rpc-client';
 exports.url = '/hello-rest/:name';
 exports.method = 'GET';
-exports.handler = async function (req) {
-    try {
-        const directResult = await direct.helloRpc(req.params.name);
-        const clientResult = await client.helloRpc(req.params.name);
-        return {
-            status: 200,
-            headers: {
-                ['powered-by']: 'morphic'
-            },
-            body: {
-                greetings: {
-                    direct: directResult,
-                    client: clientResult
-                }
-            }
-        };
-    }
-    catch (err) {
-        return {
-            status: 500
-        };
-    }
-};
 exports.schema = {
     response: {
         200: {
@@ -51,7 +28,50 @@ exports.schema = {
                     }
                 }
             }
+        },
+        500: {
+            type: 'object',
+            properties: {
+                errors: {
+                    type: 'array',
+                    items: {
+                        type: 'string'
+                    }
+                }
+            }
         }
+    }
+};
+exports.config = {
+    HOSTNAME: 'localhost',
+    NODE_ENV: 'development',
+};
+exports.handler = async (req, cfg) => {
+    console.log({ cfg });
+    try {
+        const directResult = await direct.helloRpc(req.params.name);
+        // const clientResult = await client.helloRpc(
+        // req.params.name
+        // );
+        return {
+            status: 200,
+            headers: {
+                ['powered-by']: 'morphic'
+            },
+            body: {
+                greetings: {
+                    direct: directResult,
+                }
+            }
+        };
+    }
+    catch (err) {
+        return {
+            status: 500,
+            body: {
+                errors: [err.message]
+            }
+        };
     }
 };
 //# sourceMappingURL=hello-rest.js.map

@@ -1,3 +1,4 @@
+/// <reference types="express" />
 import { ArrayItem, ThenArg, JsonFn } from '@morphic/types';
 export declare type RpcMod<M> = Record<keyof M, JsonFn<M, keyof M>>;
 declare type RpcDefinition<M extends RpcMod<M>> = {

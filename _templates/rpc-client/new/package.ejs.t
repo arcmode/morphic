@@ -20,7 +20,7 @@ to: <%=locals.in%>/<%=name%>/package.json
         "prebuild": "HYGEN_OVERWRITE=1 npx hygen client new --at lib/client.gen.ts",
         "build": "tsc",
         "test": "jest",
-        "debug": "node --inspect-brk lib/client.gen.js",
+        "debug": "tsc-watch --onSuccess \"node --inspect-brk lib/client.gen.js\"",
         "dev": "tsc-watch --onSuccess \"node lib/client.gen.js\""
     },
     "dependencies": {
@@ -29,8 +29,8 @@ to: <%=locals.in%>/<%=name%>/package.json
     "devDependencies": {
         "<%=of%>": "<%=version%>",
         "tsc-watch": "4.0.0",
-        "typescript": "^3.7.2",
-        "jest": "^24.9.0",
-        "@types/jest": "^24.0.23"
+        "typescript": "3.7.5",
+        "jest": "24.9.0",
+        "@types/jest": "24.0.23"
     }
 }

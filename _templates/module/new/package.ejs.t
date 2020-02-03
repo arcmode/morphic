@@ -26,6 +26,6 @@ to: <%=locals.in%>/<%=name%>/package.json
     },
     "devDependencies": {
         "jest": "24.9.0",
-        "typescript": "3.7.2"
+        "typescript": "3.7.5"
     }
 }

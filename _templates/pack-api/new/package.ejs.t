@@ -34,6 +34,6 @@ to: <%=locals.in%>/<%=name%>/package.json
     "devDependencies": {
         "@types/express": "4.17.1",
         "tsc-watch": "4.0.0",
-        "typescript": "3.7.2"
+        "typescript": "3.7.5"
     }
 }

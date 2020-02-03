@@ -1,8 +1,8 @@
-import * as direct from '@morphic-examples/hello-rpc';
-import * as client from '@morphic-examples/rpc-client';
+import * as direct from '@morphic-examples/hello-rpc'
+// import * as client from '@morphic-examples/rpc-client';
 
-export const url = '/hello-rest/:name';
-export const method = 'GET';
+export const url = '/hello-rest/:name'
+export const method = 'GET'
 
 type Request = {
     params: {
@@ -11,18 +11,22 @@ type Request = {
     options: {}
 }
 
-type Reply = {
-    status: 200 | 500,
-    headers?: {
+type Result = {
+    status: 200,
+    headers: {
         ['powered-by']: 'morphic'
     },
-    body?: {
+    body: {
         greetings: {
-            direct: string,
-            client: string
+            direct: string
         }
     }
-};
+} | {
+    status: 500,
+    body: {
+        errors: string[]
+    }
+}
 
 export const schema = {
     response: {
@@ -41,19 +45,37 @@ export const schema = {
                     }
                 }
             }
+        },
+        500: {
+            type: 'object',
+            properties: {
+                errors: {
+                    type: 'array',
+                    items: {
+                        type: 'string'
+                    }
+                }
+            }
         }
     }
 }
 
-export const handler = async function(req: Request): Promise<Reply> {
+export const config = {
+    HOSTNAME: 'localhost',
+    NODE_ENV: 'development',
+}
+
+export const handler = async (req: Request, cfg: typeof config): Promise<Result> => {
+    console.log({ cfg })
+
     try {
         const directResult = await direct.helloRpc(
             req.params.name
         );
 
-        const clientResult = await client.helloRpc(
-            req.params.name
-        );
+        // const clientResult = await client.helloRpc(
+        // req.params.name
+        // );
 
         return {
             status: 200,
@@ -63,14 +85,16 @@ export const handler = async function(req: Request): Promise<Reply> {
             body: {
                 greetings: {
                     direct: directResult,
-                    client: clientResult
+                    // client: clientResult
                 }
             }
         }
     } catch (err) {
         return {
-            status: 500
+            status: 500,
+            body: {
+                errors: [err.message]
+            }
         }
     }
 }
-

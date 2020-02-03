@@ -17,10 +17,23 @@ const promiseHandler = async (promise, reply, server) => {
         reply.send(500);
     }
 };
-// TODO: generator as state machine
-exports.createFastifyPlugin = (mod) => fastify_plugin_1.default((server, options, done) => {
+exports.createFastifyPlugin = (mod, cfg) => fastify_plugin_1.default((server, options, done) => {
+    const config = {};
+    const defaultCfg = mod.config || {};
+    for (const key in defaultCfg) {
+        const val = cfg.has(key) ?
+            cfg.get(key) :
+            key in process.env ?
+                process.env[key] :
+                defaultCfg[key];
+        if (typeof val !== 'string') {
+            throw new TypeError(`Configuration Error: "${key}" not found`);
+        }
+        config[key] = val;
+    }
     server.route({
         ...mod,
+        config,
         handler: async (req, reply) => {
             const restReq = {
                 query: req.query,
@@ -29,7 +42,7 @@ exports.createFastifyPlugin = (mod) => fastify_plugin_1.default((server, options
                 body: req.body,
                 options
             };
-            await promiseHandler(mod.handler(restReq), reply, server);
+            await promiseHandler(mod.handler(restReq, reply.context.config), reply, server);
         }
     });
     done();

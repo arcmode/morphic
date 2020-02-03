@@ -21,10 +21,8 @@
         "inspector": "node --inspect-brk node_modules/.bin/jest --runInBand",
         "debug": "npm run build-debuggable && npm run inspector"
     },
-    "dependencies": {
-    },
     "devDependencies": {
         "jest": "24.9.0",
-        "typescript": "3.7.2"
+        "typescript": "3.7.5"
     }
 }

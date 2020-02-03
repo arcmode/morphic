@@ -6,19 +6,22 @@ declare type Request = {
     };
     options: {};
 };
-declare type Reply = {
-    status: 200 | 500;
-    headers?: {
+declare type Result = {
+    status: 200;
+    headers: {
         ['powered-by']: 'morphic';
     };
-    body?: {
+    body: {
         greetings: {
             direct: string;
-            client: string;
         };
     };
+} | {
+    status: 500;
+    body: {
+        errors: string[];
+    };
 };
-export declare const handler: (req: Request) => Promise<Reply>;
 export declare const schema: {
     response: {
         200: {
@@ -37,7 +40,26 @@ export declare const schema: {
                 };
             };
         };
+        500: {
+            type: string;
+            properties: {
+                errors: {
+                    type: string;
+                    items: {
+                        type: string;
+                    };
+                };
+            };
+        };
     };
 };
+export declare const config: {
+    HOSTNAME: string;
+    NODE_ENV: string;
+};
+export declare const handler: (req: Request, cfg: {
+    HOSTNAME: string;
+    NODE_ENV: string;
+}) => Promise<Result>;
 export {};
 //# sourceMappingURL=hello-rest.d.ts.map

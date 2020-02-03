@@ -4,18 +4,19 @@ import fastify, {
     DefaultQuery,
     DefaultParams,
     DefaultHeaders,
-    DefaultBody
+    DefaultBody,
 } from 'fastify';
 import { AnyData } from '@morphic/types';
 import fp, { PluginOptions, nextCallback } from 'fastify-plugin';
 import { ServerResponse } from 'http';
+import { IConfig } from 'config';
 
 // TODO: HATEOAS
-type RestResponse<R> = {
+type RestResponse = {
     status: number,
     headers?: Record<string, string>,
-    body?: R
-};
+    body?: AnyData
+}
 
 type RestRequest<Q, P, H, B> = {
     query: Q,
@@ -31,12 +32,17 @@ type RestMod<
     H,
     B,
     R,
-    > = Omit<RouteOptions, 'handler'> & ({
-        handler: (input: RestRequest<Q, P, H, B>) => Promise<RestResponse<R>>
+    C
+    > = Omit<
+        Omit<RouteOptions, 'config'>,
+        'handler'
+    > & ({
+        config?: Record<string, string | undefined>,
+        handler: (req: RestRequest<Q, P, H, B>, cfg: C) => Promise<RestResponse>
     });
 
-const promiseHandler = async <R, T extends RestResponse<R>>(
-    promise: Promise<T>,
+const promiseHandler = async (
+    promise: Promise<RestResponse>,
     reply: fastify.FastifyReply<ServerResponse>,
     server: FastifyInstance
 ) => {
@@ -52,36 +58,49 @@ const promiseHandler = async <R, T extends RestResponse<R>>(
     }
 }
 
-// TODO: generator as state machine
-
 export const createFastifyPlugin = <
     Q extends DefaultQuery,
     P extends DefaultParams,
     H extends DefaultHeaders,
     B extends DefaultBody,
-    R extends AnyData
->(mod: RestMod<Q, P, H, B, R>) => fp((
-    server: FastifyInstance,
-    options: PluginOptions,
-    done: nextCallback
-) => {
-    server.route({
-        ...mod,
-        handler: async (req, reply) => {
-            const restReq = {
-                query: req.query,
-                params: req.params,
-                headers: req.headers,
-                body: req.body,
-                options
-            } as RestRequest<Q, P, H, B>;
-
-            await promiseHandler(
-                mod.handler(restReq),
-                reply,
-                server
-            );
+    R extends AnyData,
+    C extends Record<string, string>
+    >(mod: RestMod<Q, P, H, B, R, C>, cfg: IConfig) => fp((
+        server: FastifyInstance,
+        options: PluginOptions,
+        done: nextCallback
+    ) => {
+        const config: Record<string, string> = {}
+        const defaultCfg = mod.config || {}
+        for (const key in defaultCfg) {
+            const val = cfg.has(key) ?
+                cfg.get(key) :
+                key in process.env ?
+                    process.env[key] :
+                    defaultCfg[key]
+            if (typeof val !== 'string') {
+                throw new TypeError(`Configuration Error: "${key}" not found`)
+            }
+            config[key] = val
         }
+        server.route({
+            ...mod,
+            config,
+            handler: async (req, reply) => {
+                const restReq = {
+                    query: req.query,
+                    params: req.params,
+                    headers: req.headers,
+                    body: req.body,
+                    options
+                } as RestRequest<Q, P, H, B>;
+
+                await promiseHandler(
+                    mod.handler(restReq, reply.context.config) as Promise<RestResponse>,
+                    reply,
+                    server
+                );
+            }
+        });
+        done();
     });
-    done();
-});

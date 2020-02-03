@@ -12,6 +12,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const fastify_1 = __importDefault(require("fastify"));
 const rest_1 = require("@morphic/rest");
+const config_1 = __importDefault(require("config"));
 const morphicExamplesHelloRest = __importStar(require("@morphic-examples/hello-rest"));
 const instance = fastify_1.default({
     logger: true
@@ -19,9 +20,9 @@ const instance = fastify_1.default({
 //
 // TODO: Add base plugins for initialization
 //
-instance.register(rest_1.createFastifyPlugin(morphicExamplesHelloRest));
-const PORT = process.env.PORT
-    ? Number(process.env.PORT)
+instance.register(rest_1.createFastifyPlugin(morphicExamplesHelloRest, config_1.default));
+const PORT = config_1.default.has('PORT')
+    ? parseInt(config_1.default.get('PORT'), 10)
     : 0;
 instance.listen(PORT, (err, address) => {
     if (err) {

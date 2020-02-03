@@ -3,6 +3,7 @@ to: lib/server.gen.ts
 ---
 import fastify from 'fastify';
 import { createFastifyPlugin } from '@morphic/rest';
+import config from 'config';
 <% for(const pkg of h.config('morphic-rest-include')) { -%>import * as <%= h.changeCase.camel(pkg) %> from '<%= pkg %>';
 <% } -%>
 
@@ -14,10 +15,10 @@ const instance = fastify({
 // TODO: Add base plugins for initialization
 //
 <% for(const pkg of h.config('morphic-rest-include')) { %>
-instance.register(createFastifyPlugin(<%= h.changeCase.camel(pkg) %>));
+instance.register(createFastifyPlugin(<%= h.changeCase.camel(pkg) %>, config));
 <% } %>
-const PORT = process.env.PORT
-    ? Number(process.env.PORT)
+const PORT = config.has('PORT')
+    ? parseInt(config.get('PORT'), 10)
     : 0;
 
 instance.listen(PORT, (err: Error, address: string) => {

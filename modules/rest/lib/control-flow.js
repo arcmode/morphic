@@ -32,4 +32,22 @@ exports.walk = (iter, callbacks, prev = void 0, error) => {
         onError(err);
     }
 };
+// state management with generators
+// state machine
+function* myMachineFactory(initialState = 'off') {
+    let state = initialState;
+    try {
+        while (state !== 'stop') {
+            const nextState = yield state;
+            console.log({ state, nextState });
+            state = nextState;
+        }
+        return state;
+    }
+    catch (error) {
+        return 'crashed';
+    }
+}
+const machine = myMachineFactory('off');
+const state = machine.next('on').value;
 //# sourceMappingURL=control-flow.js.map

@@ -14,5 +14,8 @@
     },
     "files": [
         "_templates"
-    ]
+    ],
+    "devDependencies": {
+        "typescript": "3.7.5"
+    }
 }
