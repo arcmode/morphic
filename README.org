@@ -1,4 +1,4 @@
-#+TITLE: An experiment on modularity as a framework
+#+TITLE: Modularity as a framework
 #+AUTHOR: David Rojas
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
@@ -7,22 +7,22 @@
 
 #+BEGIN_export html
 <h1 class="title">
-  <span class="accent">></span> azlo-create modul<span class="inverse">e</span>
+  <span class="accent">></span> add module --type res<span class="inverse">t</span>
 </h2>
 #+END_export
 
 #+BEGIN_abstract
-One of the growing problems in web development is accidental complexity for example in the form of boilerplate code and other
-chunks of code that that can be extracted away as library code plus configuration instead of being part of the /main/, specially
-when the pattern at exercise involves multiple /main/ programs (faas, microservices, or distributed systems for example). When
-a solution becomes too complicated then the cost of experimentation within and also outside of the current design can be
-significantly increased. Enter biomimicry, software development and biological development share a pattern in their apparent
-toolkits for finding the shortest path to success: modularity. 
-This document proposes the foundation for a pattern on building modular platforms in the web stack following the goal of
-contributing to the shared goal of finding the shortest and happiest path to success in software engineering.  
+One of the growing problems in web development is accidental complexity, for instance in the form of boilerplate code and other
+chunks of code that are usually extracted as scaffolding or abstracted away as a mixture of library code and configuration.
+This is part of the common ritual of gathering all the reagents for our /main/ program, specially when the pattern at exercise
+involves multiple /main/ programs (faas, microservices, or distributed systems for example). When a solution becomes too
+complicated then the cost of experimentation within and also outside of the current design can be significantly increased.
+Enter biomimicry, software development and biological development share a pattern in their apparent toolkits for finding the
+shortest path to success: modularity. This document proposes the foundation for a pattern on building modular platforms in the
+web stack following the goal of contributing to the shared goal of finding the shortest and happiest path to success in software engineering.
 #+END_abstract
 
-* Problem
+* Problem space
 ** Modularity vs consistency
 Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
 of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
@@ -66,30 +66,32 @@ Evolvability is the ability of a population of organisms to not merely generate 
 but to generate adaptive genetic diversity, and thereby evolve through natural selection.
 #+END_QUOTE
 
-* Biomimicry
-** Contracts
+* Solution space
+  Biological systems are modular in many ways. Let's try borrow some goodies from their /designs/.
 *** Modularity Model
    The module/framework relationship is modeled as inspired by the organism/niche relationship.
-*** The network defines the ecosystem
+   Hypothesis: A systemic modularity model will solve different problems improving productivity and quality
+*** Contracts: The network defines the ecosystem
    The difference between an ecosystem and the niche is the emphasis of point-of-experience of the niche. Without twisting biology too much
    math into biology one could say the niche of an organism is the experience it has within the ecosystems it is embedded in plus the
    difference it produces in the experience of the other systems.
+   Hypothesis: A systemic modularity model will improve the domain language by allowing the exercise of a more domain-focused interfaces
 *** Robustness
+   Hypothesis: A systemic modularity model will reduce number of bugs
 *** Adaptability
-*** Extensibility
-   Diversity is a key aspect of successful (biological) ecosystems and common descriptions involve concepts like robusntess via redundancy
-   and adaptive behavior.
-   Hypothesis: A systemic modularity model will reduce complexity
-*** Evolvability
+   Hypothesis: A systemic modularity model will help increase productivity in terms of number of features, docs and tests per cycle
+*** Extensibility & Evolvability
+   Diversity is a key aspect of successful (biological) ecosystems and commonly associated to adaptation.
+   Hypothesis: A systemic modularity model will increase contributions to its own design and library/framework code
 *** Simplicity
    An apparent property of evolution is the reuse of solutions. The evolution of an organism (basically a lineage of
    cells) can be easily compared to the common idea of evolution of species and also to the development of eusocial colonies of insects.
    Hypothesis: A systemic modularity model will reduce complexity
-** Agile
+*** Agile
    Modular development pairs naturally with paced or sprint based methodologies.
-   Hypothesis: A systemic modularity model will increase productivity and improve the experience of actors in the agile process.
+   Hypothesis: A systemic modularity model will reduce uncertainty and support the pace of agile methodologies.
    
-* Roadmap
+** Roadmap
 ***** DONE RPC codegen
       CLOSED: [2019-11-17 Sun 19:47]
 ****** DONE hygen rpc-mod new --in examples --name hello-rpc
@@ -113,7 +115,7 @@ but to generate adaptive genetic diversity, and thereby evolve through natural s
 ***** TODO Plugins example
 
 
-* Inspired in
+* Inspired partially by
 - [[https://github.com/GoogleContainerTools/jib][Jib]]
 - Biology
 - Fractals
