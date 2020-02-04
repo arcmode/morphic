@@ -21,7 +21,7 @@ involves multiple /main/ programs (faas, microservices, or distributed systems f
 complicated then the cost of experimentation within and also outside of the current design can be significantly increased.
 Enter biomimicry, software development and biological development share a pattern in their apparent toolkits for finding the
 shortest path to success: modularity. This document proposes the foundation for a pattern on building modular platforms in the
-web stack following the goal of contributing to the shared goal of finding the shortest and happiest path to success in software engineering.
+web stack following the goal of contributing to the shared goal of finding the shortest and happiest path to success.
 #+END_abstract
 
 #+TOC: headlines 2
