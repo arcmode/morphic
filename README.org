@@ -27,8 +27,6 @@ shortest path to success and they also share one property that is key in their p
 foundation for a pattern on building modular platforms borrowing some inspiration from biological systems.
 #+END_abstract
 
-Keywords: modularity, system, framework, development
-
 #+TOC: headlines 2
 
 * TL;DR;
