@@ -86,13 +86,15 @@ the "shortest path" mentality of both nature and the agile movement within the t
   4) [[https://www.fastify.io/][fastify]]
   5) [[https://www.hygen.io/][Hygen]]
 *** Modularity Model
-   The module/framework relationship is modeled as inspired by the organism/niche relationship.\\
-   Hypothesis: A systemic modularity model will solve different problems improving productivity and quality
+   The module/framework relationship is modeled as inspired by the organism/niche relationship. One aspect of that relationship that can be
+   recognized is the apparent level of adaptation. An adapted organism can benefit from the ecosystem and thrive by means of a multi-dimensional
+   interface composed by sensorial organs, motor systems and other biological structures.\\
+   Hypothesis: A systemic modularity model will help improve source code consistency and reduce overall complexity
 *** Contracts: The network defines the ecosystem
-   The difference between an ecosystem and the niche is the emphasis of point-of-experience of the niche. Without twisting biology too much
-   math into biology one could say the niche of an organism is the experience it has within the ecosystems it is embedded in plus the
-   difference it produces in the experience of the other systems.\\
-   Hypothesis: A systemic modularity model will improve the domain language by allowing the exercise of a more domain-focused interfaces
+   The difference between an ecosystem and the niche is the emphasis about the specific "role" an organism plays as part of the ecosystem and the
+   specific "experience" the organism has in said ecosystem. Without twisting biology too much math into biology one could say the niche of an
+   organism is the experience it has within the ecosystems it is embedded in plus the difference it produces in the experience of the other systems.\\
+   # Hypothesis: A systemic modularity model will improve the domain language by allowing the exercise of a more domain-focused interfaces
 *** Robustness
    Hypothesis: A formal modularity model implemented as described above increases quality over time (less bugs)
 *** Adaptability
@@ -158,7 +160,6 @@ the "shortest path" mentality of both nature and the agile movement within the t
 ***** Auto partitioning
 ***** Bring your own framework example
 ***** NPM Tarball Functor as a Service
-
 
 * Inspired partially by
 - Biology
