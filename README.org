@@ -26,6 +26,19 @@ web stack following the goal of contributing to the shared goal of finding the s
 
 #+TOC: headlines 2
 
+* TL;DR;
+
+Instead of doing:
+
+1) Pick a framework/library
+2) Implement a set of modules following the modularity model from framework/library
+
+Try the "frameless" pattern:
+
+1) Define modularity model via a "platform" function: platform (module) = features.
+2) Implement the function as a thin layer that can include a module as part of a given program defined using some framework/library
+3) Implement domain models following your modularity model
+
 * WIP: Problem space
 ** Modularity vs Evolvability
 In software development, the idea of evolution can be seen as the process of (sometimes very slowly) adapting
@@ -64,12 +77,6 @@ be studied at nearly every scale of biological organization, from molecular inte
 
 The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
 the "shortest path" mentality of both nature and the agile movement within the tech industry.
-
-That sounded fancy, but how do biological systems escape as modular as they are from an increasing tendency to inconsistency and how
-software development can benefit from it?\\
-Let's pretend we can borrow properties from biological systems into a modular model of web development and improve our skills at finding
-the shortest path to success (or biological fitness) which is important for software management and evolution. 
-
 * WIP: Solution space
   Biological systems are modular in many ways. Let's try borrow some goodies from their /designs/.
 *** Modularity Model
@@ -81,9 +88,9 @@ the shortest path to success (or biological fitness) which is important for soft
    difference it produces in the experience of the other systems.\\
    Hypothesis: A systemic modularity model will improve the domain language by allowing the exercise of a more domain-focused interfaces
 *** Robustness
-   Hypothesis: A systemic modularity model will reduce number of bugs
+   Hypothesis: A formal modularity model implemented as described above increases quality over time (less bugs)
 *** Adaptability
-   Hypothesis: A systemic modularity model will help increase productivity in terms of number of features, docs and tests per cycle
+   Hypothesis: A systemic modularity model will improve engineering cycle speed and/or results
 *** Extensibility & Evolvability
    Diversity is a key aspect of successful (biological) ecosystems and commonly associated to adaptation.\\
    Hypothesis: A systemic modularity model will increase contributions to its own design and library/framework code
@@ -131,8 +138,17 @@ the shortest path to success (or biological fitness) which is important for soft
 ***** TODO Service Registry
 
 ** Ideas
+   :PROPERTIES:
+   :ID:       9b25d4a9-a4d2-4ded-9ba1-38420c98c359
+   :END:
 ***** HATEOAS
+      :PROPERTIES:
+      :ID:       8b9229ef-d571-4a95-bc36-2349f1d988d0
+      :END:
 ***** GraphQL
+      :PROPERTIES:
+      :ID:       a9a15666-e24e-4918-9a29-f6fa1437096c
+      :END:
 ***** Auto partitioning
 ***** Bring your own framework example
 ***** NPM Tarball Functor as a Service

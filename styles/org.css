@@ -80,6 +80,10 @@ ol,
     color: var(--fg-color);
 }
 
+ol.org-ol{
+    list-style-type: decimal;
+}
+
 :not(pre)>code {
     color: var(--orange);
 }
