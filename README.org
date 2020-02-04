@@ -37,7 +37,7 @@ Try the "frameless" pattern:
 
 1) Define modularity model via a "platform" function: platform (module) = features.
 2) Implement the function as a thin layer that can include a module as part of a given program defined using some framework/library
-3) Implement domain models following your modularity model
+3) Implement set of modules following your modularity model
 
 * WIP: Problem space
 ** Modularity vs Evolvability
