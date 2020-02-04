@@ -79,7 +79,7 @@ The ideas behind "to be manageable" from the tech-oriented definition and of "se
 the "shortest path" mentality of both nature and the agile movement within the tech industry.
 * WIP: Solution space
   Biological systems are modular in many ways. Let's try borrow some goodies from their /designs/.
-*** Technologies used for this work
+*** Technologies used in this experiment
   1) [[https://nodejs.org/en/][nodejs]]
   2) [[https://lerna.js.org/][Lerna]]
   3) [[https://www.typescriptlang.org/][TypeScript]]
