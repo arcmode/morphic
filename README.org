@@ -79,6 +79,12 @@ The ideas behind "to be manageable" from the tech-oriented definition and of "se
 the "shortest path" mentality of both nature and the agile movement within the tech industry.
 * WIP: Solution space
   Biological systems are modular in many ways. Let's try borrow some goodies from their /designs/.
+*** Technologies used for this work
+  1) [[https://nodejs.org/en/][nodejs]]
+  2) [[https://lerna.js.org/][Lerna]]
+  3) [[https://www.typescriptlang.org/][TypeScript]]
+  4) [[https://www.fastify.io/][fastify]]
+  5) [[https://www.hygen.io/][Hygen]]
 *** Modularity Model
    The module/framework relationship is modeled as inspired by the organism/niche relationship.\\
    Hypothesis: A systemic modularity model will solve different problems improving productivity and quality
@@ -153,12 +159,7 @@ the "shortest path" mentality of both nature and the agile movement within the t
 ***** Bring your own framework example
 ***** NPM Tarball Functor as a Service
 
-* Technologies used for this work
-- Nodejs
-- Lerna
-- Typescript
-- Fastify
-- Hygen
+
 * Inspired partially by
 - Biology
 - Fractals
