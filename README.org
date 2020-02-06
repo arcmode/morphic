@@ -1,4 +1,4 @@
-#+TITLE: Modularity as a framework
+#+TITLE: The frameless pattern: Modularity as a platform
 #+AUTHOR: David Rojas
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
@@ -14,17 +14,14 @@
 #+END_export
 
 #+BEGIN_abstract
-One of the underrated problems in web development is how to best deal with accidental complexity. For instance, many projects
-accumulate lots of boilerplate and other chunks of code that usually provide an open area for bugs and security risks to develop.
-Another underrated problem is tight coupling with library/framework models, which makes the cost of trying new library/frameworks
-to grow with the size and age of the project.
-Both the boilerplate code and the coupling with library/framework APIs are part of the ritual of gathering all the reagents
-for our /main/ program to run as we want it. In modulular systems (microservices or distributed for example) because of the multiple
-/main/ programs involved, the problems mentioned above and their cascade effects are multiplied. 
-Moreover, when a solution becomes overcomplicated then the cost of experimentation within and also outside of the current design can
-be significantly increased. Enter biomimicry, software development and biological development share the common goal of finding the
-shortest path to success and they also share one property that is key in their processes: modularity. This document proposes the
-foundation for a pattern on building modular platforms borrowing some inspiration from biological systems.
+Boilerplate code is an underrated problem: the chunks of non-reusable code and other necessary evils that are usually
+granted as scaffolding or abstracted away as a mixture of library code and configuration are cheap to buy but come as very
+expensive to replace. There is accidental complexity in most if not all boilerplate code around any /main/ function or source code
+module that depends on any library or framework. Therefore, when working with multiple /main/ functions (faas, microservices, or
+distributed systems) this space for boilerplate can be disrupted by problems that scale with the number of /mains/ at play and
+the total number of modules including code repetition, anti-patterns and long cycle times. This document proposes a pattern for
+building modular systems with minimal interfaces that eliminates boilerplate code and allow modules to work without having any
+dependency on framework/library APIs.
 #+END_abstract
 
 #+TOC: headlines 2
