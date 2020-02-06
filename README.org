@@ -16,11 +16,13 @@
 #+BEGIN_abstract
 Boilerplate code is an underrated problem: the chunks of non-reusable code and other necessary evils that are usually
 granted as scaffolding or abstracted away as a mixture of library code and configuration are cheap to buy but come as very
-expensive to replace. There is accidental complexity in most if not all boilerplate code around any /main/ function or source code
-module that depends on any library or framework. Therefore, when working with multiple /main/ functions (specially microservices, or
-distributed systems) this space for boilerplate can be disrupted by problems that scale with the number of /mains/ at play and
-the total number of modules including code repetition and long cycle times. This document proposes a pattern for building modular
-systems that eliminates boilerplate code and allow modules to work without having any dependency on the framework/library API.
+expensive to replace. There is accidental complexity in most if not all boilerplate code around any /main/ function or any module
+that depends on a library or framework. Therefore, when working with multiple /main/ functions (specially microservices, or
+distributed systems) and multiple modules this space for boilerplate can allow some problems that then scale with the number of
+/mains/ at play and the total number of modules including code repetition and long cycle times. This document proposes a
+"frameless" design pattern for building modular systems without boilerplate code and allow modules to be developed without having
+any source-code dependency on the framework/library API and facilitates the co-evolution of business domain features and platform
+features within the constraints of the agile methodologies.
 #+END_abstract
 
 #+TOC: headlines 2
