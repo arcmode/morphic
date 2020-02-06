@@ -17,11 +17,10 @@
 Boilerplate code is an underrated problem: the chunks of non-reusable code and other necessary evils that are usually
 granted as scaffolding or abstracted away as a mixture of library code and configuration are cheap to buy but come as very
 expensive to replace. There is accidental complexity in most if not all boilerplate code around any /main/ function or source code
-module that depends on any library or framework. Therefore, when working with multiple /main/ functions (faas, microservices, or
+module that depends on any library or framework. Therefore, when working with multiple /main/ functions (specially microservices, or
 distributed systems) this space for boilerplate can be disrupted by problems that scale with the number of /mains/ at play and
-the total number of modules including code repetition, anti-patterns and long cycle times. This document proposes a pattern for
-building modular systems that eliminates boilerplate code and allow modules to work without having any
-dependency on the framework/library API.
+the total number of modules including code repetition and long cycle times. This document proposes a pattern for building modular
+systems that eliminates boilerplate code and allow modules to work without having any dependency on the framework/library API.
 #+END_abstract
 
 #+TOC: headlines 2
@@ -30,28 +29,103 @@ dependency on the framework/library API.
 
 Instead of doing:
 
-1) Pick a framework/library
-2) Implement a set of modules following the modularity model from framework/library
+1) Compose a platform
+2) Write some boilerplate code according to platform
+3) Implement a set of modules following the modularity model from platform
 
 Try the "frameless" pattern:
 
-1) Define modularity model via a "platform" function: platform (module) = features.
-2) Implement the function as a thin layer that can include a module as part of a given program defined using some framework/library
-3) Implement set of modules following your modularity model
+1) Define modularity model via a /platform/ function described by minigraph: module -[platform]-> features
+2) Implement the platform function as a thin wrapper that can include a module as part of a predefined boilerplate
+3) Write some boilerplate code according to /your/ platform
+4) Implement set of modules following /your/ modularity model
 
-* Modeling modularity
+* Modularity: A tale about Separation of Concerns
 
 Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
-All projects work on top of a given platform, composed by the set of languages, frameworks and libraries that together provide at least
-one but often several modularity models (commonjs, ecmascript modules, inversify, angular, etc).
-During development of new features, the difference between the modularity model offered by the platform and that of the project
-increases the size of the task by forcing part of the solution to be dedicated to the interface between the two.
+Also, most projects work on top of a given platform, /composed/ by the set of languages, frameworks and libraries that together provide at least
+one and sometimes several modularity models from which most projects chose one to stick with (for example in nodejs: amd, commonjs, ecmascript,
+inversify, angular). During development of new features, the difference between the modularity model offered by the composed platform and
+that of the type of project increases the size of the task at hand every /sprint/ by forcing part of the solution to be dedicated to the
+interface between the two models.
 
-The first take away from this realization is the idea about how modeling modularity in the context of your specific business
-domain and tools may improve productivity and quality of software development by reducing the complexity that would be otherwise
-required in order to "adapt" project modules into platform modules.
+Let's imagine for example a common kind of project for "web" projects: Rest API in NodeJS.
 
-In other words, modeling modularity will most likely simplify the work required for adding new modules to a given system.
+Before worrying about boilerplate code yet, let's define our /Rest module/ model in TypeScript trying to satisfy the /minimum viable interface/
+that would be required to define what the module /does/ in the context of the specific project (Rest API).
+
+#+BEGIN_SRC typescript
+  export const url = '/hello-rest/:name'
+  export const method = 'GET'
+
+  type Request = {
+      params: {
+          name: string
+      }
+  }
+
+  type Result = {
+      status: 200,
+      headers: {
+          ['powered-by']: 'your-platform'
+      },
+      body: {
+          greetings: {
+              direct: string
+          }
+      }
+  } | {
+      status: 500,
+      body: {
+          errors: string[]
+      }
+  }
+
+  export const schema = {
+      response: {
+          200: {
+              type: 'object',
+              properties: {
+                  greetings: {
+                      type: 'string'
+                  }
+              }
+          },
+          500: {
+              type: 'object',
+              properties: {
+                  errors: {
+                      type: 'array',
+                      items: {
+                          type: 'string'
+                      }
+                  }
+              }
+          }
+      }
+  }
+
+  export const handler = async (req: Request): Promise<Result> => {
+      try {
+          return {
+              status: 200,
+              headers: {
+                  ['powered-by']: 'your-platform'
+              },
+              body: {
+                  greetings: `Hello ${name}`
+              }
+          }
+      } catch (err) {
+          return {
+              status: 500,
+              body: {
+                  errors: [err.message]
+              }
+          }
+      }
+  }
+#+END_SRC
 
 * WIP: Problem space
 ** Modularity vs Evolvability
