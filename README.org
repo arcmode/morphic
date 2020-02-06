@@ -20,8 +20,8 @@ expensive to replace. There is accidental complexity in most if not all boilerpl
 module that depends on any library or framework. Therefore, when working with multiple /main/ functions (faas, microservices, or
 distributed systems) this space for boilerplate can be disrupted by problems that scale with the number of /mains/ at play and
 the total number of modules including code repetition, anti-patterns and long cycle times. This document proposes a pattern for
-building modular systems with minimal interfaces that eliminates boilerplate code and allow modules to work without having any
-dependency on framework/library APIs.
+building modular systems that eliminates boilerplate code and allow modules to work without having any
+dependency on the framework/library API.
 #+END_abstract
 
 #+TOC: headlines 2
@@ -41,11 +41,11 @@ Try the "frameless" pattern:
 
 * Modeling modularity
 
-Most projects grow in a modular fashion, adding new modules incrementally to do the work that is required.
-Most projects also work with languages, frameworks and libraries that provide a general modularity model.
-Then, the distance between our idea of what is a "module" for a specific project/concern and what does it (have to) contain for it to
-be functional and the actual module specs provided by the platform (languages, libraries and frameworks) may imposes unneeded complexity
-to both design and implementation work.
+Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
+All projects work on top of a given platform, composed by the set of languages, frameworks and libraries that together provide at least
+one but often several modularity models (commonjs, ecmascript modules, inversify, angular, etc).
+During development of new features, the difference between the modularity model offered by the platform and that of the project
+increases the size of the task by forcing part of the solution to be dedicated to the interface between the two.
 
 The first take away from this realization is the idea about how modeling modularity in the context of your specific business
 domain and tools may improve productivity and quality of software development by reducing the complexity that would be otherwise
@@ -176,6 +176,6 @@ the "shortest path" mentality of both nature and the agile movement within the t
 ***** NPM Tarball Functor as a Service
 
 * Inspired partially by
-- Biology
-- Fractals
+- [[https://evolution.berkeley.edu/evolibrary/article/evodevo_01][Evo-devo]]
+- [[https://en.wikipedia.org/wiki/Fractal][Fractals]]
 - [[https://github.com/GoogleContainerTools/jib][Jib]]
