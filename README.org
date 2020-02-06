@@ -49,10 +49,57 @@ inversify, angular). During development of new features, the difference between 
 that of the type of project increases the size of the task at hand every /sprint/ by forcing part of the solution to be dedicated to the
 interface between the two models.
 
-Let's imagine for example a common kind of project for "web" projects: Rest API in NodeJS.
+* Problem
+** Modularity vs Evolvability
+In software development, the idea of evolution es not very common, instead talks usually use terms like /refactoring/ and /rewrite/.
+However distinct in nature, both natural evolution and software being re-authored from scratch or refactored share one common 
+keyword: adaptation. 
 
-Before worrying about boilerplate code yet, let's define our /Rest module/ model in TypeScript trying to satisfy the /minimum viable interface/
-that would be required to define what the module /does/ in the context of the specific project (Rest API).
+From: https://en.wikipedia.org/wiki/Evolvability
+#+BEGIN_QUOTE
+Evolvability is defined as the capacity of a system for adaptive evolution.
+Evolvability is the ability of a population of organisms to not merely generate genetic diversity,
+but to generate adaptive genetic diversity, and thereby evolve through natural selection.
+#+END_QUOTE
+
+** Modularity vs consistency
+Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
+of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
+boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
+yet defined within the "boilerplate-free" area of library and framework code.
+
+Following, a couple of tech-oriented definitions for modulerity from: https://en.wikipedia.org/wiki/Modularity
+#+BEGIN_QUOTE
+In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.\\
+
+In software design, modularity refers to a logical partitioning of the "software design" that allows complex software to be manageable
+for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
+considerations, data links, or other criteria.
+#+END_QUOTE
+
+One interesting aspect of the last definition is the idea the relationship between complexity and software being manageable is
+and worth paying close attention to and perhaps explore with "biomimicry lenses".
+
+Let's compare the previous definitions with a biological one from: https://en.wikipedia.org/wiki/Modularity_(biology)
+#+BEGIN_QUOTE
+Modularity refers to the ability of a system to organize discrete, individual units that can overall increase the efficiency of network
+activity and, in a biological sense, facilitates selective forces upon the network. Modularity is observed in all model systems, and can
+be studied at nearly every scale of biological organization, from molecular interactions all the way up to the whole organism.
+#+END_QUOTE
+
+The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
+the "shortest path" mentality of both nature and the agile movement within the tech industry.
+* Solution
+*** Modularity Model
+   The module/framework relationship is modeled as inspired by the organism/niche relationship. One aspect of that relationship that can be
+   recognized is the apparent level of adaptation. An adapted organism can benefit from the ecosystem and thrive by means of a multi-dimensional
+   interface composed by sensorial organs, motor systems and other biological structures.\\
+   Hypothesis: A systemic modularity model will help improve source code consistency and reduce overall complexity
+   
+   Let's imagine for example a common kind of project for "web" projects: Rest API in NodeJS.
+
+   Before working on boilerplate code yet, let's define our /Rest module/ model in TypeScript trying to achieve the /minimum viable interface/
+   required to know what the module /does/ in the context of the specific project (Rest API).
 
 #+BEGIN_SRC typescript
   export const url = '/hello-rest/:name'
@@ -127,77 +174,26 @@ that would be required to define what the module /does/ in the context of the sp
   }
 #+END_SRC
 
-* WIP: Problem space
-** Modularity vs Evolvability
-In software development, the idea of evolution can be seen as the process of (sometimes very slowly) adapting
-
-From: https://en.wikipedia.org/wiki/Evolvability
-#+BEGIN_QUOTE
-Evolvability is defined as the capacity of a system for adaptive evolution.
-Evolvability is the ability of a population of organisms to not merely generate genetic diversity,
-but to generate adaptive genetic diversity, and thereby evolve through natural selection.
-#+END_QUOTE
-
-** Modularity vs consistency
-Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
-of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
-boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
-yet defined within the "boilerplate-free" area of library and framework code.
-
-Following, a couple of tech-oriented definitions for modulerity from: https://en.wikipedia.org/wiki/Modularity
-#+BEGIN_QUOTE
-In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.\\
-
-In software design, modularity refers to a logical partitioning of the "software design" that allows complex software to be manageable
-for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
-considerations, data links, or other criteria.
-#+END_QUOTE
-
-One interesting aspect of the last definition is the idea the relationship between complexity and software being manageable is
-and worth paying close attention to and perhaps explore with "biomimicry lenses".
-
-Let's compare the previous definitions with a biological one from: https://en.wikipedia.org/wiki/Modularity_(biology)
-#+BEGIN_QUOTE
-Modularity refers to the ability of a system to organize discrete, individual units that can overall increase the efficiency of network
-activity and, in a biological sense, facilitates selective forces upon the network. Modularity is observed in all model systems, and can
-be studied at nearly every scale of biological organization, from molecular interactions all the way up to the whole organism.
-#+END_QUOTE
-
-The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
-the "shortest path" mentality of both nature and the agile movement within the tech industry.
-* WIP: Solution space
-  Biological systems are modular in many ways. Let's try borrow some goodies from their /designs/.
-*** Technologies used in this experiment
-  1) [[https://nodejs.org/en/][nodejs]]
-  2) [[https://lerna.js.org/][Lerna]]
-  3) [[https://www.typescriptlang.org/][TypeScript]]
-  4) [[https://www.fastify.io/][fastify]]
-  5) [[https://www.hygen.io/][Hygen]]
-*** Modularity Model
-   The module/framework relationship is modeled as inspired by the organism/niche relationship. One aspect of that relationship that can be
-   recognized is the apparent level of adaptation. An adapted organism can benefit from the ecosystem and thrive by means of a multi-dimensional
-   interface composed by sensorial organs, motor systems and other biological structures.\\
-   Hypothesis: A systemic modularity model will help improve source code consistency and reduce overall complexity
-*** Contracts: The network defines the ecosystem
+*** TODO Contracts: The network defines the ecosystem
    The difference between an ecosystem and the niche is the emphasis about the specific "role" an organism plays as part of the ecosystem and the
    specific "experience" the organism has in said ecosystem. Without twisting biology too much math into biology one could say the niche of an
    organism is the experience it has within the ecosystems it is embedded in plus the difference it produces in the experience of the other systems.\\
    # Hypothesis: A systemic modularity model will improve the domain language by allowing the exercise of a more domain-focused interfaces
-*** Robustness
+*** TODO Robustness
    Hypothesis: A formal modularity model implemented as described above increases quality over time (less bugs)
-*** Adaptability
+*** TODO Adaptability
    Hypothesis: A systemic modularity model will improve engineering cycle speed and/or results
-*** Extensibility & Evolvability
+*** TODO Extensibility & Evolvability
    Diversity is a key aspect of successful (biological) ecosystems and commonly associated to adaptation.\\
    Hypothesis: A systemic modularity model will increase contributions to its own design and library/framework code
-*** Simplicity
+*** TODO Simplicity
    An apparent property of evolution is the reuse of solutions. The evolution of an organism (basically a lineage of
    cells) can be easily compared to the common idea of evolution of species and also to the development of eusocial colonies of insects.\\
    Hypothesis: A systemic modularity model will reduce complexity
-*** Agile
+*** TODO Agile
    Modular development pairs naturally with paced or sprint based methodologies.\\
    Hypothesis: A systemic modularity model will reduce uncertainty and support the pace of agile methodologies.
-   
+
 ** MVP: Basic module systems
    :PROPERTIES:
    :ID:       38b345b1-681b-4528-8b88-d73980e383e6
@@ -253,3 +249,11 @@ the "shortest path" mentality of both nature and the agile movement within the t
 - [[https://evolution.berkeley.edu/evolibrary/article/evodevo_01][Evo-devo]]
 - [[https://en.wikipedia.org/wiki/Fractal][Fractals]]
 - [[https://github.com/GoogleContainerTools/jib][Jib]]
+
+* Technologies used in this experiment
+- [[https://nodejs.org/en/][nodejs]]
+- [[https://lerna.js.org/][Lerna]]
+- [[https://www.typescriptlang.org/][TypeScript]]
+- [[https://www.fastify.io/][fastify]]
+- [[https://www.hygen.io/][Hygen]]
+ 
