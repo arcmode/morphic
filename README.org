@@ -37,7 +37,7 @@ Instead of doing:
 
 Try the "frameless" pattern:
 
-1) Define modularity model via a /platform/ function described by minigraph: module -[platform]-> features
+1) Define modularity model via a /platform/ function described by the pseudocode: ~platform = function (modules) -> features~
 2) Implement the platform function as a thin wrapper that can include a module as part of a predefined boilerplate
 3) Write some boilerplate code according to /your/ platform
 4) Implement set of modules following /your/ modularity model
@@ -53,16 +53,9 @@ interface between the two models.
 
 * Problem
 ** Modularity vs Evolvability
-In software development, the idea of evolution es not very common, instead talks usually use terms like /refactoring/ and /rewrite/.
-However distinct in nature, both natural evolution and software being re-authored from scratch or refactored share one common 
-keyword: adaptation. 
-
-From: https://en.wikipedia.org/wiki/Evolvability
-#+BEGIN_QUOTE
-Evolvability is defined as the capacity of a system for adaptive evolution.
-Evolvability is the ability of a population of organisms to not merely generate genetic diversity,
-but to generate adaptive genetic diversity, and thereby evolve through natural selection.
-#+END_QUOTE
+In any modular software, any work required to /migrate/ a given module into a different /framework/ should be considered evitable and the
+patterns that have contributed should be considered anti-patterns. Please note that the previous claim is explicit about changes to module code,
+not project boilerplate code or library code.
 
 ** Modularity vs consistency
 Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
@@ -70,27 +63,6 @@ of modular systems is the bigger number of running programs. The combination of 
 boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
 yet defined within the "boilerplate-free" area of library and framework code.
 
-Following, a couple of tech-oriented definitions for modulerity from: https://en.wikipedia.org/wiki/Modularity
-#+BEGIN_QUOTE
-In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.\\
-
-In software design, modularity refers to a logical partitioning of the "software design" that allows complex software to be manageable
-for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
-considerations, data links, or other criteria.
-#+END_QUOTE
-
-One interesting aspect of the last definition is the idea the relationship between complexity and software being manageable is
-and worth paying close attention to and perhaps explore with "biomimicry lenses".
-
-Let's compare the previous definitions with a biological one from: https://en.wikipedia.org/wiki/Modularity_(biology)
-#+BEGIN_QUOTE
-Modularity refers to the ability of a system to organize discrete, individual units that can overall increase the efficiency of network
-activity and, in a biological sense, facilitates selective forces upon the network. Modularity is observed in all model systems, and can
-be studied at nearly every scale of biological organization, from molecular interactions all the way up to the whole organism.
-#+END_QUOTE
-
-The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
-the "shortest path" mentality of both nature and the agile movement within the tech industry.
 * Solution
 *** Modularity Model
    The module/framework relationship is modeled as inspired by the organism/niche relationship. One aspect of that relationship that can be
@@ -193,6 +165,28 @@ the "shortest path" mentality of both nature and the agile movement within the t
    cells) can be easily compared to the common idea of evolution of species and also to the development of eusocial colonies of insects.\\
    Hypothesis: A systemic modularity model will reduce complexity
 *** TODO Agile
+   Following, a couple of tech-oriented definitions for modulerity from: https://en.wikipedia.org/wiki/Modularity
+#+BEGIN_QUOTE
+In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.\\
+
+In software design, modularity refers to a logical partitioning of the "software design" that allows complex software to be manageable
+for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
+considerations, data links, or other criteria.
+#+END_QUOTE
+
+   One interesting aspect of the last definition is the idea the relationship between complexity and software being manageable is
+   and worth paying close attention to and perhaps explore with "biomimicry lenses".
+
+   Let's compare the previous definitions with a biological one from: https://en.wikipedia.org/wiki/Modularity_(biology)
+#+BEGIN_QUOTE
+Modularity refers to the ability of a system to organize discrete, individual units that can overall increase the efficiency of network
+activity and, in a biological sense, facilitates selective forces upon the network. Modularity is observed in all model systems, and can
+be studied at nearly every scale of biological organization, from molecular interactions all the way up to the whole organism.
+#+END_QUOTE
+
+   The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
+   the "shortest path" mentality of both nature and the agile movement within the tech industry.
+
    Modular development pairs naturally with paced or sprint based methodologies.\\
    Hypothesis: A systemic modularity model will reduce uncertainty and support the pace of agile methodologies.
 
