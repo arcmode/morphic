@@ -1,6 +1,5 @@
 import fastify, {
     FastifyInstance,
-    RouteOptions,
     DefaultQuery,
     DefaultParams,
     DefaultHeaders,
@@ -11,12 +10,23 @@ import fp, { PluginOptions, nextCallback } from 'fastify-plugin';
 import { ServerResponse } from 'http';
 import { IConfig } from 'config';
 
+type RouteSchema<S> = {
+    body?: S,
+    querystring?: S,
+    params?: S,
+    headers?: S,
+    response?: {
+        [code: number]: S,
+        [code: string]: S,
+    },
+}
+
 // TODO: HATEOAS
 type RestResponse = {
     status: number,
     headers?: Record<string, string>,
     body?: AnyData
-}
+};
 
 type RestRequest<Q, P, H, B> = {
     query: Q,
@@ -27,21 +37,21 @@ type RestRequest<Q, P, H, B> = {
 };
 
 type RestMod<
-    Q,
-    P,
-    H,
-    B,
-    R,
-    C
-    > = Omit<
-        Omit<RouteOptions, 'config'>,
-        'handler'
-    > & ({
-        config?: Record<string, string | undefined>,
-        handler: (req: RestRequest<Q, P, H, B>, cfg: C) => Promise<RestResponse>
-    });
+    Query,
+    Params,
+    Headers,
+    Body,
+    Config,
+    Result,
+    > = {
+        url: string,
+        method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
+        schema: RouteSchema<object>,
+        config?: Record<keyof Config, string | undefined>,
+        handler: (req: RestRequest<Query, Params, Headers, Body>, cfg: Config) => Promise<Result>
+    };
 
-const promiseHandler = async (
+const promiseHandler = async <Result>(
     promise: Promise<RestResponse>,
     reply: fastify.FastifyReply<ServerResponse>,
     server: FastifyInstance
@@ -63,44 +73,46 @@ export const createFastifyPlugin = <
     P extends DefaultParams,
     H extends DefaultHeaders,
     B extends DefaultBody,
-    R extends AnyData,
-    C extends Record<string, string>
-    >(mod: RestMod<Q, P, H, B, R, C>, cfg: IConfig) => fp((
-        server: FastifyInstance,
-        options: PluginOptions,
-        done: nextCallback
-    ) => {
-        const config: Record<string, string> = {}
-        const defaultCfg = mod.config || {}
-        for (const key in defaultCfg) {
-            const val = cfg.has(key) ?
-                cfg.get(key) :
-                key in process.env ?
-                    process.env[key] :
-                    defaultCfg[key]
-            if (typeof val !== 'string') {
-                throw new TypeError(`Configuration Error: "${key}" not found`)
-            }
-            config[key] = val
+    C extends Record<string, string>,
+    R extends RestResponse,
+    >(mod: RestMod<Q, P, H, B, C, R>, cfg: IConfig) => fp((
+    server: FastifyInstance,
+    options: PluginOptions,
+    done: nextCallback
+) => {
+    const config: Record<string, string> = {}
+    const defaultCfg = mod.config || {} as typeof config
+    for (const key in defaultCfg) {
+        const val = cfg.has(key) ?
+            cfg.get(key) :
+            key in process.env ?
+                process.env[key] :
+                defaultCfg[key]
+        if (typeof val !== 'string') {
+            throw new TypeError(`Configuration Error: "${key}" not found`)
         }
-        server.route({
-            ...mod,
-            config,
-            handler: async (req, reply) => {
-                const restReq = {
-                    query: req.query,
-                    params: req.params,
-                    headers: req.headers,
-                    body: req.body,
-                    options
-                } as RestRequest<Q, P, H, B>;
+        config[key] = val
+    }
+    server.route({
+        url: mod.url,
+        method: mod.method,
+        schema: mod.schema,
+        config,
+        handler: async (req, reply) => {
+            const restReq = {
+                query: req.query,
+                params: req.params,
+                headers: req.headers,
+                body: req.body,
+                options
+            } as RestRequest<Q, P, H, B>;
 
-                await promiseHandler(
-                    mod.handler(restReq, reply.context.config) as Promise<RestResponse>,
-                    reply,
-                    server
-                );
-            }
-        });
-        done();
+            await promiseHandler(
+                mod.handler(restReq, reply.context.config) as Promise<RestResponse>,
+                reply,
+                server
+            );
+        }
     });
+    done();
+});

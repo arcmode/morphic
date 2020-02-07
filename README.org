@@ -22,7 +22,7 @@ distributed systems) and multiple modules this space for boilerplate can allow s
 /mains/ at play and the total number of modules including code repetition and long cycle times. This document proposes a
 "frameless" design pattern for building modular systems without boilerplate code and allow modules to be developed without having
 any source-code dependency on the framework/library API and facilitates the co-evolution of business domain features and platform
-features within the constraints of the agile methodologies.
+features in alignment with the dynamics of the agile methodologies
 #+END_abstract
 
 #+TOC: headlines 2
@@ -46,15 +46,14 @@ Try the "frameless" pattern:
 
 Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
 Also, most projects work on top of a given platform, /composed/ by the set of languages, frameworks and libraries that together provide at least
-one and sometimes several modularity models from which most projects chose one to stick with (for example in nodejs: amd, commonjs, ecmascript,
-inversify, angular). During development of new features, the difference between the modularity model offered by the composed platform and
-that of the type of project increases the size of the task at hand every /sprint/ by forcing part of the solution to be dedicated to the
-interface between the two models.
+one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
+During development of new features, the difference between the modularity model offered by the platform and that of the type of project
+increases the size of the task at hand every /sprint/ by forcing part of the solution to be dedicated to the interface between the two models.
 
 * Problem
 ** Modularity vs Evolvability
-In any modular software, any work required to /migrate/ a given module into a different /framework/ should be considered evitable and the
-patterns that have contributed should be considered anti-patterns. Please note that the previous claim is explicit about changes to module code,
+In modular software, the work required to /migrate/ a given module into a different /framework/ should be considered evitable and patterns that add
+work to that could be considered anti-patterns. Note: the previous claim is explicitly refering to changes to module code,
 not project boilerplate code or library code.
 
 ** Modularity vs consistency
@@ -146,6 +145,60 @@ yet defined within the "boilerplate-free" area of library and framework code.
           }
       }
   }
+#+END_SRC
+
+   Then, the /minimum viable interface/ of a Rest Module can be defined as
+#+BEGIN_SRC typescript
+  type RestMod<
+      Query,
+      Params,
+      Headers,
+      Body,
+      Config,
+      Result,
+      > = {
+          url: string,
+          method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
+          schema: RouteSchema<object>,
+          config?: Record<keyof Config, string | undefined>,
+          handler: (req: RestRequest<Query, Params, Headers, Body>, cfg: Config) => Promise<Result>
+      };
+#+END_SRC
+
+   Now let's solve the boilerplate from the requirements we know given the module type definition
+ #+BEGIN_SRC typescript
+   import fastify from 'fastify';
+   import { createFastifyPlugin } from '@morphic/rest';
+   import config from 'config';
+   //
+   // import rest modules
+   //
+   import * as morphicExamplesHelloRest from '@morphic-examples/hello-rest';
+
+   const instance = fastify({
+       logger: true
+   });
+
+   //
+   // add base plugins for initialization
+   //
+
+   //
+   // add rest modules to the service
+   //
+   instance.register(createFastifyPlugin(morphicExamplesHelloRest, config));
+
+   const PORT = config.has('PORT')
+       ? parseInt(config.get('PORT'), 10)
+       : 0;
+
+   instance.listen(PORT, (err: Error, address: string) => {
+       if (err) {
+           throw err;
+       }
+       instance.log.info(`server listening on ${address}`);
+   });
+
 #+END_SRC
 
 *** TODO Contracts: The network defines the ecosystem

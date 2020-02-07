@@ -32,7 +32,9 @@ exports.createFastifyPlugin = (mod, cfg) => fastify_plugin_1.default((server, op
         config[key] = val;
     }
     server.route({
-        ...mod,
+        url: mod.url,
+        method: mod.method,
+        schema: mod.schema,
         config,
         handler: async (req, reply) => {
             const restReq = {
