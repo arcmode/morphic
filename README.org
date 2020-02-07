@@ -31,18 +31,18 @@ features in alignment with the dynamics of the agile methodologies
 
 Instead of doing:
 
-1) Compose a platform
-2) Write some boilerplate code according to platform
-3) Implement a set of modules following the modularity model from platform
+1) Select framework and libraries
+2) Write some boilerplate code
+3) Implement a set of modules following the modularity model from framework
 
 Try the "frameless" pattern:
 
-1) Define modularity model via a /platform/ function described by the pseudocode: ~platform = function (modules) -> features~
-2) Implement the platform function as a thin wrapper that can include a module as part of a predefined boilerplate
-3) Write some boilerplate code according to /your/ platform
+1) Define modularity model via a /platform/ function: ~platform : modules -> features~
+2) Implement the platform function as a thin wrapper that can include a module as part of predefined boilerplate
+3) Define boilerplate according to /your/ platform
 4) Implement set of modules following /your/ modularity model
 
-* Modularity: A tale about Separation of Concerns
+* Modularity: A tale about separation of concerns
 
 Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
 Also, most projects work on top of a given platform, /composed/ by the set of languages, frameworks and libraries that together provide at least
@@ -61,6 +61,8 @@ Most web projects require significant boilerplate code in order to run productio
 of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
 boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
 yet defined within the "boilerplate-free" area of library and framework code.
+
+# ** Modularity vs cycle time
 
 * Solution
 *** Modularity Model
