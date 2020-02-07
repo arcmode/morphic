@@ -92,9 +92,7 @@ yet defined within the "boilerplate-free" area of library and framework code.
           ['powered-by']: 'your-platform'
       },
       body: {
-          greetings: {
-              direct: string
-          }
+          greetings: string
       }
   } | {
       status: 500,

@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-06 Thu 20:45 -->
+<!-- 2020-02-06 Thu 20:54 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The frameless pattern: Modularity as a platform</title>
@@ -267,29 +267,29 @@ features in alignment with the dynamics of the agile methodologies
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org4da5041">1. TL;DR;</a></li>
-<li><a href="#org60267dc">2. Modularity: A tale about separation of concerns</a></li>
-<li><a href="#org07f1e6e">3. Problem</a>
+<li><a href="#orgc58daca">1. TL;DR;</a></li>
+<li><a href="#orgaea42dc">2. Modularity: A tale about separation of concerns</a></li>
+<li><a href="#org57e960e">3. Problem</a>
 <ul>
-<li><a href="#org535d1c8">3.1. Modularity vs Evolvability</a></li>
-<li><a href="#org97324a0">3.2. Modularity vs consistency</a></li>
+<li><a href="#orgb842dc5">3.1. Modularity vs Evolvability</a></li>
+<li><a href="#org33e9dbb">3.2. Modularity vs consistency</a></li>
 </ul>
 </li>
-<li><a href="#org2753087">4. Solution</a>
+<li><a href="#org56028f0">4. Solution</a>
 <ul>
-<li><a href="#org456b9da">4.1. MVP: Basic module systems</a></li>
-<li><a href="#org850caa1">4.2. Vision for v1.0</a></li>
-<li><a href="#org5ad5f84">4.3. Ideas</a></li>
+<li><a href="#orgd27272e">4.1. MVP: Basic module systems</a></li>
+<li><a href="#org0c5df25">4.2. Vision for v1.0</a></li>
+<li><a href="#org97667b3">4.3. Ideas</a></li>
 </ul>
 </li>
-<li><a href="#org899546a">5. Inspired partially by</a></li>
-<li><a href="#org28abe14">6. Technologies used in this experiment</a></li>
+<li><a href="#org3fcdd13">5. Inspired partially by</a></li>
+<li><a href="#orgce5efd8">6. Technologies used in this experiment</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org4da5041" class="outline-2">
-<h2 id="org4da5041"><span class="section-number-2">1</span> TL;DR;</h2>
+<div id="outline-container-orgc58daca" class="outline-2">
+<h2 id="orgc58daca"><span class="section-number-2">1</span> TL;DR;</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 Instead of doing:
@@ -314,8 +314,8 @@ Try the "frameless" pattern:
 </div>
 </div>
 
-<div id="outline-container-org60267dc" class="outline-2">
-<h2 id="org60267dc"><span class="section-number-2">2</span> Modularity: A tale about separation of concerns</h2>
+<div id="outline-container-orgaea42dc" class="outline-2">
+<h2 id="orgaea42dc"><span class="section-number-2">2</span> Modularity: A tale about separation of concerns</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
@@ -327,12 +327,12 @@ increases the size of the task at hand every <i>sprint</i> by forcing part of th
 </div>
 </div>
 
-<div id="outline-container-org07f1e6e" class="outline-2">
-<h2 id="org07f1e6e"><span class="section-number-2">3</span> Problem</h2>
+<div id="outline-container-org57e960e" class="outline-2">
+<h2 id="org57e960e"><span class="section-number-2">3</span> Problem</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org535d1c8" class="outline-3">
-<h3 id="org535d1c8"><span class="section-number-3">3.1</span> Modularity vs Evolvability</h3>
+<div id="outline-container-orgb842dc5" class="outline-3">
+<h3 id="orgb842dc5"><span class="section-number-3">3.1</span> Modularity vs Evolvability</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 In modular software, the work required to <i>migrate</i> a given module into a different <i>framework</i> should be considered evitable and patterns that add
@@ -342,8 +342,8 @@ not project boilerplate code or library code.
 </div>
 </div>
 
-<div id="outline-container-org97324a0" class="outline-3">
-<h3 id="org97324a0"><span class="section-number-3">3.2</span> Modularity vs consistency</h3>
+<div id="outline-container-org33e9dbb" class="outline-3">
+<h3 id="org33e9dbb"><span class="section-number-3">3.2</span> Modularity vs consistency</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
@@ -355,13 +355,13 @@ yet defined within the "boilerplate-free" area of library and framework code.
 </div>
 </div>
 
-<div id="outline-container-org2753087" class="outline-2">
-<h2 id="org2753087"><span class="section-number-2">4</span> Solution</h2>
+<div id="outline-container-org56028f0" class="outline-2">
+<h2 id="org56028f0"><span class="section-number-2">4</span> Solution</h2>
 <div class="outline-text-2" id="text-4">
 </div>
-<div id="outline-container-org1ecaf0f" class="outline-4">
-<h4 id="org1ecaf0f">Modularity Model</h4>
-<div class="outline-text-4" id="text-org1ecaf0f">
+<div id="outline-container-org82e6df8" class="outline-4">
+<h4 id="org82e6df8">Modularity Model</h4>
+<div class="outline-text-4" id="text-org82e6df8">
 <p>
 The module/framework relationship is modeled as inspired by the organism/niche relationship. One aspect of that relationship that can be
 recognized is the apparent level of adaptation. An adapted organism can benefit from the ecosystem and thrive by means of a multi-dimensional
@@ -394,9 +394,7 @@ required to know what the module <i>does</i> in the context of the specific proj
         <span style="color: #50fa7b;">[</span><span style="color: #f1fa8c;">'powered-by'</span><span style="color: #50fa7b;">]</span>: <span style="color: #f1fa8c;">'your-platform'</span>
     <span style="color: #ff79c6;">}</span>,
     body: <span style="color: #ff79c6;">{</span>
-        greetings: <span style="color: #50fa7b;">{</span>
-            direct: <span style="color: #ff79c6;">string</span>
-        <span style="color: #50fa7b;">}</span>
+        greetings: <span style="color: #ff79c6;">string</span>
     <span style="color: #ff79c6;">}</span>
 <span style="color: #61bfff;">}</span> | <span style="color: #61bfff;">{</span>
     status: <span style="color: #ff5555; font-weight: bold;">500</span>,
@@ -514,9 +512,9 @@ instance.<span style="color: #50fa7b;">listen</span><span style="color: #61bfff;
 </div>
 </div>
 
-<div id="outline-container-orgeeac8e8" class="outline-4">
-<h4 id="orgeeac8e8"><span class="todo TODO">TODO</span> Contracts: The network defines the ecosystem</h4>
-<div class="outline-text-4" id="text-orgeeac8e8">
+<div id="outline-container-orgc25f1f4" class="outline-4">
+<h4 id="orgc25f1f4"><span class="todo TODO">TODO</span> Contracts: The network defines the ecosystem</h4>
+<div class="outline-text-4" id="text-orgc25f1f4">
 <p>
 The difference between an ecosystem and the niche is the emphasis about the specific "role" an organism plays as part of the ecosystem and the
 specific "experience" the organism has in said ecosystem. Without twisting biology too much math into biology one could say the niche of an
@@ -524,34 +522,34 @@ organism is the experience it has within the ecosystems it is embedded in plus t
 </p>
 </div>
 </div>
-<div id="outline-container-orgad84c2d" class="outline-4">
-<h4 id="orgad84c2d"><span class="todo TODO">TODO</span> Robustness</h4>
-<div class="outline-text-4" id="text-orgad84c2d">
+<div id="outline-container-org604c633" class="outline-4">
+<h4 id="org604c633"><span class="todo TODO">TODO</span> Robustness</h4>
+<div class="outline-text-4" id="text-org604c633">
 <p>
 Hypothesis: A formal modularity model implemented as described above increases quality over time (less bugs)
 </p>
 </div>
 </div>
-<div id="outline-container-org62428f9" class="outline-4">
-<h4 id="org62428f9"><span class="todo TODO">TODO</span> Adaptability</h4>
-<div class="outline-text-4" id="text-org62428f9">
+<div id="outline-container-orgdd2bc67" class="outline-4">
+<h4 id="orgdd2bc67"><span class="todo TODO">TODO</span> Adaptability</h4>
+<div class="outline-text-4" id="text-orgdd2bc67">
 <p>
 Hypothesis: A systemic modularity model will improve engineering cycle speed and/or results
 </p>
 </div>
 </div>
-<div id="outline-container-orgf8cac72" class="outline-4">
-<h4 id="orgf8cac72"><span class="todo TODO">TODO</span> Extensibility &amp; Evolvability</h4>
-<div class="outline-text-4" id="text-orgf8cac72">
+<div id="outline-container-org1dc7198" class="outline-4">
+<h4 id="org1dc7198"><span class="todo TODO">TODO</span> Extensibility &amp; Evolvability</h4>
+<div class="outline-text-4" id="text-org1dc7198">
 <p>
 Diversity is a key aspect of successful (biological) ecosystems and commonly associated to adaptation.<br />
 Hypothesis: A systemic modularity model will increase contributions to its own design and library/framework code
 </p>
 </div>
 </div>
-<div id="outline-container-org5dae267" class="outline-4">
-<h4 id="org5dae267"><span class="todo TODO">TODO</span> Simplicity</h4>
-<div class="outline-text-4" id="text-org5dae267">
+<div id="outline-container-orgfbcf187" class="outline-4">
+<h4 id="orgfbcf187"><span class="todo TODO">TODO</span> Simplicity</h4>
+<div class="outline-text-4" id="text-orgfbcf187">
 <p>
 An apparent property of evolution is the reuse of solutions. The evolution of an organism (basically a lineage of
 cells) can be easily compared to the common idea of evolution of species and also to the development of eusocial colonies of insects.<br />
@@ -559,9 +557,9 @@ Hypothesis: A systemic modularity model will reduce complexity
 </p>
 </div>
 </div>
-<div id="outline-container-org90a5da8" class="outline-4">
-<h4 id="org90a5da8"><span class="todo TODO">TODO</span> Agile</h4>
-<div class="outline-text-4" id="text-org90a5da8">
+<div id="outline-container-org2b8cd2b" class="outline-4">
+<h4 id="org2b8cd2b"><span class="todo TODO">TODO</span> Agile</h4>
+<div class="outline-text-4" id="text-org2b8cd2b">
 <p>
 Following, a couple of tech-oriented definitions for modulerity from: <a href="https://en.wikipedia.org/wiki/Modularity">https://en.wikipedia.org/wiki/Modularity</a>
 </p>
@@ -605,90 +603,90 @@ Hypothesis: A systemic modularity model will reduce uncertainty and support the 
 </div>
 </div>
 
-<div id="outline-container-org456b9da" class="outline-3">
-<h3 id="org456b9da"><span class="section-number-3">4.1</span> MVP: Basic module systems</h3>
+<div id="outline-container-orgd27272e" class="outline-3">
+<h3 id="orgd27272e"><span class="section-number-3">4.1</span> MVP: Basic module systems</h3>
 <div class="outline-text-3" id="text-4-1">
 </div>
 <ul class="org-ul">
-<li><a id="org9a440d2"></a><span class="done DONE">DONE</span> RPC<br />
-<div class="outline-text-6" id="text-org9a440d2">
+<li><a id="org8343c3e"></a><span class="done DONE">DONE</span> RPC<br />
+<div class="outline-text-6" id="text-org8343c3e">
 </div>
 <ul class="org-ul">
-<li><a id="org1e50282"></a><span class="done DONE">DONE</span> hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc<br />
-<div class="outline-text-7" id="text-org1e50282">
+<li><a id="org2f70114"></a><span class="done DONE">DONE</span> hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc<br />
+<div class="outline-text-7" id="text-org2f70114">
 </div>
 </li>
-<li><a id="orgcc0ac1e"></a><span class="done DONE">DONE</span> hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple<br />
-<div class="outline-text-7" id="text-orgcc0ac1e">
+<li><a id="org5f9bc2b"></a><span class="done DONE">DONE</span> hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple<br />
+<div class="outline-text-7" id="text-org5f9bc2b">
 </div>
 </li>
 </ul>
 </li>
-<li><a id="org2762429"></a><span class="done DONE">DONE</span> REST<br />
-<div class="outline-text-6" id="text-org2762429">
+<li><a id="org9be9541"></a><span class="done DONE">DONE</span> REST<br />
+<div class="outline-text-6" id="text-org9be9541">
 </div>
 <ul class="org-ul">
-<li><a id="org02514d3"></a><span class="done DONE">DONE</span> hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest<br />
-<div class="outline-text-7" id="text-org02514d3">
+<li><a id="org0a75472"></a><span class="done DONE">DONE</span> hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest<br />
+<div class="outline-text-7" id="text-org0a75472">
 </div>
 </li>
-<li><a id="org71be5ff"></a><span class="done DONE">DONE</span> hygen rest-api new &#x2013;in examples &#x2013;name rest-simple<br />
-<div class="outline-text-7" id="text-org71be5ff">
+<li><a id="org2ba8d03"></a><span class="done DONE">DONE</span> hygen rest-api new &#x2013;in examples &#x2013;name rest-simple<br />
+<div class="outline-text-7" id="text-org2ba8d03">
 </div>
 </li>
 </ul>
 </li>
-<li><a id="org06b2c5c"></a><span class="todo TODO">TODO</span> Job<br /></li>
-<li><a id="orgce00cb9"></a><span class="todo TODO">TODO</span> Cronjob<br /></li>
-<li><a id="org79b82e3"></a><span class="todo TODO">TODO</span> Worker (Queue consumer)<br /></li>
-<li><a id="org8d8ed9f"></a><span class="todo TODO">TODO</span> Events producer<br /></li>
-<li><a id="org9428bd2"></a><span class="todo TODO">TODO</span> Events consumer<br /></li>
-<li><a id="org6566115"></a><span class="todo TODO">TODO</span> Database app example (MongoDB)<br /></li>
-<li><a id="org399a44d"></a><span class="todo TODO">TODO</span> K8s codegen<br /></li>
-<li><a id="orgc803dba"></a><span class="todo TODO">TODO</span> Instrumentation<br /></li>
+<li><a id="orgbcbd084"></a><span class="todo TODO">TODO</span> Job<br /></li>
+<li><a id="orgcd8ede9"></a><span class="todo TODO">TODO</span> Cronjob<br /></li>
+<li><a id="org89ff9d2"></a><span class="todo TODO">TODO</span> Worker (Queue consumer)<br /></li>
+<li><a id="org5a7e0dd"></a><span class="todo TODO">TODO</span> Events producer<br /></li>
+<li><a id="orgdfbc792"></a><span class="todo TODO">TODO</span> Events consumer<br /></li>
+<li><a id="orgf02b552"></a><span class="todo TODO">TODO</span> Database app example (MongoDB)<br /></li>
+<li><a id="org7e96e81"></a><span class="todo TODO">TODO</span> K8s codegen<br /></li>
+<li><a id="orgdff8bf9"></a><span class="todo TODO">TODO</span> Instrumentation<br /></li>
 </ul>
 </div>
 
-<div id="outline-container-org850caa1" class="outline-3">
-<h3 id="org850caa1"><span class="section-number-3">4.2</span> Vision for v1.0</h3>
+<div id="outline-container-org0c5df25" class="outline-3">
+<h3 id="org0c5df25"><span class="section-number-3">4.2</span> Vision for v1.0</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 More systems and module models
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org34e1c97"></a><span class="todo TODO">TODO</span> Client codegen<br /></li>
-<li><a id="org1780209"></a><span class="todo TODO">TODO</span> Frontend components<br /></li>
-<li><a id="org5f7e18b"></a><span class="todo TODO">TODO</span> ETL processes<br /></li>
-<li><a id="org62870d1"></a><span class="todo TODO">TODO</span> Stream processing<br /></li>
-<li><a id="org4736825"></a><span class="todo TODO">TODO</span> Vendor modules<br /></li>
-<li><a id="orgb46c6ab"></a><span class="todo TODO">TODO</span> Platform extensions (Idea: module functors)<br /></li>
-<li><a id="org89b530f"></a><span class="todo TODO">TODO</span> Service Registry<br /></li>
+<li><a id="org7629bcc"></a><span class="todo TODO">TODO</span> Client codegen<br /></li>
+<li><a id="org8173f4f"></a><span class="todo TODO">TODO</span> Frontend components<br /></li>
+<li><a id="org61823a5"></a><span class="todo TODO">TODO</span> ETL processes<br /></li>
+<li><a id="org5b48bb9"></a><span class="todo TODO">TODO</span> Stream processing<br /></li>
+<li><a id="orgc4dac8e"></a><span class="todo TODO">TODO</span> Vendor modules<br /></li>
+<li><a id="org8c23abb"></a><span class="todo TODO">TODO</span> Platform extensions (Idea: module functors)<br /></li>
+<li><a id="orgbe36385"></a><span class="todo TODO">TODO</span> Service Registry<br /></li>
 </ul>
 </div>
 
-<div id="outline-container-org5ad5f84" class="outline-3">
-<h3 id="org5ad5f84"><span class="section-number-3">4.3</span> Ideas</h3>
+<div id="outline-container-org97667b3" class="outline-3">
+<h3 id="org97667b3"><span class="section-number-3">4.3</span> Ideas</h3>
 <div class="outline-text-3" id="text-4-3">
 </div>
 <ul class="org-ul">
-<li><a id="org62d2263"></a>HATEOAS<br />
-<div class="outline-text-6" id="text-org62d2263">
+<li><a id="org0c0570f"></a>HATEOAS<br />
+<div class="outline-text-6" id="text-org0c0570f">
 </div>
 </li>
-<li><a id="orge79a302"></a>GraphQL<br />
-<div class="outline-text-6" id="text-orge79a302">
+<li><a id="orgf387d7c"></a>GraphQL<br />
+<div class="outline-text-6" id="text-orgf387d7c">
 </div>
 </li>
-<li><a id="org272cc6b"></a>Auto partitioning<br /></li>
-<li><a id="org444fe79"></a>Bring your own framework example<br /></li>
-<li><a id="org45db785"></a>NPM Tarball Functor as a Service<br /></li>
+<li><a id="org147bbad"></a>Auto partitioning<br /></li>
+<li><a id="orgba7baa1"></a>Bring your own framework example<br /></li>
+<li><a id="orgccbe6bd"></a>NPM Tarball Functor as a Service<br /></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org899546a" class="outline-2">
-<h2 id="org899546a"><span class="section-number-2">5</span> Inspired partially by</h2>
+<div id="outline-container-org3fcdd13" class="outline-2">
+<h2 id="org3fcdd13"><span class="section-number-2">5</span> Inspired partially by</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
 <li><a href="https://evolution.berkeley.edu/evolibrary/article/evodevo_01">Evo-devo</a></li>
@@ -698,8 +696,8 @@ More systems and module models
 </div>
 </div>
 
-<div id="outline-container-org28abe14" class="outline-2">
-<h2 id="org28abe14"><span class="section-number-2">6</span> Technologies used in this experiment</h2>
+<div id="outline-container-orgce5efd8" class="outline-2">
+<h2 id="orgce5efd8"><span class="section-number-2">6</span> Technologies used in this experiment</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><a href="https://nodejs.org/en/">nodejs</a></li>
@@ -713,7 +711,7 @@ More systems and module models
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: David Rojas</p>
-<p class="date">Created: 2020-02-06 Thu 20:45</p>
+<p class="date">Created: 2020-02-06 Thu 20:54</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
