@@ -13,7 +13,7 @@ const promiseHandler = async (promise, reply, server) => {
             .send(body);
     }
     catch (err) {
-        server.log.error(err.message ? err.message : 'Unexpected Error', err);
+        server.log.error(err.message ? err.message : 'Internal Server Error', err);
         reply.send(500);
     }
 };

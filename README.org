@@ -29,20 +29,11 @@ features in alignment with the dynamics of the agile methodologies
 
 * TL;DR;
 
-Instead of doing:
+The frameless pattern is just an implementation of separation of concerns in the context of modularity and boilerplate.
+In simple terms, it replaces API dependency code (boilerplate) with contracts with your platform.
 
-1) Select framework and libraries
-2) Write some boilerplate code
-3) Implement a set of modules following the modularity model from framework
-
-Try the "frameless" pattern:
-
-1) Define modularity model via a /platform/ function: ~platform : modules -> features~
-2) Implement the platform function as a thin wrapper that can include a module as part of predefined boilerplate
-3) Define boilerplate according to /your/ platform
-4) Implement set of modules following /your/ modularity model
-
-* Modularity: A tale about separation of concerns
+* Why
+** Modularity: A tale about separation of concerns
 
 Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
 Also, most projects work on top of a given platform, /composed/ by the set of languages, frameworks and libraries that together provide at least
@@ -50,7 +41,6 @@ one and sometimes several modularity models from which most projects pick one fo
 During development of new features, the difference between the modularity model offered by the platform and that of the type of project
 increases the size of the task at hand every /sprint/ by forcing part of the solution to be dedicated to the interface between the two models.
 
-* Problem
 ** Modularity vs Evolvability
 In modular software, the work required to /migrate/ a given module into a different /framework/ should be considered evitable and patterns that add
 work to that could be considered anti-patterns. Note: the previous claim is explicitly refering to changes to module code,
@@ -64,18 +54,26 @@ yet defined within the "boilerplate-free" area of library and framework code.
 
 # ** Modularity vs cycle time
 
-* Solution
+* How
 *** Modularity Model
-   The module/framework relationship is modeled as inspired by the organism/niche relationship. One aspect of that relationship that can be
-   recognized is the apparent level of adaptation. An adapted organism can benefit from the ecosystem and thrive by means of a multi-dimensional
-   interface composed by sensorial organs, motor systems and other biological structures.\\
-   Hypothesis: A systemic modularity model will help improve source code consistency and reduce overall complexity
-   
-   Let's imagine for example a common kind of project for "web" projects: Rest API in NodeJS.
 
-   Before working on boilerplate code yet, let's define our /Rest module/ model in TypeScript trying to achieve the /minimum viable interface/
-   required to know what the module /does/ in the context of the specific project (Rest API).
+    Let's pretend we are going to start a new project. Instead of going through the usual ritual of:
 
+    1) Select framework and libraries
+    2) Write some boilerplate code
+    3) Implement a set of modules following the modularity model from framework
+
+    Let's try the frameless approach:
+
+    1) Define modularity model via a /platform/ function: ~platform : modules -> features~
+    2) Implement the platform function as a thin wrapper that can include a module as part of predefined boilerplate
+    3) Define boilerplate according to /your/ platform
+    4) Implement set of modules following /your/ modularity model
+
+    Let's imagine for example a common kind of project for "web" projects: Rest API in NodeJS.
+    
+    Before working on boilerplate code yet, let's define our /Rest module/ model in TypeScript trying to achieve the /minimum viable interface/
+    required to know what the module /does/ in the context of the specific project (Rest API).
 #+BEGIN_SRC typescript
   export const url = '/hello-rest/:name'
   export const method = 'GET'
