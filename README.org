@@ -42,9 +42,9 @@ During development of new features, the difference between the modularity model 
 increases the size of the task at hand every /sprint/ by forcing part of the solution to be dedicated to the interface between the two models.
 
 ** Modularity vs Evolvability
-In modular software, the work required to /migrate/ a given module into a different /framework/ should be considered evitable and patterns that add
-work to that could be considered anti-patterns. Note: the previous claim is explicitly refering to changes to module code,
-not project boilerplate code or library code.
+In modular software, any code-editing required to /migrate/ a given module into a different /framework/ can be considered evitable
+and patterns that add work to that task can be considered anti-patterns. Note how the previous claim is explicitly pointing to changes
+to module code.
 
 ** Modularity vs consistency
 Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
@@ -52,7 +52,7 @@ of modular systems is the bigger number of running programs. The combination of 
 boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
 yet defined within the "boilerplate-free" area of library and framework code.
 
-# ** Modularity vs cycle time
+** TODO Modularity vs cycle time
 
 * How
 *** Modularity Model
@@ -240,7 +240,7 @@ be studied at nearly every scale of biological organization, from molecular inte
    Modular development pairs naturally with paced or sprint based methodologies.\\
    Hypothesis: A systemic modularity model will reduce uncertainty and support the pace of agile methodologies.
 
-** MVP: Basic module systems
+** TODO MVP: Basic module systems
    :PROPERTIES:
    :ID:       38b345b1-681b-4528-8b88-d73980e383e6
    :END:
