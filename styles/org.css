@@ -113,6 +113,10 @@ a:active {
     text-decoration-color: var(--green);
 }
 
+.abstract {
+    font-style: normal;
+}
+
 .abstract a:hover,
 .abstract a:active {
     text-decoration-color: var(--red);
