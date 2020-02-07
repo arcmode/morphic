@@ -88,9 +88,6 @@ yet defined within the "boilerplate-free" area of library and framework code.
 
   type Result = {
       status: 200,
-      headers: {
-          ['powered-by']: 'your-platform'
-      },
       body: {
           greetings: string
       }
@@ -129,9 +126,6 @@ yet defined within the "boilerplate-free" area of library and framework code.
       try {
           return {
               status: 200,
-              headers: {
-                  ['powered-by']: 'your-platform'
-              },
               body: {
                   greetings: `Hello ${name}`
               }
@@ -154,16 +148,21 @@ yet defined within the "boilerplate-free" area of library and framework code.
       Params,
       Headers,
       Body,
-      Config,
+      Config extends string,
       Result,
       > = {
           url: string,
           method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
           schema: RouteSchema<object>,
-          config?: Record<keyof Config, string | undefined>,
-          handler: (req: RestRequest<Query, Params, Headers, Body>, cfg: Config) => Promise<Result>
+          config?: Record<Config, string | undefined>,
+          handler: (
+              req: RestRequest<Query, Params, Headers, Body>,
+              cfg: Record<Config, string>
+          ) => Promise<Result>
       };
 #+END_SRC
+
+   The complete implementation can be found in the following git [[https://github.com/drojas/morphic/blob/master/modules/rest/lib/morphic-rest.ts][repository]].
 
    Now let's solve the boilerplate from the requirements we know given the module type definition
  #+BEGIN_SRC typescript

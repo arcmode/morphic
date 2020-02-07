@@ -41,14 +41,17 @@ type RestMod<
     Params,
     Headers,
     Body,
-    Config,
+    Config extends string,
     Result,
     > = {
         url: string,
         method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
         schema: RouteSchema<object>,
-        config?: Record<keyof Config, string | undefined>,
-        handler: (req: RestRequest<Query, Params, Headers, Body>, cfg: Config) => Promise<Result>
+        config?: Record<Config, string | undefined>,
+        handler: (
+            req: RestRequest<Query, Params, Headers, Body>,
+            cfg: Record<Config, string>
+        ) => Promise<Result>
     };
 
 const promiseHandler = async <Result>(
@@ -73,7 +76,7 @@ export const createFastifyPlugin = <
     P extends DefaultParams,
     H extends DefaultHeaders,
     B extends DefaultBody,
-    C extends Record<string, string>,
+    C extends string,
     R extends RestResponse,
     >(mod: RestMod<Q, P, H, B, C, R>, cfg: IConfig) => fp((
     server: FastifyInstance,

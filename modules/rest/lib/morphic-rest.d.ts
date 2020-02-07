@@ -26,13 +26,13 @@ declare type RestRequest<Q, P, H, B> = {
     body: B;
     options: PluginOptions;
 };
-declare type RestMod<Query, Params, Headers, Body, Config, Result> = {
+declare type RestMod<Query, Params, Headers, Body, Config extends string, Result> = {
     url: string;
     method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
     schema: RouteSchema<object>;
-    config?: Record<keyof Config, string | undefined>;
-    handler: (req: RestRequest<Query, Params, Headers, Body>, cfg: Config) => Promise<Result>;
+    config?: Record<Config, string | undefined>;
+    handler: (req: RestRequest<Query, Params, Headers, Body>, cfg: Record<Config, string>) => Promise<Result>;
 };
-export declare const createFastifyPlugin: <Q extends fastify.DefaultQuery, P extends fastify.DefaultParams, H extends fastify.DefaultHeaders, B extends any, C extends Record<string, string>, R extends RestResponse>(mod: RestMod<Q, P, H, B, C, R>, cfg: IConfig) => (instance: fastify.FastifyInstance<import("http").Server, import("http").IncomingMessage, ServerResponse>, options: fp.PluginOptions, callback: (err?: fastify.FastifyError | undefined) => void) => void;
+export declare const createFastifyPlugin: <Q extends fastify.DefaultQuery, P extends fastify.DefaultParams, H extends fastify.DefaultHeaders, B extends any, C extends string, R extends RestResponse>(mod: RestMod<Q, P, H, B, C, R>, cfg: IConfig) => (instance: fastify.FastifyInstance<import("http").Server, import("http").IncomingMessage, ServerResponse>, options: fp.PluginOptions, callback: (err?: fastify.FastifyError | undefined) => void) => void;
 export {};
 //# sourceMappingURL=morphic-rest.d.ts.map
