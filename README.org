@@ -271,8 +271,9 @@ be studied at nearly every scale of biological organization, from molecular inte
 
 ** TODO MVP: Basic module systems
    :PROPERTIES:
-   :ID:       38b345b1-681b-4528-8b88-d73980e383e6
+   :ID:       f613d9b7-afe5-4898-89e6-9885aa66e4cc
    :END:
+   The documentation for this implementation, including examples can be located [[./docs/index.html][here]].
 ***** DONE RPC
       CLOSED: [2019-11-17 Sun 19:47]
 ****** DONE hygen rpc-mod new --in examples --name hello-rpc
