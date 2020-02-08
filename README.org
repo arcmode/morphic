@@ -32,26 +32,27 @@ features in alignment with the dynamics of the agile methodologies
 The frameless pattern is just an implementation of separation of concerns in the context of modularity and boilerplate.
 In simple terms, it replaces API dependency code (boilerplate) with contracts with your platform.
 
-* Why
-** Modularity and separation of concerns
+* Why modeling modularity matters
+** Separation of concerns
    Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
    Also, most projects work on top of a given platform, /composed/ by the set of languages, frameworks and libraries that together provide at least
    one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
-   During development of new features, the difference between the modularity model offered by the platform and that of the type of project
-   increases the size of the task at hand every /sprint/ by forcing part of the solution to be dedicated to the interface between the two models.
+   By defining module models a separation between module concerns and system concerns is enforced by design.
 
-** Modularity and evolvability
+** Evolvability
    In modular software, any code-editing required to /migrate/ a given module into a different /framework/ can be considered evitable
-   and patterns that add work to that task can be considered anti-patterns. Note how the previous claim is explicitly pointing to changes
-   to module code.
+   and patterns that add work to that task can be considered anti-patterns.
+   Having a module model decouples product features from platform (see previous point about separation of concerns and modularity). Being able to
+   work on platform features without blocking product stories is highly desirable. Collaboration in parallel is facilitated by the module contract serving
+   as reference for both sides.
 
-** Modularity and consistency
+** Consistency
    Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
    of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
    boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
    yet defined within the "boilerplate-free" area of library and framework code.
 
-** Modularity and cycle time
+** Cycle time
    Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
    makes the work in solutions space more predictable. Also, a minimal contract reduces the amount of glue-code which makes modules leaner.
    If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
@@ -255,44 +256,19 @@ be studied at nearly every scale of biological organization, from molecular inte
 ***** TODO Events producer
 ***** TODO Events consumer
 ***** TODO Database app example (MongoDB)
-***** TODO K8s codegen
 ***** TODO Instrumentation
+***** TODO Standarize: Bring your own framework
+***** TODO Client codegen
 
 ** Vision for v1.0
    More systems and module models
-***** TODO Client codegen
 ***** TODO Frontend components
 ***** TODO ETL processes
 ***** TODO Stream processing
-***** TODO Vendor modules
-***** TODO Platform extensions (Idea: module functors)
-***** TODO Service Registry
+***** TODO Deployment codegen
 
-** Ideas
-   :PROPERTIES:
-   :ID:       9b25d4a9-a4d2-4ded-9ba1-38420c98c359
-   :END:
-***** HATEOAS
-      :PROPERTIES:
-      :ID:       8b9229ef-d571-4a95-bc36-2349f1d988d0
-      :END:
-***** GraphQL
-      :PROPERTIES:
-      :ID:       a9a15666-e24e-4918-9a29-f6fa1437096c
-      :END:
-***** Auto partitioning
-***** Bring your own framework example
-***** NPM Tarball Functor as a Service
-
-* Inspired partially by
-- [[https://evolution.berkeley.edu/evolibrary/article/evodevo_01][Evo-devo]]
-- [[https://en.wikipedia.org/wiki/Fractal][Fractals]]
-- [[https://github.com/GoogleContainerTools/jib][Jib]]
-
-* Technologies used in this experiment
-- [[https://nodejs.org/en/][nodejs]]
-- [[https://lerna.js.org/][Lerna]]
-- [[https://www.typescriptlang.org/][TypeScript]]
-- [[https://www.fastify.io/][fastify]]
-- [[https://www.hygen.io/][Hygen]]
- 
+* Wishlist
+- HATEOAS
+- GraphQL
+- Auto partitioning
+- NPM Tarball Functor as a Service
