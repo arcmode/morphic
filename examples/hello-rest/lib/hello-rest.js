@@ -44,12 +44,13 @@ exports.schema = {
 };
 exports.config = {
     HOSTNAME: 'localhost',
-    NODE_ENV: 'development',
+    NODE_ENV: 'dev',
+    ANSWER_TO_EVERYTHING: undefined
 };
 exports.handler = async (req, cfg) => {
     console.log({ cfg });
     try {
-        const directResult = await direct.helloRpc(req.params.name);
+        const greeting = await direct.helloRpc(req.params.name);
         // const clientResult = await client.helloRpc(
         // req.params.name
         // );
@@ -60,7 +61,7 @@ exports.handler = async (req, cfg) => {
             },
             body: {
                 greetings: {
-                    direct: directResult,
+                    direct: `${greeting}. The answer to everything is ${cfg.ANSWER_TO_EVERYTHING}`,
                 }
             }
         };

@@ -26,13 +26,23 @@ declare type RestRequest<Q, P, H, B> = {
     body: B;
     options: PluginOptions;
 };
-declare type RestMod<Query, Params, Headers, Body, Config extends string, Result> = {
+declare type DefaultQuery = {
+    [k: string]: string;
+};
+declare type DefaultParams = {
+    [k: string]: string;
+};
+declare type DefaultHeaders = {
+    [k: string]: string;
+};
+declare type DefaultBody = AnyData;
+declare type RestMod<Query extends DefaultQuery, Params extends DefaultParams, Headers extends DefaultHeaders, Body extends DefaultBody, Config extends string, Result extends RestResponse> = {
     url: string;
     method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
     schema: RouteSchema<object>;
     config?: Record<Config, string | undefined>;
     handler: (req: RestRequest<Query, Params, Headers, Body>, cfg: Record<Config, string>) => Promise<Result>;
 };
-export declare const createFastifyPlugin: <Q extends fastify.DefaultQuery, P extends fastify.DefaultParams, H extends fastify.DefaultHeaders, B extends any, C extends string, R extends RestResponse>(mod: RestMod<Q, P, H, B, C, R>, cfg: IConfig) => (instance: fastify.FastifyInstance<import("http").Server, import("http").IncomingMessage, ServerResponse>, options: fp.PluginOptions, callback: (err?: fastify.FastifyError | undefined) => void) => void;
+export declare const createFastifyPlugin: <Q extends DefaultQuery, P extends DefaultParams, H extends DefaultHeaders, B extends AnyData, C extends string, R extends RestResponse>(mod: RestMod<Q, P, H, B, C, R>, cfg: IConfig) => (instance: fastify.FastifyInstance<import("http").Server, import("http").IncomingMessage, ServerResponse>, options: fp.PluginOptions, callback: (err?: fastify.FastifyError | undefined) => void) => void;
 export {};
 //# sourceMappingURL=morphic-rest.d.ts.map

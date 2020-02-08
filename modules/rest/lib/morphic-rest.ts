@@ -1,9 +1,5 @@
 import fastify, {
     FastifyInstance,
-    DefaultQuery,
-    DefaultParams,
-    DefaultHeaders,
-    DefaultBody,
 } from 'fastify';
 import { AnyData } from '@morphic/types';
 import fp, { PluginOptions, nextCallback } from 'fastify-plugin';
@@ -21,10 +17,10 @@ type RouteSchema<S> = {
     },
 }
 
-// TODO: HATEOAS
 type RestResponse = {
     status: number,
     headers?: Record<string, string>,
+    // TODO: HATEOAS
     body?: AnyData
 };
 
@@ -36,23 +32,37 @@ type RestRequest<Q, P, H, B> = {
     options: PluginOptions
 };
 
+type DefaultQuery = {
+    [k: string]: string
+};
+
+type DefaultParams = {
+    [k: string]: string
+};
+
+type DefaultHeaders = {
+    [k: string]: string
+};
+
+type DefaultBody = AnyData;
+
 type RestMod<
-    Query,
-    Params,
-    Headers,
-    Body,
+    Query extends DefaultQuery,
+    Params extends DefaultParams,
+    Headers extends DefaultHeaders,
+    Body extends DefaultBody,
     Config extends string,
-    Result,
-    > = {
-        url: string,
-        method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
-        schema: RouteSchema<object>,
-        config?: Record<Config, string | undefined>,
-        handler: (
-            req: RestRequest<Query, Params, Headers, Body>,
-            cfg: Record<Config, string>
-        ) => Promise<Result>
-    };
+    Result extends RestResponse,
+> = {
+    url: string,
+    method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
+    schema: RouteSchema<object>,
+    config?: Record<Config, string | undefined>,
+    handler: (
+        req: RestRequest<Query, Params, Headers, Body>,
+        cfg: Record<Config, string>
+    ) => Promise<Result>
+};
 
 const promiseHandler = async <Result>(
     promise: Promise<RestResponse>,
@@ -83,7 +93,7 @@ export const createFastifyPlugin = <
     options: PluginOptions,
     done: nextCallback
 ) => {
-    const config: Record<string, string> = {}
+    const config = {} as Record<C, string>
     const defaultCfg = mod.config || {} as typeof config
     for (const key in defaultCfg) {
         const val = cfg.has(key) ?

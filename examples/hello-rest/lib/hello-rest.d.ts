@@ -56,10 +56,12 @@ export declare const schema: {
 export declare const config: {
     HOSTNAME: string;
     NODE_ENV: string;
+    ANSWER_TO_EVERYTHING: string | undefined;
 };
 export declare const handler: (req: Request, cfg: {
     HOSTNAME: string;
     NODE_ENV: string;
+    ANSWER_TO_EVERYTHING: string | undefined;
 }) => Promise<Result>;
 export {};
 //# sourceMappingURL=hello-rest.d.ts.map
