@@ -24,7 +24,7 @@ to: <%=locals.in%>/<%=name%>/package.json
         "dev": "tsc-watch --onSuccess \"node lib/client.gen.js\""
     },
     "dependencies": {
-        "@morphic/rpc": "0.0.0"
+        "@frameless/rpc": "0.0.0"
     },
     "devDependencies": {
         "<%=of%>": "<%=version%>",

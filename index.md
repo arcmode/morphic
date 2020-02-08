@@ -16,20 +16,20 @@ and platform features within the dynamics of the agile methodologies
 
 # Table of Contents
 
-1.  [TL;DR;](#orgabbc376)
-    1.  [Frameless signature](#orge1ffd8e)
-2.  [Why modeling modularity matters](#org6416f8a)
-    1.  [Separation of concerns](#orgb51b26a)
-    2.  [Evolvability](#org3783230)
-    3.  [Consistency](#org57a1904)
-    4.  [Cycle time](#org8ae566c)
-3.  [How](#orgf7f9eb2)
-    1.  [MVP: Basic module systems](#orga83c416)
-    2.  [Vision for v1.0](#org617c785)
-4.  [Wishlist](#org880088b)
+1.  [TL;DR;](#orgb92dc83)
+    1.  [Frameless signature](#org7f39518)
+2.  [Why modeling modularity matters](#org3f85fa9)
+    1.  [Separation of concerns](#org8ac8656)
+    2.  [Evolvability](#org4f87da3)
+    3.  [Consistency](#org8f1ccf6)
+    4.  [Cycle time](#org1d663f5)
+3.  [How](#org9e18a65)
+    1.  [MVP: Basic module systems](#org78dccec)
+    2.  [Vision for v1.0](#org7ee9c20)
+4.  [Wishlist](#org53b4bd9)
 
 
-<a id="orgabbc376"></a>
+<a id="orgb92dc83"></a>
 
 # TL;DR;
 
@@ -38,7 +38,7 @@ It replaces API dependency code and any boilerplate by leveraging contracts that
 production scripts to test, run, debug, deploy, package, build or any arbitrary task.
 
 
-<a id="orge1ffd8e"></a>
+<a id="org7f39518"></a>
 
 ## Frameless signature
 
@@ -48,12 +48,12 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
 The frameless pattern is a generalization of the *serverless* or *function-as-a-service* pattern.
 
 
-<a id="org6416f8a"></a>
+<a id="org3f85fa9"></a>
 
 # Why modeling modularity matters
 
 
-<a id="orgb51b26a"></a>
+<a id="org8ac8656"></a>
 
 ## Separation of concerns
 
@@ -63,7 +63,7 @@ one and sometimes several modularity models from which most projects pick one fo
 By defining module models a separation between module concerns and system concerns is enforced by design.
 
 
-<a id="org3783230"></a>
+<a id="org4f87da3"></a>
 
 ## Evolvability
 
@@ -74,7 +74,7 @@ work on platform features without blocking product stories is highly desirable. 
 as reference for both sides.
 
 
-<a id="org57a1904"></a>
+<a id="org8f1ccf6"></a>
 
 ## Consistency
 
@@ -84,7 +84,7 @@ boilerplate code creates a space for inconsistency that affects modular systems 
 yet defined within the "boilerplate-free" area of library and framework code.
 
 
-<a id="org8ae566c"></a>
+<a id="org1d663f5"></a>
 
 ## Cycle time
 
@@ -93,7 +93,7 @@ makes the work in solutions space more predictable. Also, a minimal contract red
 If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
 
 
-<a id="orgf7f9eb2"></a>
+<a id="org9e18a65"></a>
 
 # How
 
@@ -219,7 +219,7 @@ takes a Rest module and returns a *fastify* plugin and the corresponding boilerp
 to work.
 
     import fastify from 'fastify';
-    import { createFastifyPlugin } from '@morphic/rest';
+    import { createFastifyPlugin } from '@frameless/rest';
     import config from 'config';
 
 After the framework and libraries are imported let's import the actual Rest modules (one for this example)
@@ -227,7 +227,7 @@ After the framework and libraries are imported let's import the actual Rest modu
     //
     // import rest modules
     //
-    import * as morphicExamplesHelloRest from '@morphic-examples/hello-rest';
+    import * as morphicExamplesHelloRest from '@frameless-examples/hello-rest';
 
 Let's just borrow a fastify server for this example.
 
@@ -288,7 +288,7 @@ the "shortest path" mentality of both nature and the agile movement within the t
 Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.
 
 
-<a id="orga83c416"></a>
+<a id="org78dccec"></a>
 
 ## TODO MVP: Basic module systems
 
@@ -323,7 +323,7 @@ Modular development pairs naturally with agile or any other paced or sprint orie
 -   TODO Client codegen
 
 
-<a id="org617c785"></a>
+<a id="org7ee9c20"></a>
 
 ## Vision for v1.0
 
@@ -338,7 +338,7 @@ More systems and module models
 -   TODO Deployment codegen
 
 
-<a id="org880088b"></a>
+<a id="org53b4bd9"></a>
 
 # Wishlist
 

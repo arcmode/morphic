@@ -24,12 +24,12 @@ to: <%=locals.in%>/<%=name%>/package.json
         "dev": "tsc-watch --onSuccess \"node lib/server.gen.js\""
     },
     "morphic-pack-include": [
-        "@morphic-examples/hello-pack"
+        "@frameless-examples/hello-pack"
     ],
     "dependencies": {
         "fastify": "2.10.0",
-        "@morphic-examples/hello-pack": "0.0.0",
-        "@morphic/pack": "0.0.0"
+        "@frameless-examples/hello-pack": "0.0.0",
+        "@frameless/pack": "0.0.0"
     },
     "devDependencies": {
         "@types/express": "4.17.1",

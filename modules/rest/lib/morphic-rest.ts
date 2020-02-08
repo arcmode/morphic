@@ -1,7 +1,7 @@
 import fastify, {
     FastifyInstance,
 } from 'fastify';
-import { AnyData } from '@morphic/model';
+import { AnyData } from '@frameless/model';
 import fp, { PluginOptions, nextCallback } from 'fastify-plugin';
 import { ServerResponse } from 'http';
 import { IConfig } from 'config';

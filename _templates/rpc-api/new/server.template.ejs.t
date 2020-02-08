@@ -5,7 +5,7 @@ to: <%= locals.in %>/<%= name %>/_templates/server/new/server.ejs.t
 to: lib/server.gen.ts
 ---
 import express from 'express';
-import { createRoutes } from '@morphic/rpc';
+import { createRoutes } from '@frameless/rpc';
 <%% for(const pkg of h.config('morphic-rpc-include')) { -%>
 import * as <%%= h.changeCase.camel(pkg) %> from '<%%= pkg %>';
 <%% } -%>

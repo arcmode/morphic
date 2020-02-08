@@ -2,7 +2,7 @@
 to: lib/server.gen.ts
 ---
 import fastify from 'fastify';
-import { createFastifyPlugin } from '@morphic/pack';
+import { createFastifyPlugin } from '@frameless/pack';
 
 const instance = fastify({
     logger: true

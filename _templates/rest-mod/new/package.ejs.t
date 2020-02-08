@@ -25,8 +25,8 @@ to: <%=locals.in%>/<%=name%>/package.json
         "debug": "npm run build-debuggable && npm run inspector"
     },
     "dependencies": {
-        "@morphic-examples/rpc-client": "0.0.0",
-        "@morphic-examples/hello-rpc": "0.0.0"
+        "@frameless-examples/rpc-client": "0.0.0",
+        "@frameless-examples/hello-rpc": "0.0.0"
     },
     "devDependencies": {
         "jest": "24.9.0",

@@ -1,5 +1,5 @@
 /// <reference types="express" />
-import { ArrayItem, ThenArg, JsonFn } from '@morphic/model';
+import { ArrayItem, ThenArg, JsonFn } from '@frameless/model';
 export declare type RpcMod<M> = Record<keyof M, JsonFn<M, keyof M>>;
 declare type RpcDefinition<M extends RpcMod<M>> = {
     [k in keyof M]: {

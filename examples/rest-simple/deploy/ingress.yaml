@@ -11,6 +11,6 @@ spec:
       paths:
       - path: /hello-rest/[a-zA-Z0-9_-]
         backend:
-          serviceName: @morphic-examples/hello-rest-service
+          serviceName: @frameless-examples/hello-rest-service
           servicePort: 80
 

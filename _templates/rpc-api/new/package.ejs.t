@@ -24,12 +24,12 @@ to: <%=locals.in%>/<%=name%>/package.json
         "dev": "tsc-watch --onSuccess \"node lib/server.gen.js\""
     },
     "morphic-rpc-include": [
-        "@morphic-examples/hello-rpc"
+        "@frameless-examples/hello-rpc"
     ],
     "dependencies": {
         "express": "4.17.1",
-        "@morphic-examples/hello-rpc": "0.0.0",
-        "@morphic/rpc": "0.0.0"
+        "@frameless-examples/hello-rpc": "0.0.0",
+        "@frameless/rpc": "0.0.0"
     },
     "devDependencies": {
         "@types/express": "4.17.1",

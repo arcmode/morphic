@@ -1,7 +1,7 @@
 import { NodeHttpTransport } from '@improbable-eng/grpc-web-node-http-transport';
 import { ModuleRpcProtocolServer } from 'rpc_ts/lib/protocol/server';
 import { ModuleRpcProtocolClient } from 'rpc_ts/lib/protocol/client';
-import { ArrayItem, ThenArg, JsonFn } from '@morphic/model';
+import { ArrayItem, ThenArg, JsonFn } from '@frameless/model';
 
 export type RpcMod<M> = Record<keyof M, JsonFn<M, keyof M>>;
 

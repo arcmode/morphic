@@ -7,8 +7,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const rpc_1 = require("@morphic/rpc");
-const source = __importStar(require("@morphic-examples/hello-rpc"));
+const rpc_1 = require("@frameless/rpc");
+const source = __importStar(require("@frameless-examples/hello-rpc"));
 const rpc = rpc_1.createClient(source, 'http://rpc-morphic-example-hello-rpc');
 exports.helloRpc = rpc.helloRpc;
 //# sourceMappingURL=client.gen.js.map

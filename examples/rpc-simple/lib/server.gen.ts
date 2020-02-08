@@ -1,6 +1,6 @@
 import express from 'express';
-import { createRoutes } from '@morphic/rpc';
-import * as morphicExamplesHelloRpc from '@morphic-examples/hello-rpc';
+import { createRoutes } from '@frameless/rpc';
+import * as morphicExamplesHelloRpc from '@frameless-examples/hello-rpc';
 
 const app = express();
 

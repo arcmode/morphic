@@ -192,7 +192,7 @@ The frameless pattern is a generalization of the /serverless/ or /function-as-a-
    
 #+BEGIN_SRC typescript
   import fastify from 'fastify';
-  import { createFastifyPlugin } from '@morphic/rest';
+  import { createFastifyPlugin } from '@frameless/rest';
   import config from 'config';
 
 #+END_SRC
@@ -203,7 +203,7 @@ The frameless pattern is a generalization of the /serverless/ or /function-as-a-
   //
   // import rest modules
   //
-  import * as morphicExamplesHelloRest from '@morphic-examples/hello-rest';
+  import * as morphicExamplesHelloRest from '@frameless-examples/hello-rest';
 #+END_SRC
 
    Let's just borrow a fastify server for this example.

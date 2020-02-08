@@ -1,5 +1,5 @@
 {
-    "name": "@morphic-examples/hello-rest",
+    "name": "@frameless-examples/hello-rest",
     "version": "0.0.0",
     "description": "> TODO: description",
     "author": "David Rojas Camaggi <drojascamaggi@gmail.com>",
@@ -22,11 +22,11 @@
         "debug": "npm run build-debuggable && npm run inspector"
     },
     "dependencies": {
-        "@morphic-examples/hello-rpc": "0.0.0",
-        "@morphic-examples/rpc-client": "0.0.0"
+        "@frameless-examples/hello-rpc": "0.0.0",
+        "@frameless-examples/rpc-client": "0.0.0"
     },
     "devDependencies": {
-        "@morphic/rest": "0.0.0",
+        "@frameless/rest": "0.0.0",
         "jest": "24.9.0",
         "typescript": "3.7.5"
     }

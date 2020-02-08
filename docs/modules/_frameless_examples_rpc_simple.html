@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>@morphic-examples/rpc-client | Frameless</title>
+	<title>@frameless-examples/rpc-simple | Frameless</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,10 +56,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_morphic_examples_rpc_client.html">@morphic-examples/rpc-client</a>
+					<a href="_frameless_examples_rpc_simple.html">@frameless-examples/rpc-simple</a>
 				</li>
 			</ul>
-			<h1>Module @morphic-examples/rpc-client</h1>
+			<h1>Module @frameless-examples/rpc-simple</h1>
 		</div>
 	</div>
 </header>
@@ -70,35 +70,35 @@
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
+						<section class="tsd-index-section tsd-is-not-exported">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="_morphic_examples_rpc_client.html#hellorpc" class="tsd-kind-icon">hello<wbr>Rpc</a></li>
-								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_morphic_examples_rpc_client.html#rpc" class="tsd-kind-icon">rpc</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_frameless_examples_rpc_simple.html#app" class="tsd-kind-icon">app</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported"><a href="_frameless_examples_rpc_simple.html#listener" class="tsd-kind-icon">listener</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group ">
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
 				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
-					<a name="hellorpc" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> hello<wbr>Rpc</h3>
-					<div class="tsd-signature tsd-kind-icon">hello<wbr>Rpc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">helloRpc</span><span class="tsd-signature-symbol"> = rpc.helloRpc</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+					<a name="app" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> app</h3>
+					<div class="tsd-signature tsd-kind-icon">app<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Express</span><span class="tsd-signature-symbol"> = express()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/drojas/morphic/blob/ce8f72e/examples/rpc-client/lib/client.gen.ts#L6">examples/rpc-client/lib/client.gen.ts:6</a></li>
+							<li>Defined in <a href="https://github.com/drojas/morphic/blob/53240ed/examples/rpc-simple/lib/server.gen.ts#L5">examples/rpc-simple/lib/server.gen.ts:5</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-					<a name="rpc" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> rpc</h3>
-					<div class="tsd-signature tsd-kind-icon">rpc<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">typeof </span><span class="tsd-signature-type">source</span><span class="tsd-signature-symbol"> = createClient(source, &#x27;http://rpc-morphic-example-hello-rpc&#x27;)</span></div>
+					<a name="listener" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> listener</h3>
+					<div class="tsd-signature tsd-kind-icon">listener<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Server</span><span class="tsd-signature-symbol"> = app.listen(process.env.PORT, () &#x3D;&gt; {if (!listener) {throw new Error(&#x27;Listener is null&#x27;);}console.log(&#x27;Server listening&#x27;, listener.address());})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/drojas/morphic/blob/ce8f72e/examples/rpc-client/lib/client.gen.ts#L4">examples/rpc-client/lib/client.gen.ts:4</a></li>
+							<li>Defined in <a href="https://github.com/drojas/morphic/blob/53240ed/examples/rpc-simple/lib/server.gen.ts#L9">examples/rpc-simple/lib/server.gen.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -111,44 +111,44 @@
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_morphic_examples_hello_rest.html">@morphic-<wbr>examples/hello-<wbr>rest</a>
+						<a href="_frameless_examples_hello_rest.html">@frameless-<wbr>examples/hello-<wbr>rest</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_morphic_examples_hello_rpc.html">@morphic-<wbr>examples/hello-<wbr>rpc</a>
+						<a href="_frameless_examples_hello_rpc.html">@frameless-<wbr>examples/hello-<wbr>rpc</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_morphic_examples_pack_simple.html">@morphic-<wbr>examples/pack-<wbr>simple</a>
+						<a href="_frameless_examples_pack_simple.html">@frameless-<wbr>examples/pack-<wbr>simple</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_morphic_examples_rest_simple.html">@morphic-<wbr>examples/rest-<wbr>simple</a>
+						<a href="_frameless_examples_rest_simple.html">@frameless-<wbr>examples/rest-<wbr>simple</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="_frameless_examples_rpc_client.html">@frameless-<wbr>examples/rpc-<wbr>client</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="_morphic_examples_rpc_client.html">@morphic-<wbr>examples/rpc-<wbr>client</a>
+						<a href="_frameless_examples_rpc_simple.html">@frameless-<wbr>examples/rpc-<wbr>simple</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_morphic_examples_rpc_simple.html">@morphic-<wbr>examples/rpc-<wbr>simple</a>
+						<a href="_frameless_model.html">@frameless/model</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_morphic_model.html">@morphic/model</a>
+						<a href="_frameless_pack.html">@frameless/pack</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_morphic_pack.html">@morphic/pack</a>
+						<a href="_frameless_rest.html">@frameless/rest</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="_morphic_rest.html">@morphic/rest</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="_morphic_rpc.html">@morphic/rpc</a>
+						<a href="_frameless_rpc.html">@frameless/rpc</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="_morphic_examples_rpc_client.html#hellorpc" class="tsd-kind-icon">hello<wbr>Rpc</a>
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_frameless_examples_rpc_simple.html#app" class="tsd-kind-icon">app</a>
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
-						<a href="_morphic_examples_rpc_client.html#rpc" class="tsd-kind-icon">rpc</a>
+						<a href="_frameless_examples_rpc_simple.html#listener" class="tsd-kind-icon">listener</a>
 					</li>
 				</ul>
 			</nav>

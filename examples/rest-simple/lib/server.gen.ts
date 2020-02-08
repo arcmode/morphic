@@ -1,10 +1,10 @@
 import fastify from 'fastify';
-import { createFastifyPlugin } from '@morphic/rest';
+import { createFastifyPlugin } from '@frameless/rest';
 import config from 'config';
 //
 // import rest modules
 //
-import * as morphicExamplesHelloRest from '@morphic-examples/hello-rest';
+import * as morphicExamplesHelloRest from '@frameless-examples/hello-rest';
 
 const instance = fastify({
     logger: true

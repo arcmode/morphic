@@ -5,7 +5,7 @@ to: <%= locals.in %>/<%= name %>/_templates/server/new/server.ejs.t
 to: lib/server.gen.ts
 ---
 import fastify from 'fastify';
-import { createFastifyPlugin } from '@morphic/pack';
+import { createFastifyPlugin } from '@frameless/pack';
 
 const instance = fastify({
     logger: true

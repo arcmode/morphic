@@ -1,5 +1,5 @@
 const package = require('./package.json');
-const source = require('@morphic-examples/hello-rpc'); 
+const source = require('@frameless-examples/hello-rpc'); 
 
 module.exports = {
     helpers: {

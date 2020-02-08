@@ -7,8 +7,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const direct = __importStar(require("@morphic-examples/hello-rpc"));
-// import * as client from '@morphic-examples/rpc-client';
+const direct = __importStar(require("@frameless-examples/hello-rpc"));
+// import * as client from '@frameless-examples/rpc-client';
 exports.url = '/hello-rest/:name';
 exports.method = 'GET';
 exports.schema = {

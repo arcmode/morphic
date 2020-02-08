@@ -1,5 +1,5 @@
 {
-    "name": "@morphic-examples/pack-simple",
+    "name": "@frameless-examples/pack-simple",
     "version": "0.0.0",
     "description": "PACK for ...",
     "author": "David Rojas Camaggi <drojascamaggi@gmail.com>",
@@ -21,11 +21,11 @@
         "dev": "tsc-watch --onSuccess \"node lib/server.gen.js\""
     },
     "morphic-pack-include": [
-        "@morphic-examples/hello-pack"
+        "@frameless-examples/hello-pack"
     ],
     "dependencies": {
-        "@morphic-examples/hello-pack": "0.0.0",
-        "@morphic/pack": "0.0.0",
+        "@frameless-examples/hello-pack": "0.0.0",
+        "@frameless/pack": "0.0.0",
         "fastify": "2.10.0"
     },
     "devDependencies": {

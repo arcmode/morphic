@@ -1,5 +1,5 @@
 import fastify from 'fastify';
-import { createFastifyPlugin } from '@morphic/pack';
+import { createFastifyPlugin } from '@frameless/pack';
 
 const instance = fastify({
     logger: true
@@ -10,7 +10,7 @@ const instance = fastify({
 //
 
 
-instance.register(createFastifyPlugin(require.resolve('@morphic-examples/hello-pack/package.json')));
+instance.register(createFastifyPlugin(require.resolve('@frameless-examples/hello-pack/package.json')));
 
 const PORT = process.env.PORT
     ? Number(process.env.PORT)

@@ -80,32 +80,32 @@
 					<h1>Table of Contents</h1>
 				</a>
 				<ol>
-					<li><a href="#org9ac1ce0">TL;DR;</a><ol>
-							<li><a href="#org558c5bc">Frameless signature</a></li>
+					<li><a href="#orgb92dc83">TL;DR;</a><ol>
+							<li><a href="#org7f39518">Frameless signature</a></li>
 						</ol>
 					</li>
-					<li><a href="#orgab5646b">Why modeling modularity matters</a><ol>
-							<li><a href="#org89f2c25">Separation of concerns</a></li>
-							<li><a href="#org86083d7">Evolvability</a></li>
-							<li><a href="#org8949003">Consistency</a></li>
-							<li><a href="#orge4c50ee">Cycle time</a></li>
+					<li><a href="#org3f85fa9">Why modeling modularity matters</a><ol>
+							<li><a href="#org8ac8656">Separation of concerns</a></li>
+							<li><a href="#org4f87da3">Evolvability</a></li>
+							<li><a href="#org8f1ccf6">Consistency</a></li>
+							<li><a href="#org1d663f5">Cycle time</a></li>
 						</ol>
 					</li>
-					<li><a href="#orgb551833">How</a><ol>
-							<li><a href="#org42a3841">MVP: Basic module systems</a></li>
-							<li><a href="#org7c8ba3c">Vision for v1.0</a></li>
+					<li><a href="#org9e18a65">How</a><ol>
+							<li><a href="#org78dccec">MVP: Basic module systems</a></li>
+							<li><a href="#org7ee9c20">Vision for v1.0</a></li>
 						</ol>
 					</li>
-					<li><a href="#org5006230">Wishlist</a></li>
+					<li><a href="#org53b4bd9">Wishlist</a></li>
 				</ol>
-				<p><a id="org9ac1ce0"></a></p>
+				<p><a id="orgb92dc83"></a></p>
 				<a href="#tldr" id="tldr" style="color: inherit; text-decoration: none;">
 					<h1>TL;DR;</h1>
 				</a>
 				<p>A frameless pattern is the result of applying separation of concerns between modular functionality and boilerplate code.
 					It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
 				production scripts to test, run, debug, deploy, package, build or any arbitrary task.</p>
-				<p><a id="org558c5bc"></a></p>
+				<p><a id="org7f39518"></a></p>
 				<a href="#frameless-signature" id="frameless-signature" style="color: inherit; text-decoration: none;">
 					<h2>Frameless signature</h2>
 				</a>
@@ -113,12 +113,12 @@
 					<li>Zero boilerplate</li>
 					<li>Zero module dependency on platform API</li>
 				</ul>
-				<p>The frameless pattern is just a generalization of the <em>serverless</em> or <em>function-as-a-service</em> pattern.</p>
-				<p><a id="orgab5646b"></a></p>
+				<p>The frameless pattern is a generalization of the <em>serverless</em> or <em>function-as-a-service</em> pattern.</p>
+				<p><a id="org3f85fa9"></a></p>
 				<a href="#why-modeling-modularity-matters" id="why-modeling-modularity-matters" style="color: inherit; text-decoration: none;">
 					<h1>Why modeling modularity matters</h1>
 				</a>
-				<p><a id="org89f2c25"></a></p>
+				<p><a id="org8ac8656"></a></p>
 				<a href="#separation-of-concerns" id="separation-of-concerns" style="color: inherit; text-decoration: none;">
 					<h2>Separation of concerns</h2>
 				</a>
@@ -126,7 +126,7 @@
 					Also, most projects work on top of a given platform, <em>composed</em> by the set of languages, frameworks and libraries that together provide at least
 					one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
 				By defining module models a separation between module concerns and system concerns is enforced by design.</p>
-				<p><a id="org86083d7"></a></p>
+				<p><a id="org4f87da3"></a></p>
 				<a href="#evolvability" id="evolvability" style="color: inherit; text-decoration: none;">
 					<h2>Evolvability</h2>
 				</a>
@@ -135,7 +135,7 @@
 					Having a module model decouples product features from platform (see previous point about separation of concerns and modularity). Being able to
 					work on platform features without blocking product stories is highly desirable. Collaboration in parallel is facilitated by the module contract serving
 				as reference for both sides.</p>
-				<p><a id="org8949003"></a></p>
+				<p><a id="org8f1ccf6"></a></p>
 				<a href="#consistency" id="consistency" style="color: inherit; text-decoration: none;">
 					<h2>Consistency</h2>
 				</a>
@@ -143,14 +143,14 @@
 					of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
 					boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
 				yet defined within the &quot;boilerplate-free&quot; area of library and framework code.</p>
-				<p><a id="orge4c50ee"></a></p>
+				<p><a id="org1d663f5"></a></p>
 				<a href="#cycle-time" id="cycle-time" style="color: inherit; text-decoration: none;">
 					<h2>Cycle time</h2>
 				</a>
 				<p>Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
 					makes the work in solutions space more predictable. Also, a minimal contract reduces the amount of glue-code which makes modules leaner.
 				If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.</p>
-				<p><a id="orgb551833"></a></p>
+				<p><a id="org9e18a65"></a></p>
 				<a href="#how" id="how" style="color: inherit; text-decoration: none;">
 					<h1>How</h1>
 				</a>
@@ -257,12 +257,12 @@ export <span class="hljs-keyword">const</span> <span class="hljs-function"><span
 					takes a Rest module and returns a <em>fastify</em> plugin and the corresponding boilerplate code required to put them
 				to work.</p>
 				<pre><code>import fastify <span class="hljs-keyword">from</span> <span class="hljs-string">'fastify'</span>;
-import { createFastifyPlugin } <span class="hljs-keyword">from</span> <span class="hljs-string">'@morphic/rest'</span>;
+import { createFastifyPlugin } <span class="hljs-keyword">from</span> <span class="hljs-string">'@frameless/rest'</span>;
 import<span class="hljs-built_in"> config </span><span class="hljs-keyword">from</span> <span class="hljs-string">'config'</span>;</code></pre><p>After the framework and libraries are imported let&#39;s import the actual Rest modules (one for this example)</p>
 				<pre><code><span class="hljs-comment">//</span>
 <span class="hljs-comment">// import rest modules</span>
 <span class="hljs-comment">//</span>
-<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> morphicExamplesHelloRest <span class="hljs-keyword">from</span> <span class="hljs-string">'@morphic-examples/hello-rest'</span>;</code></pre><p>Let&#39;s just borrow a fastify server for this example.</p>
+<span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> morphicExamplesHelloRest <span class="hljs-keyword">from</span> <span class="hljs-string">'@frameless-examples/hello-rest'</span>;</code></pre><p>Let&#39;s just borrow a fastify server for this example.</p>
 				<pre><code>const<span class="hljs-built_in"> instance </span>= fastify({
     logger: <span class="hljs-literal">true</span>
 });</code></pre><p>Now we need to add the routes from all modules to the server.</p>
@@ -305,7 +305,7 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 				<p>The ideas behind &quot;to be manageable&quot; from the tech-oriented definition and of &quot;selective forces&quot; from the biological one seem aligned with
 				the &quot;shortest path&quot; mentality of both nature and the agile movement within the tech industry.</p>
 				<p>Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.</p>
-				<p><a id="org42a3841"></a></p>
+				<p><a id="org78dccec"></a></p>
 				<a href="#todo-mvp-basic-module-systems" id="todo-mvp-basic-module-systems" style="color: inherit; text-decoration: none;">
 					<h2>TODO MVP: Basic module systems</h2>
 				</a>
@@ -345,7 +345,7 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 					<li><p>TODO Client codegen</p>
 					</li>
 				</ul>
-				<p><a id="org7c8ba3c"></a></p>
+				<p><a id="org7ee9c20"></a></p>
 				<a href="#vision-for-v10" id="vision-for-v10" style="color: inherit; text-decoration: none;">
 					<h2>Vision for v1.0</h2>
 				</a>
@@ -360,7 +360,7 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 					<li><p>TODO Deployment codegen</p>
 					</li>
 				</ul>
-				<p><a id="org5006230"></a></p>
+				<p><a id="org53b4bd9"></a></p>
 				<a href="#wishlist" id="wishlist" style="color: inherit; text-decoration: none;">
 					<h1>Wishlist</h1>
 				</a>
@@ -379,34 +379,34 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_examples_hello_rest.html">@morphic-<wbr>examples/hello-<wbr>rest</a>
+						<a href="modules/_frameless_examples_hello_rest.html">@frameless-<wbr>examples/hello-<wbr>rest</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_examples_hello_rpc.html">@morphic-<wbr>examples/hello-<wbr>rpc</a>
+						<a href="modules/_frameless_examples_hello_rpc.html">@frameless-<wbr>examples/hello-<wbr>rpc</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_examples_pack_simple.html">@morphic-<wbr>examples/pack-<wbr>simple</a>
+						<a href="modules/_frameless_examples_pack_simple.html">@frameless-<wbr>examples/pack-<wbr>simple</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_examples_rest_simple.html">@morphic-<wbr>examples/rest-<wbr>simple</a>
+						<a href="modules/_frameless_examples_rest_simple.html">@frameless-<wbr>examples/rest-<wbr>simple</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_examples_rpc_client.html">@morphic-<wbr>examples/rpc-<wbr>client</a>
+						<a href="modules/_frameless_examples_rpc_client.html">@frameless-<wbr>examples/rpc-<wbr>client</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_examples_rpc_simple.html">@morphic-<wbr>examples/rpc-<wbr>simple</a>
+						<a href="modules/_frameless_examples_rpc_simple.html">@frameless-<wbr>examples/rpc-<wbr>simple</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_model.html">@morphic/model</a>
+						<a href="modules/_frameless_model.html">@frameless/model</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_pack.html">@morphic/pack</a>
+						<a href="modules/_frameless_pack.html">@frameless/pack</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_rest.html">@morphic/rest</a>
+						<a href="modules/_frameless_rest.html">@frameless/rest</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="modules/_morphic_rpc.html">@morphic/rpc</a>
+						<a href="modules/_frameless_rpc.html">@frameless/rpc</a>
 					</li>
 				</ul>
 			</nav>

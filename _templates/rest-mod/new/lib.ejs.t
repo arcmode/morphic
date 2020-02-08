@@ -1,8 +1,8 @@
 ---
 to: <%=locals.in%>/<%=name%>/lib/<%=name%>.ts
 ---
-import * as direct from '@morphic-examples/hello-rpc';
-import * as client from '@morphic-examples/rpc-client';
+import * as direct from '@frameless-examples/hello-rpc';
+import * as client from '@frameless-examples/rpc-client';
 
 export const url = '/<%= h.changeCase.kebab(name) %>/:name';
 

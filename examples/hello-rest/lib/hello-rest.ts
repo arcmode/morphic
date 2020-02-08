@@ -1,5 +1,5 @@
-import * as direct from '@morphic-examples/hello-rpc'
-// import * as client from '@morphic-examples/rpc-client';
+import * as direct from '@frameless-examples/hello-rpc'
+// import * as client from '@frameless-examples/rpc-client';
 
 export const url = '/hello-rest/:name'
 export const method = 'GET'

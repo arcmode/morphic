@@ -27,7 +27,7 @@ to: package/package.json
         "debug": "npm run build-debuggable && npm run inspector"
     },
     "dependencies": {
-        "@morphic/rpc": "0.0.0"
+        "@frameless/rpc": "0.0.0"
     },
     "devDependencies": {
         "<%=of%>": "<%=version%>",

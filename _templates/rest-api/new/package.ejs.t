@@ -25,12 +25,12 @@ to: <%=locals.in%>/<%=name%>/package.json
         "dev": "tsc-watch --onSuccess \"node lib/server.gen.js\""
     },
     "morphic-rest-include": [
-        "@morphic-examples/hello-rest"
+        "@frameless-examples/hello-rest"
     ],
     "dependencies": {
         "fastify": "2.10.0",
-        "@morphic-examples/hello-rest": "0.0.0",
-        "@morphic/rest": "0.0.0",
+        "@frameless-examples/hello-rest": "0.0.0",
+        "@frameless/rest": "0.0.0",
         "config": "3.2.5"
     },
     "devDependencies": {

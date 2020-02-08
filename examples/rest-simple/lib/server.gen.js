@@ -11,12 +11,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fastify_1 = __importDefault(require("fastify"));
-const rest_1 = require("@morphic/rest");
+const rest_1 = require("@frameless/rest");
 const config_1 = __importDefault(require("config"));
 //
 // import rest modules
 //
-const morphicExamplesHelloRest = __importStar(require("@morphic-examples/hello-rest"));
+const morphicExamplesHelloRest = __importStar(require("@frameless-examples/hello-rest"));
 const instance = fastify_1.default({
     logger: true
 });

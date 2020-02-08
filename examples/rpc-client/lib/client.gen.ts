@@ -1,5 +1,5 @@
-import { createClient } from '@morphic/rpc';
-import * as source from '@morphic-examples/hello-rpc';
+import { createClient } from '@frameless/rpc';
+import * as source from '@frameless-examples/hello-rpc';
 
 const rpc: typeof source = createClient(source, 'http://rpc-morphic-example-hello-rpc');
 
