@@ -20,6 +20,9 @@ const promiseHandler = async (promise, reply, server) => {
 exports.createFastifyPlugin = (mod, cfg) => fastify_plugin_1.default((server, options, done) => {
     const config = {};
     const defaultCfg = mod.config || {};
+    // if a config key is defined via config package
+    // then we read configurations via the config package
+    // else by directly looking into environment variables
     for (const key in defaultCfg) {
         const val = cfg.has(key) ?
             cfg.get(key) :

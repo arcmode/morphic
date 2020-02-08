@@ -88,13 +88,16 @@ export const createFastifyPlugin = <
     B extends DefaultBody,
     C extends string,
     R extends RestResponse,
-    >(mod: RestMod<Q, P, H, B, C, R>, cfg: IConfig) => fp((
+>(mod: RestMod<Q, P, H, B, C, R>, cfg: IConfig) => fp((
     server: FastifyInstance,
     options: PluginOptions,
     done: nextCallback
 ) => {
     const config = {} as Record<C, string>
     const defaultCfg = mod.config || {} as typeof config
+    // if a config key is defined via config package
+    // then we read configurations via the config package
+    // else by directly looking into environment variables
     for (const key in defaultCfg) {
         const val = cfg.has(key) ?
             cfg.get(key) :
