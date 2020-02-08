@@ -1,26 +1,22 @@
-#+TITLE: Be frameless
+#+TITLE: @frameless
 #+AUTHOR: David Rojas
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
-#+OPTIONS: toc:nil num:2 H:3 ^:nil pri:t title:nil
+#+OPTIONS: toc:nil num:2 H:3 ^:nil pri:t
 #+EXPORT_FILE_NAME: index
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://drojas.github.io/org-html-dracula/styles/org.css">
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles/org.css">
 
-#+BEGIN_export html
-<h1 class="title">
-<span class="accent_">></span> add module --type rest<span class="inverse">&nbsp;</span>
-</h1>
-#+END_export
-
 #+BEGIN_abstract
 Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
-granted as scaffolding or abstracted away as a mixture of library code and configuration are cheap to buy but can come as very
-expensive to replace. There is accidental complexity in most if not all boilerplate code around any /main/ function or any source
-code module that depends on a library or framework. This document describes a "frameless" pattern for building modular systems
-that applies separation of concerns between modular and framework concerns. The pattern introduces module/platform contracts for modules
-with zero boilerplate and zero dependency on platform API. The author submits this pattern facilitates evolution and co-evolution of product
-and platform features within the dynamics of the agile methodologies
+abstracted away as a mixture of scaffolding, library code and configuration are cheap to buy but can come as very
+expensive to replace later on. There is accidental complexity in most if not all boilerplate code around any /main/ function or any source
+code module that depends on a library or framework. This document describes a generalization of the /serverless/ pattern and describes it as
+the /frameless/ pattern. The generalization is driven by the application of /separation of concerns/ between module and system domains.
+The PoC project in TypeScript introduces a /RESTful/ module/system contracts with zero boilerplate and zero dependency on frameworks in the
+modules source code.
+At the end, it is discussed how this pattern can facilitate evolution and co-evolution of product and platform streams of work within the dynamics
+of the agile organization model.
 #+END_abstract
 
 #+TOC: headlines 2
