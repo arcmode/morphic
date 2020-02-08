@@ -144,7 +144,7 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
   }
 #+END_SRC
 
-   Then, the /minimum viable interface/ of a Rest Module can be defined as
+   Then, a /minimum viable interface/ of a Rest Module can be defined as
 #+BEGIN_SRC typescript
   type RestMod<
       Query,
