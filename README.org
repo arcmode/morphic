@@ -1,4 +1,4 @@
-#+TITLE: @frameless
+#+TITLE: frameless
 #+AUTHOR: David Rojas
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
