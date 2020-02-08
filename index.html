@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-07 Fri 20:26 -->
+<!-- 2020-02-07 Fri 21:24 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Be frameless</title>
@@ -246,7 +246,7 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">
 <span class="accent_">></span> add module --type rest<span class="inverse">&nbsp;</span>
-</h2>
+</h1>
 
 <div class="abstract">
 <p>
@@ -265,32 +265,32 @@ and platform features within the dynamics of the agile methodologies
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgfb845a2">1. TL;DR;</a>
+<li><a href="#orgb55991e">1. TL;DR;</a>
 <ul>
-<li><a href="#org4ba9b8c">1.1. Frameless signature</a></li>
+<li><a href="#orgb0572fc">1.1. Frameless signature</a></li>
 </ul>
 </li>
-<li><a href="#orgc2b3dc4">2. Why modeling modularity matters</a>
+<li><a href="#orgb6c0d32">2. Why modeling modularity matters</a>
 <ul>
-<li><a href="#org861213a">2.1. Separation of concerns</a></li>
-<li><a href="#orga4a02e1">2.2. Evolvability</a></li>
-<li><a href="#orgb941c87">2.3. Consistency</a></li>
-<li><a href="#org38943eb">2.4. Cycle time</a></li>
+<li><a href="#org2002c07">2.1. Separation of concerns</a></li>
+<li><a href="#org496c3ff">2.2. Evolvability</a></li>
+<li><a href="#org41f57f9">2.3. Consistency</a></li>
+<li><a href="#orga928143">2.4. Cycle time</a></li>
 </ul>
 </li>
-<li><a href="#org1b591c8">3. How</a>
+<li><a href="#org62222c8">3. How</a>
 <ul>
-<li><a href="#orgaf8733e">3.1. <span class="todo TODO">TODO</span> MVP: Basic module systems</a></li>
-<li><a href="#org395ffb7">3.2. Vision for v1.0</a></li>
+<li><a href="#org40bbf2f">3.1. <span class="todo TODO">TODO</span> MVP: Basic module systems</a></li>
+<li><a href="#org5cca267">3.2. Vision for v1.0</a></li>
 </ul>
 </li>
-<li><a href="#orga837f81">4. Wishlist</a></li>
+<li><a href="#org3337eae">4. Wishlist</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgfb845a2" class="outline-2">
-<h2 id="orgfb845a2"><span class="section-number-2">1</span> TL;DR;</h2>
+<div id="outline-container-orgb55991e" class="outline-2">
+<h2 id="orgb55991e"><span class="section-number-2">1</span> TL;DR;</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 A frameless pattern is the result of applying separation of concerns between modular functionality and boilerplate code.
@@ -298,8 +298,8 @@ It replaces API dependency code and any boilerplate by leveraging contracts that
 production scripts to test, run, debug, deploy, package, build or any arbitrary task.
 </p>
 </div>
-<div id="outline-container-org4ba9b8c" class="outline-3">
-<h3 id="org4ba9b8c"><span class="section-number-3">1.1</span> Frameless signature</h3>
+<div id="outline-container-orgb0572fc" class="outline-3">
+<h3 id="orgb0572fc"><span class="section-number-3">1.1</span> Frameless signature</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Zero boilerplate</li>
@@ -309,12 +309,12 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
 </div>
 </div>
 
-<div id="outline-container-orgc2b3dc4" class="outline-2">
-<h2 id="orgc2b3dc4"><span class="section-number-2">2</span> Why modeling modularity matters</h2>
+<div id="outline-container-orgb6c0d32" class="outline-2">
+<h2 id="orgb6c0d32"><span class="section-number-2">2</span> Why modeling modularity matters</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org861213a" class="outline-3">
-<h3 id="org861213a"><span class="section-number-3">2.1</span> Separation of concerns</h3>
+<div id="outline-container-org2002c07" class="outline-3">
+<h3 id="org2002c07"><span class="section-number-3">2.1</span> Separation of concerns</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
@@ -325,8 +325,8 @@ By defining module models a separation between module concerns and system concer
 </div>
 </div>
 
-<div id="outline-container-orga4a02e1" class="outline-3">
-<h3 id="orga4a02e1"><span class="section-number-3">2.2</span> Evolvability</h3>
+<div id="outline-container-org496c3ff" class="outline-3">
+<h3 id="org496c3ff"><span class="section-number-3">2.2</span> Evolvability</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 In modular software, any code-editing required to <i>migrate</i> a given module into a different <i>framework</i> can be considered evitable
@@ -338,8 +338,8 @@ as reference for both sides.
 </div>
 </div>
 
-<div id="outline-container-orgb941c87" class="outline-3">
-<h3 id="orgb941c87"><span class="section-number-3">2.3</span> Consistency</h3>
+<div id="outline-container-org41f57f9" class="outline-3">
+<h3 id="org41f57f9"><span class="section-number-3">2.3</span> Consistency</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
@@ -350,8 +350,8 @@ yet defined within the "boilerplate-free" area of library and framework code.
 </div>
 </div>
 
-<div id="outline-container-org38943eb" class="outline-3">
-<h3 id="org38943eb"><span class="section-number-3">2.4</span> Cycle time</h3>
+<div id="outline-container-orga928143" class="outline-3">
+<h3 id="orga928143"><span class="section-number-3">2.4</span> Cycle time</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
@@ -362,13 +362,13 @@ If adopting new technology involves touching the internal modules of a project t
 </div>
 </div>
 
-<div id="outline-container-org1b591c8" class="outline-2">
-<h2 id="org1b591c8"><span class="section-number-2">3</span> How</h2>
+<div id="outline-container-org62222c8" class="outline-2">
+<h2 id="org62222c8"><span class="section-number-2">3</span> How</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-org1476633" class="outline-4">
-<h4 id="org1476633">Modularity Model</h4>
-<div class="outline-text-4" id="text-org1476633">
+<div id="outline-container-org0ea2a75" class="outline-4">
+<h4 id="org0ea2a75">Modularity Model</h4>
+<div class="outline-text-4" id="text-org0ea2a75">
 <p>
 Let's pretend we are going to start a new project. Instead of going through the usual ritual of:
 </p>
@@ -395,32 +395,24 @@ Let's imagine for example a common kind of project for "web" projects: Rest API 
 </p>
 
 <p>
-Before working on boilerplate code yet, let's define our <i>Rest module</i> model in TypeScript trying to achieve the <i>minimum viable interface</i>
+Let's define our <i>Rest module</i> model in TypeScript trying to achieve the <i>minimum viable interface</i>
 required to know what the module <i>does</i> in the context of the specific project (Rest API).
+</p>
+
+<p>
+A Rest module must define a url and method.
 </p>
 <div class="org-src-container">
 <pre class="src src-typescript"><span style="color: #ff79c6;">export</span> <span style="color: #ff79c6;">const</span> <span style="color: #f8f8f2;">url</span> = <span style="color: #f1fa8c;">'/hello-rest/:name'</span>
 <span style="color: #ff79c6;">export</span> <span style="color: #ff79c6;">const</span> <span style="color: #f8f8f2;">method</span> = <span style="color: #f1fa8c;">'GET'</span>
+</pre>
+</div>
 
-<span style="color: #ff79c6;">type</span> <span style="color: #61bfff;">Request</span> = <span style="color: #61bfff;">{</span>
-    params: <span style="color: #ff79c6;">{</span>
-        name: <span style="color: #ff79c6;">string</span>
-    <span style="color: #ff79c6;">}</span>
-<span style="color: #61bfff;">}</span>
-
-<span style="color: #ff79c6;">type</span> <span style="color: #61bfff;">Result</span> = <span style="color: #61bfff;">{</span>
-    status: <span style="color: #ff5555; font-weight: bold;">200</span>,
-    body: <span style="color: #ff79c6;">{</span>
-        greetings: <span style="color: #ff79c6;">string</span>
-    <span style="color: #ff79c6;">}</span>
-<span style="color: #61bfff;">}</span> | <span style="color: #61bfff;">{</span>
-    status: <span style="color: #ff5555; font-weight: bold;">500</span>,
-    body: <span style="color: #ff79c6;">{</span>
-        errors: <span style="color: #ff79c6;">string</span><span style="color: #50fa7b;">[]</span>
-    <span style="color: #ff79c6;">}</span>
-<span style="color: #61bfff;">}</span>
-
-<span style="color: #ff79c6;">export</span> <span style="color: #ff79c6;">const</span> <span style="color: #f8f8f2;">schema</span> = <span style="color: #61bfff;">{</span>
+<p>
+Also, it must define a <i>schema</i>.
+</p>
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #ff79c6;">export</span> <span style="color: #ff79c6;">const</span> <span style="color: #f8f8f2;">schema</span> = <span style="color: #61bfff;">{</span>
     response: <span style="color: #ff79c6;">{</span>
         <span style="color: #ff5555; font-weight: bold;">200</span>: <span style="color: #50fa7b;">{</span>
             <span style="color: #ff79c6;">type</span>: <span style="color: #f1fa8c;">'object'</span>,
@@ -443,8 +435,15 @@ required to know what the module <i>does</i> in the context of the specific proj
         <span style="color: #50fa7b;">}</span>
     <span style="color: #ff79c6;">}</span>
 <span style="color: #61bfff;">}</span>
+</pre>
+</div>
 
-<span style="color: #ff79c6;">export</span> <span style="color: #ff79c6;">const</span> <span style="color: #f8f8f2;">handler</span> = <span style="color: #ff79c6;">async</span> <span style="color: #61bfff;">(</span>req: Request<span style="color: #61bfff;">)</span>: Promise&lt;<span style="color: #61bfff;">Result</span>&gt; <span style="color: #ff79c6;">=&gt;</span> <span style="color: #61bfff;">{</span>
+<p>
+And finally a <i>handler</i> that is to be invoked with requests and expected to return responses.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #ff79c6;">export</span> <span style="color: #ff79c6;">const</span> <span style="color: #f8f8f2;">handler</span> = <span style="color: #ff79c6;">async</span> <span style="color: #61bfff;">(</span>req: Request<span style="color: #61bfff;">)</span>: Promise&lt;<span style="color: #61bfff;">Result</span>&gt; <span style="color: #ff79c6;">=&gt;</span> <span style="color: #61bfff;">{</span>
     <span style="color: #ff79c6;">try</span> <span style="color: #ff79c6;">{</span>
         <span style="color: #ff79c6;">return</span> <span style="color: #50fa7b;">{</span>
             status: <span style="color: #ff5555; font-weight: bold;">200</span>,
@@ -465,7 +464,34 @@ required to know what the module <i>does</i> in the context of the specific proj
 </div>
 
 <p>
-Then, a <i>minimum viable interface</i> of a Rest Module can be defined as
+Note how the auxiliary types <i>Request</i> and <i>Response</i> are not exported or imported which means
+zero source-code dependency with platform API's. The request/response model follows the HTTP
+protocol. HTTP is a stable and standard family of specs and is in the guts of every Rest service.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #ff79c6;">type</span> <span style="color: #61bfff;">Request</span> = <span style="color: #61bfff;">{</span>
+    params: <span style="color: #ff79c6;">{</span>
+        name: <span style="color: #ff79c6;">string</span>
+    <span style="color: #ff79c6;">}</span>
+<span style="color: #61bfff;">}</span>
+
+<span style="color: #ff79c6;">type</span> <span style="color: #61bfff;">Result</span> = <span style="color: #61bfff;">{</span>
+    status: <span style="color: #ff5555; font-weight: bold;">200</span>,
+    body: <span style="color: #ff79c6;">{</span>
+        greetings: <span style="color: #ff79c6;">string</span>
+    <span style="color: #ff79c6;">}</span>
+<span style="color: #61bfff;">}</span> | <span style="color: #61bfff;">{</span>
+    status: <span style="color: #ff5555; font-weight: bold;">500</span>,
+    body: <span style="color: #ff79c6;">{</span>
+        errors: <span style="color: #ff79c6;">string</span><span style="color: #50fa7b;">[]</span>
+    <span style="color: #ff79c6;">}</span>
+<span style="color: #61bfff;">}</span>
+</pre>
+</div>
+
+<p>
+Then, the <i>minimum viable interface</i> for our newly born Rest module can be defined as
 </p>
 <div class="org-src-container">
 <pre class="src src-typescript"><span style="color: #ff79c6;">type</span> <span style="color: #61bfff;">RestMod</span>&lt;
@@ -475,16 +501,16 @@ Then, a <i>minimum viable interface</i> of a Rest Module can be defined as
     Body,
     Config <span style="color: #ff79c6;">extends</span> <span style="color: #ff79c6;">string</span>,
     Result,
-    &gt; = <span style="color: #61bfff;">{</span>
-        url: <span style="color: #ff79c6;">string</span>,
-        method: <span style="color: #f1fa8c;">'GET'</span> | <span style="color: #f1fa8c;">'POST'</span> | <span style="color: #f1fa8c;">'PUT'</span> | <span style="color: #f1fa8c;">'PATCH'</span> | <span style="color: #f1fa8c;">'DELETE'</span>,
-        schema: RouteSchema&lt;<span style="color: #61bfff;">object</span>&gt;,
-        config?: Record&lt;<span style="color: #61bfff;">Config</span>, <span style="color: #ff79c6;">string</span> | <span style="color: #61bfff;">undefined</span>&gt;,
-        handler: <span style="color: #ff79c6;">(</span>
-            req: RestRequest&lt;<span style="color: #61bfff;">Query</span>, <span style="color: #61bfff;">Params</span>, <span style="color: #61bfff;">Headers</span>, <span style="color: #61bfff;">Body</span>&gt;,
-            cfg: Record&lt;<span style="color: #61bfff;">Config</span>, <span style="color: #ff79c6;">string</span>&gt;
-        <span style="color: #ff79c6;">)</span> <span style="color: #ff79c6;">=&gt;</span> Promise&lt;<span style="color: #61bfff;">Result</span>&gt;
-    <span style="color: #61bfff;">}</span>;
+&gt; = <span style="color: #61bfff;">{</span>
+    url: <span style="color: #ff79c6;">string</span>,
+    method: <span style="color: #f1fa8c;">'GET'</span> | <span style="color: #f1fa8c;">'POST'</span> | <span style="color: #f1fa8c;">'PUT'</span> | <span style="color: #f1fa8c;">'PATCH'</span> | <span style="color: #f1fa8c;">'DELETE'</span>,
+    schema: RouteSchema&lt;<span style="color: #61bfff;">object</span>&gt;,
+    config?: Record&lt;<span style="color: #61bfff;">Config</span>, <span style="color: #ff79c6;">string</span> | <span style="color: #61bfff;">undefined</span>&gt;,
+    handler: <span style="color: #ff79c6;">(</span>
+        req: RestRequest&lt;<span style="color: #61bfff;">Query</span>, <span style="color: #61bfff;">Params</span>, <span style="color: #61bfff;">Headers</span>, <span style="color: #61bfff;">Body</span>&gt;,
+        cfg: Record&lt;<span style="color: #61bfff;">Config</span>, <span style="color: #ff79c6;">string</span>&gt;
+    <span style="color: #ff79c6;">)</span> <span style="color: #ff79c6;">=&gt;</span> Promise&lt;<span style="color: #61bfff;">Result</span>&gt;
+<span style="color: #61bfff;">}</span>;
 </pre>
 </div>
 
@@ -493,22 +519,51 @@ The complete implementation can be found in the following git <a href="https://g
 </p>
 
 <p>
-Now let's solve the boilerplate from the requirements we know given the module type definition
+Now let's solve the boilerplate from the requirements we know given the module type definition. The first
+chunk has to be about importing dependencies. In this case the implementation is based on a function that
+takes a Rest module and returns a <i>fastify</i> plugin and the corresponding boilerplate code required to put them
+to work.
 </p>
+
 <div class="org-src-container">
 <pre class="src src-typescript"><span style="color: #ff79c6;">import</span> fastify <span style="color: #ff79c6;">from</span> <span style="color: #f1fa8c;">'fastify'</span>;
 <span style="color: #ff79c6;">import</span> <span style="color: #61bfff;">{</span> createFastifyPlugin <span style="color: #61bfff;">}</span> <span style="color: #ff79c6;">from</span> <span style="color: #f1fa8c;">'@morphic/rest'</span>;
 <span style="color: #ff79c6;">import</span> config <span style="color: #ff79c6;">from</span> <span style="color: #f1fa8c;">'config'</span>;
-<span style="color: #6272a4;">//</span>
+
+</pre>
+</div>
+
+<p>
+After the framework and libraries are imported let's import the actual Rest modules (one for this example)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #6272a4;">//</span>
 <span style="color: #6272a4;">// </span><span style="color: #6272a4;">import rest modules</span>
 <span style="color: #6272a4;">//</span>
 <span style="color: #ff79c6;">import</span> * <span style="color: #ff79c6;">as</span> morphicExamplesHelloRest <span style="color: #ff79c6;">from</span> <span style="color: #f1fa8c;">'@morphic-examples/hello-rest'</span>;
+</pre>
+</div>
 
+<p>
+Let's just borrow a fastify server for this example.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-typescript">
 <span style="color: #ff79c6;">const</span> <span style="color: #f8f8f2;">instance</span> = <span style="color: #50fa7b;">fastify</span><span style="color: #61bfff;">(</span><span style="color: #ff79c6;">{</span>
     logger: <span style="color: #ff79c6;">true</span>
 <span style="color: #ff79c6;">}</span><span style="color: #61bfff;">)</span>;
 
-<span style="color: #6272a4;">//</span>
+</pre>
+</div>
+
+<p>
+Now we need to add the routes from all modules to the server.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #6272a4;">//</span>
 <span style="color: #6272a4;">// </span><span style="color: #6272a4;">add base plugins for initialization</span>
 <span style="color: #6272a4;">//</span>
 
@@ -516,8 +571,15 @@ Now let's solve the boilerplate from the requirements we know given the module t
 <span style="color: #6272a4;">// </span><span style="color: #6272a4;">add rest modules to the service</span>
 <span style="color: #6272a4;">//</span>
 instance.<span style="color: #50fa7b;">register</span><span style="color: #61bfff;">(</span><span style="color: #50fa7b;">createFastifyPlugin</span><span style="color: #ff79c6;">(</span>morphicExamplesHelloRest, config<span style="color: #ff79c6;">)</span><span style="color: #61bfff;">)</span>;
+</pre>
+</div>
 
-<span style="color: #ff79c6;">const</span> <span style="color: #f8f8f2;">PORT</span> = config.<span style="color: #50fa7b;">has</span><span style="color: #61bfff;">(</span><span style="color: #f1fa8c;">'PORT'</span><span style="color: #61bfff;">)</span>
+<p>
+And let's finalize the boilerplate with the usual port configuration and server initialization.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-typescript"><span style="color: #ff79c6;">const</span> <span style="color: #f8f8f2;">PORT</span> = config.<span style="color: #50fa7b;">has</span><span style="color: #61bfff;">(</span><span style="color: #f1fa8c;">'PORT'</span><span style="color: #61bfff;">)</span>
     ? <span style="color: #50fa7b;">parseInt</span><span style="color: #61bfff;">(</span>config.<span style="color: #ff79c6;">get</span><span style="color: #ff79c6;">(</span><span style="color: #f1fa8c;">'PORT'</span><span style="color: #ff79c6;">)</span>, <span style="color: #ff5555; font-weight: bold;">10</span><span style="color: #61bfff;">)</span>
     : <span style="color: #ff5555; font-weight: bold;">0</span>;
 
@@ -527,7 +589,6 @@ instance.<span style="color: #50fa7b;">listen</span><span style="color: #61bfff;
     <span style="color: #50fa7b;">}</span>
     instance.log.<span style="color: #50fa7b;">info</span><span style="color: #50fa7b;">(</span><span style="color: #f1fa8c;">`server listening on ${address}`</span><span style="color: #50fa7b;">)</span>;
 <span style="color: #ff79c6;">}</span><span style="color: #61bfff;">)</span>;
-
 </pre>
 </div>
 
@@ -580,69 +641,69 @@ Modular development pairs naturally with agile or any other paced or sprint orie
 </div>
 </div>
 
-<div id="outline-container-orgaf8733e" class="outline-3">
-<h3 id="orgaf8733e"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> MVP: Basic module systems</h3>
+<div id="outline-container-org40bbf2f" class="outline-3">
+<h3 id="org40bbf2f"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> MVP: Basic module systems</h3>
 <div class="outline-text-3" id="text-3-1">
 </div>
 <ul class="org-ul">
-<li><a id="org70bdf03"></a><span class="done DONE">DONE</span> RPC<br />
-<div class="outline-text-6" id="text-org70bdf03">
+<li><a id="org5e6f94a"></a><span class="done DONE">DONE</span> RPC<br />
+<div class="outline-text-6" id="text-org5e6f94a">
 </div>
 <ul class="org-ul">
-<li><a id="org0237c24"></a><span class="done DONE">DONE</span> hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc<br />
-<div class="outline-text-7" id="text-org0237c24">
+<li><a id="org320c557"></a><span class="done DONE">DONE</span> hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc<br />
+<div class="outline-text-7" id="text-org320c557">
 </div>
 </li>
-<li><a id="orgd95375a"></a><span class="done DONE">DONE</span> hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple<br />
-<div class="outline-text-7" id="text-orgd95375a">
+<li><a id="org0fe7c4d"></a><span class="done DONE">DONE</span> hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple<br />
+<div class="outline-text-7" id="text-org0fe7c4d">
 </div>
 </li>
 </ul>
 </li>
-<li><a id="org929bc5b"></a><span class="done DONE">DONE</span> REST<br />
-<div class="outline-text-6" id="text-org929bc5b">
+<li><a id="orgebe5578"></a><span class="done DONE">DONE</span> REST<br />
+<div class="outline-text-6" id="text-orgebe5578">
 </div>
 <ul class="org-ul">
-<li><a id="org3b87930"></a><span class="done DONE">DONE</span> hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest<br />
-<div class="outline-text-7" id="text-org3b87930">
+<li><a id="org5252fec"></a><span class="done DONE">DONE</span> hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest<br />
+<div class="outline-text-7" id="text-org5252fec">
 </div>
 </li>
-<li><a id="org3eb522b"></a><span class="done DONE">DONE</span> hygen rest-api new &#x2013;in examples &#x2013;name rest-simple<br />
-<div class="outline-text-7" id="text-org3eb522b">
+<li><a id="org1f4d2bf"></a><span class="done DONE">DONE</span> hygen rest-api new &#x2013;in examples &#x2013;name rest-simple<br />
+<div class="outline-text-7" id="text-org1f4d2bf">
 </div>
 </li>
 </ul>
 </li>
-<li><a id="org31f23fc"></a><span class="todo TODO">TODO</span> Job<br /></li>
-<li><a id="org26af26b"></a><span class="todo TODO">TODO</span> Cronjob<br /></li>
-<li><a id="org5ebe0b2"></a><span class="todo TODO">TODO</span> Worker (Queue consumer)<br /></li>
-<li><a id="org3ea2b3c"></a><span class="todo TODO">TODO</span> Events producer<br /></li>
-<li><a id="org44c9adb"></a><span class="todo TODO">TODO</span> Events consumer<br /></li>
-<li><a id="org43fce30"></a><span class="todo TODO">TODO</span> Database app example (MongoDB)<br /></li>
-<li><a id="orgea9cf5c"></a><span class="todo TODO">TODO</span> Instrumentation<br /></li>
-<li><a id="org59aed5f"></a><span class="todo TODO">TODO</span> Standarize: Bring your own framework<br /></li>
-<li><a id="orgc01d8e1"></a><span class="todo TODO">TODO</span> Client codegen<br /></li>
+<li><a id="org1c7088f"></a><span class="todo TODO">TODO</span> Job<br /></li>
+<li><a id="org01c663d"></a><span class="todo TODO">TODO</span> Cronjob<br /></li>
+<li><a id="org9f9715d"></a><span class="todo TODO">TODO</span> Worker (Queue consumer)<br /></li>
+<li><a id="orgddc1450"></a><span class="todo TODO">TODO</span> Events producer<br /></li>
+<li><a id="org1977fb5"></a><span class="todo TODO">TODO</span> Events consumer<br /></li>
+<li><a id="org7a7832e"></a><span class="todo TODO">TODO</span> Database app example (MongoDB)<br /></li>
+<li><a id="org1192c4a"></a><span class="todo TODO">TODO</span> Instrumentation<br /></li>
+<li><a id="orgea0722b"></a><span class="todo TODO">TODO</span> Standarize: Bring your own framework<br /></li>
+<li><a id="org4fffbb7"></a><span class="todo TODO">TODO</span> Client codegen<br /></li>
 </ul>
 </div>
 
-<div id="outline-container-org395ffb7" class="outline-3">
-<h3 id="org395ffb7"><span class="section-number-3">3.2</span> Vision for v1.0</h3>
+<div id="outline-container-org5cca267" class="outline-3">
+<h3 id="org5cca267"><span class="section-number-3">3.2</span> Vision for v1.0</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 More systems and module models
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="orgdb4ef9c"></a><span class="todo TODO">TODO</span> Frontend components<br /></li>
-<li><a id="orge65166e"></a><span class="todo TODO">TODO</span> ETL processes<br /></li>
-<li><a id="org0fc1c1a"></a><span class="todo TODO">TODO</span> Stream processing<br /></li>
-<li><a id="orgb0c8540"></a><span class="todo TODO">TODO</span> Deployment codegen<br /></li>
+<li><a id="orga2b3557"></a><span class="todo TODO">TODO</span> Frontend components<br /></li>
+<li><a id="org3dc4f23"></a><span class="todo TODO">TODO</span> ETL processes<br /></li>
+<li><a id="org1e11a5d"></a><span class="todo TODO">TODO</span> Stream processing<br /></li>
+<li><a id="orgfd35800"></a><span class="todo TODO">TODO</span> Deployment codegen<br /></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orga837f81" class="outline-2">
-<h2 id="orga837f81"><span class="section-number-2">4</span> Wishlist</h2>
+<div id="outline-container-org3337eae" class="outline-2">
+<h2 id="org3337eae"><span class="section-number-2">4</span> Wishlist</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>HATEOAS</li>
@@ -655,7 +716,7 @@ More systems and module models
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: David Rojas</p>
-<p class="date">Created: 2020-02-07 Fri 20:26</p>
+<p class="date">Created: 2020-02-07 Fri 21:24</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
