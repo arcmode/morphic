@@ -79,32 +79,32 @@
 					<h1>Table of Contents</h1>
 				</a>
 				<ol>
-					<li><a href="#org77c6d1b">TL;DR;</a><ol>
-							<li><a href="#org318be0f">Frameless signature</a></li>
+					<li><a href="#org806f420">TL;DR;</a><ol>
+							<li><a href="#org7a42362">Frameless signature</a></li>
 						</ol>
 					</li>
-					<li><a href="#orgc15e183">Why modeling modularity matters</a><ol>
-							<li><a href="#org14029af">Separation of concerns</a></li>
-							<li><a href="#org0971fed">Evolvability</a></li>
-							<li><a href="#org526e3f8">Consistency</a></li>
-							<li><a href="#orge6a990e">Cycle time</a></li>
+					<li><a href="#org16fa3bd">Why modeling modularity matters</a><ol>
+							<li><a href="#orgdbf04c6">Separation of concerns</a></li>
+							<li><a href="#org0e0086a">Evolvability</a></li>
+							<li><a href="#orgcfcb091">Consistency</a></li>
+							<li><a href="#org5a4a37f">Cycle time</a></li>
 						</ol>
 					</li>
-					<li><a href="#org65855eb">How</a><ol>
-							<li><a href="#org6ed3d60">MVP: Basic module systems</a></li>
-							<li><a href="#orga8adb26">Vision for v1.0</a></li>
+					<li><a href="#orge6d4aaa">How</a><ol>
+							<li><a href="#org2e95b72">MVP: Basic module systems</a></li>
+							<li><a href="#org7b3c7b7">Vision for v1.0</a></li>
 						</ol>
 					</li>
-					<li><a href="#orgf4a40fa">Wishlist</a></li>
+					<li><a href="#org00bfc48">Wishlist</a></li>
 				</ol>
-				<p><a id="org77c6d1b"></a></p>
+				<p><a id="org806f420"></a></p>
 				<a href="#tldr" id="tldr" style="color: inherit; text-decoration: none;">
 					<h1>TL;DR;</h1>
 				</a>
 				<p>A frameless pattern is the result of applying separation of concerns between modular functionality and boilerplate code.
 					It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
 				production scripts to test, run, debug, deploy, package, build or any arbitrary task.</p>
-				<p><a id="org318be0f"></a></p>
+				<p><a id="org7a42362"></a></p>
 				<a href="#frameless-signature" id="frameless-signature" style="color: inherit; text-decoration: none;">
 					<h2>Frameless signature</h2>
 				</a>
@@ -113,11 +113,11 @@
 					<li>Zero module dependency on platform API</li>
 				</ul>
 				<p>The frameless pattern is a generalization of the <em>serverless</em> or <em>function-as-a-service</em> pattern.</p>
-				<p><a id="orgc15e183"></a></p>
+				<p><a id="org16fa3bd"></a></p>
 				<a href="#why-modeling-modularity-matters" id="why-modeling-modularity-matters" style="color: inherit; text-decoration: none;">
 					<h1>Why modeling modularity matters</h1>
 				</a>
-				<p><a id="org14029af"></a></p>
+				<p><a id="orgdbf04c6"></a></p>
 				<a href="#separation-of-concerns" id="separation-of-concerns" style="color: inherit; text-decoration: none;">
 					<h2>Separation of concerns</h2>
 				</a>
@@ -125,7 +125,7 @@
 					Also, most projects work on top of a given platform, <em>composed</em> by the set of languages, frameworks and libraries that together provide at least
 					one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
 				By defining module models a separation between module concerns and system concerns is enforced by design.</p>
-				<p><a id="org0971fed"></a></p>
+				<p><a id="org0e0086a"></a></p>
 				<a href="#evolvability" id="evolvability" style="color: inherit; text-decoration: none;">
 					<h2>Evolvability</h2>
 				</a>
@@ -134,7 +134,7 @@
 					Having a module model decouples product features from platform (see previous point about separation of concerns and modularity). Being able to
 					work on platform features without blocking product stories is highly desirable. Collaboration in parallel is facilitated by the module contract serving
 				as reference for both sides.</p>
-				<p><a id="org526e3f8"></a></p>
+				<p><a id="orgcfcb091"></a></p>
 				<a href="#consistency" id="consistency" style="color: inherit; text-decoration: none;">
 					<h2>Consistency</h2>
 				</a>
@@ -142,14 +142,14 @@
 					of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
 					boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
 				yet defined within the &quot;boilerplate-free&quot; area of library and framework code.</p>
-				<p><a id="orge6a990e"></a></p>
+				<p><a id="org5a4a37f"></a></p>
 				<a href="#cycle-time" id="cycle-time" style="color: inherit; text-decoration: none;">
 					<h2>Cycle time</h2>
 				</a>
 				<p>Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
 					makes the work in solutions space more predictable. Also, a minimal contract reduces the amount of glue-code which makes modules leaner.
 				If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.</p>
-				<p><a id="org65855eb"></a></p>
+				<p><a id="orge6d4aaa"></a></p>
 				<a href="#how" id="how" style="color: inherit; text-decoration: none;">
 					<h1>How</h1>
 				</a>
@@ -304,7 +304,7 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 				<p>The ideas behind &quot;to be manageable&quot; from the tech-oriented definition and of &quot;selective forces&quot; from the biological one seem aligned with
 				the &quot;shortest path&quot; mentality of both nature and the agile movement within the tech industry.</p>
 				<p>Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.</p>
-				<p><a id="org6ed3d60"></a></p>
+				<p><a id="org2e95b72"></a></p>
 				<a href="#todo-mvp-basic-module-systems" id="todo-mvp-basic-module-systems" style="color: inherit; text-decoration: none;">
 					<h2>TODO MVP: Basic module systems</h2>
 				</a>
@@ -344,7 +344,7 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 					<li><p>TODO Client codegen</p>
 					</li>
 				</ul>
-				<p><a id="orga8adb26"></a></p>
+				<p><a id="org7b3c7b7"></a></p>
 				<a href="#vision-for-v10" id="vision-for-v10" style="color: inherit; text-decoration: none;">
 					<h2>Vision for v1.0</h2>
 				</a>
@@ -359,7 +359,7 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 					<li><p>TODO Deployment codegen</p>
 					</li>
 				</ul>
-				<p><a id="orgf4a40fa"></a></p>
+				<p><a id="org00bfc48"></a></p>
 				<a href="#wishlist" id="wishlist" style="color: inherit; text-decoration: none;">
 					<h1>Wishlist</h1>
 				</a>
