@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2020-02-07 Fri 19:42 -->
+<!-- 2020-02-07 Fri 20:18 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Be frameless</title>
@@ -245,20 +245,18 @@ for the JavaScript code in this tag.
 <body>
 <div id="content">
 <h1 class="title">
-  <span class="accent">></span> add module --type rest<span class="inverse">&nbsp;</span>
+<span class="accent_">></span> add module --type rest<span class="inverse">&nbsp;</span>
 </h2>
 
 <div class="abstract">
 <p>
-Boilerplate code is an underrated problem: the chunks of non-reusable code and other necessary evils that are usually
-granted as scaffolding or abstracted away as a mixture of library code and configuration are cheap to buy but come as very
-expensive to replace. There is accidental complexity in most if not all boilerplate code around any <i>main</i> function or any module
-that depends on a library or framework. Therefore, when working with multiple <i>main</i> functions (specially microservices, or
-distributed systems) and multiple modules this space for boilerplate can allow some problems that then scale with the number of
-<i>mains</i> at play and the total number of modules including code repetition and long cycle times. This document proposes a
-"frameless" design pattern for building modular systems without boilerplate code and allow modules to be developed without having
-any source-code dependency on the framework/library API and facilitates the co-evolution of business domain features and platform
-features in alignment with the dynamics of the agile methodologies
+Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
+granted as scaffolding or abstracted away as a mixture of library code and configuration are cheap to buy but can come as very
+expensive to replace. There is accidental complexity in most if not all boilerplate code around any <i>main</i> function or any source
+code module that depends on a library or framework. This document describes a "frameless" pattern for building modular systems
+that applies separation of concerns between modular and framework concerns. The pattern introduces module/platform contracts for modules
+with zero boilerplate and zero dependency on platform API. The author submits this pattern facilitates evolution and co-evolution of product
+and platform features within the dynamics of the agile methodologies
 </p>
 
 </div>
@@ -267,42 +265,56 @@ features in alignment with the dynamics of the agile methodologies
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org2a89c85">1. TL;DR;</a></li>
-<li><a href="#org2b0294f">2. Why modeling modularity matters</a>
+<li><a href="#org68c9d9d">1. TL;DR;</a>
 <ul>
-<li><a href="#org7f55221">2.1. Separation of concerns</a></li>
-<li><a href="#org88f1897">2.2. Evolvability</a></li>
-<li><a href="#org8150f7a">2.3. Consistency</a></li>
-<li><a href="#org4f42e1c">2.4. Cycle time</a></li>
+<li><a href="#orgae0734a">1.1. Frameless signature</a></li>
 </ul>
 </li>
-<li><a href="#org04341a1">3. How</a>
+<li><a href="#org20b35b4">2. Why modeling modularity matters</a>
 <ul>
-<li><a href="#orgbd38b10">3.1. <span class="todo TODO">TODO</span> MVP: Basic module systems</a></li>
-<li><a href="#orge20ace3">3.2. Vision for v1.0</a></li>
+<li><a href="#org28e1a5b">2.1. Separation of concerns</a></li>
+<li><a href="#org85007cf">2.2. Evolvability</a></li>
+<li><a href="#org7130072">2.3. Consistency</a></li>
+<li><a href="#org90fdd07">2.4. Cycle time</a></li>
 </ul>
 </li>
-<li><a href="#org7fb0a36">4. Wishlist</a></li>
+<li><a href="#org2e1ce9e">3. How</a>
+<ul>
+<li><a href="#orgdff7ec5">3.1. <span class="todo TODO">TODO</span> MVP: Basic module systems</a></li>
+<li><a href="#orge5f1f70">3.2. Vision for v1.0</a></li>
+</ul>
+</li>
+<li><a href="#orgbdd850a">4. Wishlist</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org2a89c85" class="outline-2">
-<h2 id="org2a89c85"><span class="section-number-2">1</span> TL;DR;</h2>
+<div id="outline-container-org68c9d9d" class="outline-2">
+<h2 id="org68c9d9d"><span class="section-number-2">1</span> TL;DR;</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-The frameless pattern is just an implementation of separation of concerns in the context of modularity and boilerplate.
-In simple terms, it replaces API dependency code (boilerplate) with contracts with your platform.
+A frameless pattern is the result of applying separation of concerns between modular functionality and boilerplate code.
+It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
+production scripts to test, run, debug, deploy, package, build or any arbitrary task.
 </p>
+</div>
+<div id="outline-container-orgae0734a" class="outline-3">
+<h3 id="orgae0734a"><span class="section-number-3">1.1</span> Frameless signature</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Zero boilerplate</li>
+<li>Zero module dependency on platform API</li>
+</ul>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org2b0294f" class="outline-2">
-<h2 id="org2b0294f"><span class="section-number-2">2</span> Why modeling modularity matters</h2>
+<div id="outline-container-org20b35b4" class="outline-2">
+<h2 id="org20b35b4"><span class="section-number-2">2</span> Why modeling modularity matters</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org7f55221" class="outline-3">
-<h3 id="org7f55221"><span class="section-number-3">2.1</span> Separation of concerns</h3>
+<div id="outline-container-org28e1a5b" class="outline-3">
+<h3 id="org28e1a5b"><span class="section-number-3">2.1</span> Separation of concerns</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
 Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
@@ -313,8 +325,8 @@ By defining module models a separation between module concerns and system concer
 </div>
 </div>
 
-<div id="outline-container-org88f1897" class="outline-3">
-<h3 id="org88f1897"><span class="section-number-3">2.2</span> Evolvability</h3>
+<div id="outline-container-org85007cf" class="outline-3">
+<h3 id="org85007cf"><span class="section-number-3">2.2</span> Evolvability</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 In modular software, any code-editing required to <i>migrate</i> a given module into a different <i>framework</i> can be considered evitable
@@ -326,8 +338,8 @@ as reference for both sides.
 </div>
 </div>
 
-<div id="outline-container-org8150f7a" class="outline-3">
-<h3 id="org8150f7a"><span class="section-number-3">2.3</span> Consistency</h3>
+<div id="outline-container-org7130072" class="outline-3">
+<h3 id="org7130072"><span class="section-number-3">2.3</span> Consistency</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
@@ -338,8 +350,8 @@ yet defined within the "boilerplate-free" area of library and framework code.
 </div>
 </div>
 
-<div id="outline-container-org4f42e1c" class="outline-3">
-<h3 id="org4f42e1c"><span class="section-number-3">2.4</span> Cycle time</h3>
+<div id="outline-container-org90fdd07" class="outline-3">
+<h3 id="org90fdd07"><span class="section-number-3">2.4</span> Cycle time</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
@@ -350,13 +362,13 @@ If adopting new technology involves touching the internal modules of a project t
 </div>
 </div>
 
-<div id="outline-container-org04341a1" class="outline-2">
-<h2 id="org04341a1"><span class="section-number-2">3</span> How</h2>
+<div id="outline-container-org2e1ce9e" class="outline-2">
+<h2 id="org2e1ce9e"><span class="section-number-2">3</span> How</h2>
 <div class="outline-text-2" id="text-3">
 </div>
-<div id="outline-container-orge3286b6" class="outline-4">
-<h4 id="orge3286b6">Modularity Model</h4>
-<div class="outline-text-4" id="text-orge3286b6">
+<div id="outline-container-org0a44842" class="outline-4">
+<h4 id="org0a44842">Modularity Model</h4>
+<div class="outline-text-4" id="text-org0a44842">
 <p>
 Let's pretend we are going to start a new project. Instead of going through the usual ritual of:
 </p>
@@ -525,16 +537,6 @@ The platform can provide by proxy any framework or library-like functionality in
 This contributes to continuous improvement and agile goals because it means new developments on the platform can automatically be leveraged
 by individual modules and teams without having to make code changes to each module.
 </p>
-</div>
-</div>
-
-<div id="outline-container-org12cbd0b" class="outline-4">
-<h4 id="org12cbd0b">Frameless signature</h4>
-<div class="outline-text-4" id="text-org12cbd0b">
-<ul class="org-ul">
-<li>Zero boilerplate</li>
-<li>Zero module dependency on platform API</li>
-</ul>
 
 <p>
 Following, a couple of tech-oriented definitions for modularity from: <a href="https://en.wikipedia.org/wiki/Modularity">https://en.wikipedia.org/wiki/Modularity</a>
@@ -578,69 +580,69 @@ Modular development pairs naturally with agile or any other paced or sprint orie
 </div>
 </div>
 
-<div id="outline-container-orgbd38b10" class="outline-3">
-<h3 id="orgbd38b10"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> MVP: Basic module systems</h3>
+<div id="outline-container-orgdff7ec5" class="outline-3">
+<h3 id="orgdff7ec5"><span class="section-number-3">3.1</span> <span class="todo TODO">TODO</span> MVP: Basic module systems</h3>
 <div class="outline-text-3" id="text-3-1">
 </div>
 <ul class="org-ul">
-<li><a id="orgd8e9689"></a><span class="done DONE">DONE</span> RPC<br />
-<div class="outline-text-6" id="text-orgd8e9689">
+<li><a id="org0d608d1"></a><span class="done DONE">DONE</span> RPC<br />
+<div class="outline-text-6" id="text-org0d608d1">
 </div>
 <ul class="org-ul">
-<li><a id="org4d5442f"></a><span class="done DONE">DONE</span> hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc<br />
-<div class="outline-text-7" id="text-org4d5442f">
+<li><a id="orgd76ce78"></a><span class="done DONE">DONE</span> hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc<br />
+<div class="outline-text-7" id="text-orgd76ce78">
 </div>
 </li>
-<li><a id="org58942d2"></a><span class="done DONE">DONE</span> hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple<br />
-<div class="outline-text-7" id="text-org58942d2">
+<li><a id="org8d43f0f"></a><span class="done DONE">DONE</span> hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple<br />
+<div class="outline-text-7" id="text-org8d43f0f">
 </div>
 </li>
 </ul>
 </li>
-<li><a id="orgb38b17c"></a><span class="done DONE">DONE</span> REST<br />
-<div class="outline-text-6" id="text-orgb38b17c">
+<li><a id="orga5efc28"></a><span class="done DONE">DONE</span> REST<br />
+<div class="outline-text-6" id="text-orga5efc28">
 </div>
 <ul class="org-ul">
-<li><a id="org8c30710"></a><span class="done DONE">DONE</span> hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest<br />
-<div class="outline-text-7" id="text-org8c30710">
+<li><a id="org540d029"></a><span class="done DONE">DONE</span> hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest<br />
+<div class="outline-text-7" id="text-org540d029">
 </div>
 </li>
-<li><a id="orgd02f2d2"></a><span class="done DONE">DONE</span> hygen rest-api new &#x2013;in examples &#x2013;name rest-simple<br />
-<div class="outline-text-7" id="text-orgd02f2d2">
+<li><a id="orgd7befef"></a><span class="done DONE">DONE</span> hygen rest-api new &#x2013;in examples &#x2013;name rest-simple<br />
+<div class="outline-text-7" id="text-orgd7befef">
 </div>
 </li>
 </ul>
 </li>
-<li><a id="org1f0a55e"></a><span class="todo TODO">TODO</span> Job<br /></li>
-<li><a id="org242229c"></a><span class="todo TODO">TODO</span> Cronjob<br /></li>
-<li><a id="org42f952d"></a><span class="todo TODO">TODO</span> Worker (Queue consumer)<br /></li>
-<li><a id="org21c7818"></a><span class="todo TODO">TODO</span> Events producer<br /></li>
-<li><a id="orgad6b445"></a><span class="todo TODO">TODO</span> Events consumer<br /></li>
-<li><a id="org481ff26"></a><span class="todo TODO">TODO</span> Database app example (MongoDB)<br /></li>
-<li><a id="org36a8be4"></a><span class="todo TODO">TODO</span> Instrumentation<br /></li>
-<li><a id="org316792e"></a><span class="todo TODO">TODO</span> Standarize: Bring your own framework<br /></li>
-<li><a id="org4fdf41f"></a><span class="todo TODO">TODO</span> Client codegen<br /></li>
+<li><a id="org0f77a09"></a><span class="todo TODO">TODO</span> Job<br /></li>
+<li><a id="org8551175"></a><span class="todo TODO">TODO</span> Cronjob<br /></li>
+<li><a id="org15366ba"></a><span class="todo TODO">TODO</span> Worker (Queue consumer)<br /></li>
+<li><a id="orga770748"></a><span class="todo TODO">TODO</span> Events producer<br /></li>
+<li><a id="org5aea923"></a><span class="todo TODO">TODO</span> Events consumer<br /></li>
+<li><a id="orgd0d62d7"></a><span class="todo TODO">TODO</span> Database app example (MongoDB)<br /></li>
+<li><a id="orgba63f90"></a><span class="todo TODO">TODO</span> Instrumentation<br /></li>
+<li><a id="orge38f248"></a><span class="todo TODO">TODO</span> Standarize: Bring your own framework<br /></li>
+<li><a id="orga9576da"></a><span class="todo TODO">TODO</span> Client codegen<br /></li>
 </ul>
 </div>
 
-<div id="outline-container-orge20ace3" class="outline-3">
-<h3 id="orge20ace3"><span class="section-number-3">3.2</span> Vision for v1.0</h3>
+<div id="outline-container-orge5f1f70" class="outline-3">
+<h3 id="orge5f1f70"><span class="section-number-3">3.2</span> Vision for v1.0</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 More systems and module models
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org0d17adc"></a><span class="todo TODO">TODO</span> Frontend components<br /></li>
-<li><a id="org19fc0f6"></a><span class="todo TODO">TODO</span> ETL processes<br /></li>
-<li><a id="orgc8ded48"></a><span class="todo TODO">TODO</span> Stream processing<br /></li>
-<li><a id="org8dacbc3"></a><span class="todo TODO">TODO</span> Deployment codegen<br /></li>
+<li><a id="org9a5a813"></a><span class="todo TODO">TODO</span> Frontend components<br /></li>
+<li><a id="orgecce0c6"></a><span class="todo TODO">TODO</span> ETL processes<br /></li>
+<li><a id="org4ba967e"></a><span class="todo TODO">TODO</span> Stream processing<br /></li>
+<li><a id="orgc14e078"></a><span class="todo TODO">TODO</span> Deployment codegen<br /></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7fb0a36" class="outline-2">
-<h2 id="org7fb0a36"><span class="section-number-2">4</span> Wishlist</h2>
+<div id="outline-container-orgbdd850a" class="outline-2">
+<h2 id="orgbdd850a"><span class="section-number-2">4</span> Wishlist</h2>
 <div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>HATEOAS</li>
@@ -653,7 +655,7 @@ More systems and module models
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: David Rojas</p>
-<p class="date">Created: 2020-02-07 Fri 19:42</p>
+<p class="date">Created: 2020-02-07 Fri 20:18</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

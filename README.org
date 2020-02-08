@@ -9,28 +9,30 @@
 
 #+BEGIN_export html
 <h1 class="title">
-  <span class="accent">></span> add module --type rest<span class="inverse">&nbsp;</span>
+<span class="accent_">></span> add module --type rest<span class="inverse">&nbsp;</span>
 </h2>
 #+END_export
 
 #+BEGIN_abstract
-Boilerplate code is an underrated problem: the chunks of non-reusable code and other necessary evils that are usually
-granted as scaffolding or abstracted away as a mixture of library code and configuration are cheap to buy but come as very
-expensive to replace. There is accidental complexity in most if not all boilerplate code around any /main/ function or any module
-that depends on a library or framework. Therefore, when working with multiple /main/ functions (specially microservices, or
-distributed systems) and multiple modules this space for boilerplate can allow some problems that then scale with the number of
-/mains/ at play and the total number of modules including code repetition and long cycle times. This document proposes a
-"frameless" design pattern for building modular systems without boilerplate code and allow modules to be developed without having
-any source-code dependency on the framework/library API and facilitates the co-evolution of business domain features and platform
-features in alignment with the dynamics of the agile methodologies
+Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
+granted as scaffolding or abstracted away as a mixture of library code and configuration are cheap to buy but can come as very
+expensive to replace. There is accidental complexity in most if not all boilerplate code around any /main/ function or any source
+code module that depends on a library or framework. This document describes a "frameless" pattern for building modular systems
+that applies separation of concerns between modular and framework concerns. The pattern introduces module/platform contracts for modules
+with zero boilerplate and zero dependency on platform API. The author submits this pattern facilitates evolution and co-evolution of product
+and platform features within the dynamics of the agile methodologies
 #+END_abstract
 
 #+TOC: headlines 2
 
 * TL;DR;
 
-The frameless pattern is just an implementation of separation of concerns in the context of modularity and boilerplate.
-In simple terms, it replaces API dependency code (boilerplate) with contracts with your platform.
+A frameless pattern is the result of applying separation of concerns between modular functionality and boilerplate code.
+It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
+production scripts to test, run, debug, deploy, package, build or any arbitrary task.
+** Frameless signature
+   - Zero boilerplate
+   - Zero module dependency on platform API
 
 * Why modeling modularity matters
 ** Separation of concerns
@@ -205,10 +207,6 @@ In simple terms, it replaces API dependency code (boilerplate) with contracts wi
    The platform can provide by proxy any framework or library-like functionality including configurations, dependencies, scripts, etc.
    This contributes to continuous improvement and agile goals because it means new developments on the platform can automatically be leveraged
    by individual modules and teams without having to make code changes to each module.
-
-*** Frameless signature
-   - Zero boilerplate
-   - Zero module dependency on platform API
 
    Following, a couple of tech-oriented definitions for modularity from: https://en.wikipedia.org/wiki/Modularity
 #+BEGIN_QUOTE
