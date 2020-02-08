@@ -15,7 +15,7 @@ code module that depends on a library or framework. This document describes a ge
 the /frameless/ pattern. The generalization is driven by the application of /separation of concerns/ between module and system domains.
 The PoC project in TypeScript introduces a /RESTful/ module/system contracts with zero boilerplate and zero dependency on frameworks in the
 modules source code.
-At the end, it is discussed how this pattern can facilitate evolution and co-evolution of product and platform streams of work within the dynamics
+Additionally, it is discussed how this pattern can facilitate evolution and co-evolution of product and platform streams of work within the dynamics
 of the agile organization model.
 #+END_abstract
 
