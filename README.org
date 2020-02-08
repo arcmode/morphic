@@ -1,4 +1,4 @@
-#+TITLE: The frameless pattern: Modularity as a platform
+#+TITLE: Be frameless
 #+AUTHOR: David Rojas
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
@@ -9,7 +9,7 @@
 
 #+BEGIN_export html
 <h1 class="title">
-  <span class="accent">></span> add module --type res<span class="inverse">t</span>
+  <span class="accent">></span> add module --type rest<span class="inverse">&nbsp;</span>
 </h2>
 #+END_export
 
