@@ -30,9 +30,12 @@ and platform features within the dynamics of the agile methodologies
 A frameless pattern is the result of applying separation of concerns between modular functionality and boilerplate code.
 It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
 production scripts to test, run, debug, deploy, package, build or any arbitrary task.
+
 ** Frameless signature
    - Zero boilerplate
    - Zero module dependency on platform API
+
+The frameless pattern is a generalization of the /serverless/ or /function-as-a-service/ pattern.
 
 * Why modeling modularity matters
 ** Separation of concerns

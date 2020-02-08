@@ -22,7 +22,7 @@
         "debug": "npm run build-debuggable && npm run inspector"
     },
     "devDependencies": {
-        "@morphic/types": "^0.0.0",
+        "@morphic/model": "^0.0.0",
         "@types/json-schema": "^7.0.4",
         "@types/node": "12.12.5",
         "jest": "^24.9.0",

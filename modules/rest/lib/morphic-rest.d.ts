@@ -1,6 +1,6 @@
 /// <reference types="node" />
 import fastify from 'fastify';
-import { AnyData } from '@morphic/types';
+import { AnyData } from '@morphic/model';
 import fp, { PluginOptions } from 'fastify-plugin';
 import { ServerResponse } from 'http';
 import { IConfig } from 'config';
