@@ -33,26 +33,28 @@ The frameless pattern is just an implementation of separation of concerns in the
 In simple terms, it replaces API dependency code (boilerplate) with contracts with your platform.
 
 * Why
-** Modularity: A tale about separation of concerns
+** Modularity and separation of concerns
+   Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
+   Also, most projects work on top of a given platform, /composed/ by the set of languages, frameworks and libraries that together provide at least
+   one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
+   During development of new features, the difference between the modularity model offered by the platform and that of the type of project
+   increases the size of the task at hand every /sprint/ by forcing part of the solution to be dedicated to the interface between the two models.
 
-Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
-Also, most projects work on top of a given platform, /composed/ by the set of languages, frameworks and libraries that together provide at least
-one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
-During development of new features, the difference between the modularity model offered by the platform and that of the type of project
-increases the size of the task at hand every /sprint/ by forcing part of the solution to be dedicated to the interface between the two models.
+** Modularity and evolvability
+   In modular software, any code-editing required to /migrate/ a given module into a different /framework/ can be considered evitable
+   and patterns that add work to that task can be considered anti-patterns. Note how the previous claim is explicitly pointing to changes
+   to module code.
 
-** Modularity vs Evolvability
-In modular software, any code-editing required to /migrate/ a given module into a different /framework/ can be considered evitable
-and patterns that add work to that task can be considered anti-patterns. Note how the previous claim is explicitly pointing to changes
-to module code.
+** Modularity and consistency
+   Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
+   of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
+   boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
+   yet defined within the "boilerplate-free" area of library and framework code.
 
-** Modularity vs consistency
-Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties 
-of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
-boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
-yet defined within the "boilerplate-free" area of library and framework code.
-
-** TODO Modularity vs cycle time
+** Modularity and cycle time
+   Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
+   makes the work in solutions space more predictable. Also, a minimal contract reduces the amount of glue-code which makes modules leaner.
+   If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
 
 * How
 *** Modularity Model
@@ -197,25 +199,17 @@ yet defined within the "boilerplate-free" area of library and framework code.
    });
 
 #+END_SRC
+   
+   This pattern allows your to provide /features as a service/ implemented as a (platform) function of your modules.
+   The platform can provide by proxy any framework or library-like functionality including configurations, dependencies, scripts, etc.
+   This contributes to continuous improvement and agile goals because it means new developments on the platform can automatically be leveraged
+   by individual modules and teams without having to make code changes to each module.
 
-*** TODO Contracts: The network defines the ecosystem
-   The difference between an ecosystem and the niche is the emphasis about the specific "role" an organism plays as part of the ecosystem and the
-   specific "experience" the organism has in said ecosystem. Without twisting biology too much math into biology one could say the niche of an
-   organism is the experience it has within the ecosystems it is embedded in plus the difference it produces in the experience of the other systems.\\
-   # Hypothesis: A systemic modularity model will improve the domain language by allowing the exercise of a more domain-focused interfaces
-*** TODO Robustness
-   Hypothesis: A formal modularity model implemented as described above increases quality over time (less bugs)
-*** TODO Adaptability
-   Hypothesis: A systemic modularity model will improve engineering cycle speed and/or results
-*** TODO Extensibility & Evolvability
-   Diversity is a key aspect of successful (biological) ecosystems and commonly associated to adaptation.\\
-   Hypothesis: A systemic modularity model will increase contributions to its own design and library/framework code
-*** TODO Simplicity
-   An apparent property of evolution is the reuse of solutions. The evolution of an organism (basically a lineage of
-   cells) can be easily compared to the common idea of evolution of species and also to the development of eusocial colonies of insects.\\
-   Hypothesis: A systemic modularity model will reduce complexity
-*** TODO Agile
-   Following, a couple of tech-oriented definitions for modulerity from: https://en.wikipedia.org/wiki/Modularity
+*** Frameless signature
+   - Zero boilerplate
+   - Zero module dependency on platform API
+
+   Following, a couple of tech-oriented definitions for modularity from: https://en.wikipedia.org/wiki/Modularity
 #+BEGIN_QUOTE
 In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.\\
 
@@ -237,8 +231,7 @@ be studied at nearly every scale of biological organization, from molecular inte
    The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
    the "shortest path" mentality of both nature and the agile movement within the tech industry.
 
-   Modular development pairs naturally with paced or sprint based methodologies.\\
-   Hypothesis: A systemic modularity model will reduce uncertainty and support the pace of agile methodologies.
+   Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.
 
 ** TODO MVP: Basic module systems
    :PROPERTIES:
