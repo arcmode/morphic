@@ -12,9 +12,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const rpc_1 = require("@frameless/rpc");
-const morphicExamplesHelloRpc = __importStar(require("@frameless-examples/hello-rpc"));
+const framelessExamplesHelloRpc = __importStar(require("@frameless-examples/hello-rpc"));
 const app = express_1.default();
-app.use(rpc_1.createRoutes(morphicExamplesHelloRpc));
+app.use(rpc_1.createRoutes(framelessExamplesHelloRpc));
 const listener = app.listen(process.env.PORT, () => {
     if (!listener) {
         throw new Error('Listener is null');

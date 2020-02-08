@@ -1,10 +1,10 @@
 import express from 'express';
 import { createRoutes } from '@frameless/rpc';
-import * as morphicExamplesHelloRpc from '@frameless-examples/hello-rpc';
+import * as framelessExamplesHelloRpc from '@frameless-examples/hello-rpc';
 
 const app = express();
 
-app.use(createRoutes(morphicExamplesHelloRpc));
+app.use(createRoutes(framelessExamplesHelloRpc));
 
 const listener = app.listen(process.env.PORT, () => {
     if (!listener) {

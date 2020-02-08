@@ -4,7 +4,7 @@ import config from 'config';
 //
 // import rest modules
 //
-import * as morphicExamplesHelloRest from '@frameless-examples/hello-rest';
+import * as framelessExamplesHelloRest from '@frameless-examples/hello-rest';
 
 const instance = fastify({
     logger: true
@@ -18,7 +18,7 @@ const instance = fastify({
 // add rest modules to the service
 //
 
-instance.register(createFastifyPlugin(morphicExamplesHelloRest, config));
+instance.register(createFastifyPlugin(framelessExamplesHelloRest, config));
 
 const PORT = String(
     config.has('PORT') ?

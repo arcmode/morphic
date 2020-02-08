@@ -16,7 +16,7 @@ const config_1 = __importDefault(require("config"));
 //
 // import rest modules
 //
-const morphicExamplesHelloRest = __importStar(require("@frameless-examples/hello-rest"));
+const framelessExamplesHelloRest = __importStar(require("@frameless-examples/hello-rest"));
 const instance = fastify_1.default({
     logger: true
 });
@@ -26,7 +26,7 @@ const instance = fastify_1.default({
 //
 // add rest modules to the service
 //
-instance.register(rest_1.createFastifyPlugin(morphicExamplesHelloRest, config_1.default));
+instance.register(rest_1.createFastifyPlugin(framelessExamplesHelloRest, config_1.default));
 const PORT = String(config_1.default.has('PORT') ?
     config_1.default.get('PORT') :
     'PORT' in process.env ?
