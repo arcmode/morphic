@@ -14,20 +14,19 @@ of the agile organization model.
 
 # Table of Contents
 
-1.  [TL;DR;](#org5caa81a)
-    1.  [Frameless signature](#org3319bcb)
-2.  [Why modeling modularity matters](#org957a9ea)
-    1.  [Separation of concerns](#org5063a19)
-    2.  [Evolvability](#orga364982)
-    3.  [Consistency](#org2e5adc9)
-    4.  [Cycle time](#org50c7537)
-3.  [How](#orgf7dfb37)
-    1.  [MVP: Basic module systems](#org2d12a22)
-    2.  [Ideas](#orgae2d6dd)
-4.  [Wishlist](#org0e68a73)
+1.  [TL;DR;](#org0ab0013)
+    1.  [Frameless signature](#org8f2951b)
+2.  [Why modeling modularity matters](#org70d0f5a)
+    1.  [Separation of concerns](#org715629e)
+    2.  [Evolvability](#org9de797e)
+    3.  [Consistency](#orge4c3c39)
+    4.  [Cycle time](#orgedb9816)
+3.  [How](#org03104ae)
+    1.  [MVP: Basic module systems](#org17284f9)
+    2.  [Ideas](#orga3b6db0)
 
 
-<a id="org5caa81a"></a>
+<a id="org0ab0013"></a>
 
 # TL;DR;
 
@@ -36,7 +35,7 @@ It replaces API dependency code and any boilerplate by leveraging contracts that
 production scripts to test, run, debug, deploy, package, build or any arbitrary task.
 
 
-<a id="org3319bcb"></a>
+<a id="org8f2951b"></a>
 
 ## Frameless signature
 
@@ -46,12 +45,12 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
 The frameless pattern is a generalization of the *serverless* or *function-as-a-service* pattern.
 
 
-<a id="org957a9ea"></a>
+<a id="org70d0f5a"></a>
 
 # Why modeling modularity matters
 
 
-<a id="org5063a19"></a>
+<a id="org715629e"></a>
 
 ## Separation of concerns
 
@@ -61,7 +60,7 @@ one and sometimes several modularity models from which most projects pick one fo
 By defining module models a separation between module concerns and system concerns is enforced by design.
 
 
-<a id="orga364982"></a>
+<a id="org9de797e"></a>
 
 ## Evolvability
 
@@ -72,7 +71,7 @@ work on platform features without blocking product stories is highly desirable. 
 as reference for both sides.
 
 
-<a id="org2e5adc9"></a>
+<a id="orge4c3c39"></a>
 
 ## Consistency
 
@@ -82,7 +81,7 @@ boilerplate code creates a space for inconsistency that affects modular systems 
 yet defined within the "boilerplate-free" area of library and framework code.
 
 
-<a id="org50c7537"></a>
+<a id="orgedb9816"></a>
 
 ## Cycle time
 
@@ -91,7 +90,7 @@ makes the work in solutions space more predictable. Also, a minimal contract red
 If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
 
 
-<a id="orgf7dfb37"></a>
+<a id="org03104ae"></a>
 
 # How
 
@@ -286,7 +285,7 @@ the "shortest path" mentality of both nature and the agile movement within the t
 Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.
 
 
-<a id="org2d12a22"></a>
+<a id="org17284f9"></a>
 
 ## TODO MVP: Basic module systems
 
@@ -323,39 +322,19 @@ The documentation for this implementation, including examples can be located [he
 -   TODO Client codegen
 
 
-<a id="orgae2d6dd"></a>
+<a id="orga3b6db0"></a>
 
 ## Ideas
 
 More systems and module models
 
--   TODO Frontend components
-
--   TODO ETL processes
-
--   TODO Stream processing
-
--   TODO Deployment codegen
-
--   TODO Effects management
-
-    Using schemas and/or types
-
--   TODO Effects documentation
-
-    Could it be embedded in swagger?
-
--   TODO Effects validation
-
-    Is it possible to do reliable schema compatibility checks similarly to the what the Confluent platform does with the Schema Registry
-
-
-<a id="org0e68a73"></a>
-
-# Wishlist
-
+-   Frontend components
+-   ETL processes
+-   Stream processing
+-   Deployment codegen
+-   Effects management
+-   Effects documentation
+-   Effects validation
 -   HATEOAS
 -   GraphQL
--   Auto partitioning
--   NPM Tarball Functor as a Service
 
