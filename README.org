@@ -206,9 +206,9 @@ The frameless pattern is a generalization of the /serverless/ or /function-as-a-
    After the framework and libraries are imported let's import the actual Rest modules (one for this example)
 
 #+BEGIN_SRC typescript
-  //
-  // import rest modules
-  //
+  /*
+   * import rest modules
+   */
   import * as morphicExamplesHelloRest from '@frameless-examples/hello-rest';
 #+END_SRC
 
@@ -225,13 +225,13 @@ The frameless pattern is a generalization of the /serverless/ or /function-as-a-
    Now we need to add the routes from all modules to the server.
 
 #+BEGIN_SRC typescript
-  //
-  // add base plugins for initialization
-  //
+  /*
+   * add base plugins for initialization
+   */
 
-  //
-  // add rest modules to the service
-  //
+  /*
+   * add rest modules to the service
+   */
   instance.register(createFastifyPlugin(morphicExamplesHelloRest, config));
 #+END_SRC
 

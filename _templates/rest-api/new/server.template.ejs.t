@@ -7,9 +7,9 @@ to: lib/server.gen.ts
 import fastify from 'fastify';
 import { createFastifyPlugin } from '@frameless/rest';
 import config from 'config';
-//
-// import rest modules
-//
+/*
+ * import rest modules
+ */
 <%% for(const pkg of h.config('morphic-rest-include')) { -%>
 import * as <%%= h.changeCase.camel(pkg) %> from '<%%= pkg %>';
 <%% } -%>
@@ -19,13 +19,13 @@ const instance = fastify({
     logger: true
 });
 
-//
-// TODO: Add base plugins for initialization
-//
+/*
+ * TODO: Add base plugins for initialization
+ */
 
-//
-// add rest modules to the service
-//
+/*
+ * add rest modules to the service
+ */
 <%% for(const pkg of h.config('morphic-rest-include')) { %>
 instance.register(createFastifyPlugin(<%%= h.changeCase.camel(pkg) %>, config));
 <%% } %>

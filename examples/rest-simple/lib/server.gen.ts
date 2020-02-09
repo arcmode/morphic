@@ -1,22 +1,22 @@
 import fastify from 'fastify';
 import { createFastifyPlugin } from '@frameless/rest';
 import config from 'config';
-//
-// import rest modules
-//
+/*
+ * import rest modules
+ */
 import * as framelessExamplesHelloRest from '@frameless-examples/hello-rest';
 
 const instance = fastify({
     logger: true
 });
 
-//
-// TODO: Add base plugins for initialization
-//
+/*
+ * TODO: Add base plugins for initialization
+ */
 
-//
-// add rest modules to the service
-//
+/*
+ * add rest modules to the service
+ */
 
 instance.register(createFastifyPlugin(framelessExamplesHelloRest, config));
 
