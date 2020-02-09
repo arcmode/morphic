@@ -255,30 +255,20 @@ The frameless pattern is a generalization of the /serverless/ or /function-as-a-
    This contributes to continuous improvement and agile goals because it means new developments on the platform can automatically be leveraged
    by individual modules and teams without having to make code changes to each module.
 
-   Following, a couple of tech-oriented definitions for modularity from: https://en.wikipedia.org/wiki/Modularity
+   The following are two programming-oriented definition of modularity from: https://en.wikipedia.org/wiki/Modularity
 #+BEGIN_QUOTE
-In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.\\
-
+In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.
+#+END_QUOTE
+   This definition seems focused on modularity as an exercise of separation of concerns within business domains. For this exercise we are looking
+   for a definition more focused on modularity as an exercise of separation of concerns within module vs platform concerns. The following is more useful
+   for our purposes here. Also from: https://en.wikipedia.org/wiki/Modularity.
+#+BEGIN_QUOTE
 In software design, modularity refers to a logical partitioning of the "software design" that allows complex software to be manageable
 for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
 considerations, data links, or other criteria.
 #+END_QUOTE
-
-   One interesting aspect of the last definition is the idea the relationship between complexity and software being manageable is
-   and worth paying close attention to and perhaps explore with "biomimicry lenses".
-
-   Let's compare the previous definitions with a biological one from: https://en.wikipedia.org/wiki/Modularity_(biology)
-#+BEGIN_QUOTE
-Modularity refers to the ability of a system to organize discrete, individual units that can overall increase the efficiency of network
-activity and, in a biological sense, facilitates selective forces upon the network. Modularity is observed in all model systems, and can
-be studied at nearly every scale of biological organization, from molecular interactions all the way up to the whole organism.
-#+END_QUOTE
-
-   The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
-   the "shortest path" mentality of both nature and the agile movement within the tech industry.
-
-   Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.
-
+   This idea of modularity is clearly aligned with the /shortest path/ and /incremental/ principles of agile methodologies and others.
+   
 ** TODO MVP: Basic module systems
    :PROPERTIES:
    :ID:       f613d9b7-afe5-4898-89e6-9885aa66e4cc

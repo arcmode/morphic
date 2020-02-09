@@ -19,19 +19,19 @@ of the agile organization model.
 
 # Table of Contents
 
-1.  [TL;DR;](#org9856cd3)
-    1.  [Frameless signature](#org33a5640)
-2.  [Why modeling modularity matters](#orgdeb360f)
-    1.  [Separation of concerns](#org6a109d9)
-    2.  [Evolvability](#org7dfebd2)
-    3.  [Consistency](#org0e58abe)
-    4.  [Cycle time](#orga640d50)
-3.  [How](#orgac37974)
-    1.  [MVP: Basic module systems](#org7101ebe)
-    2.  [Ideas](#orge66a0e2)
+1.  [TL;DR;](#org0e38a25)
+    1.  [Frameless signature](#orgeb824f2)
+2.  [Why modeling modularity matters](#orgbe9e3d3)
+    1.  [Separation of concerns](#org9a84056)
+    2.  [Evolvability](#org75a266c)
+    3.  [Consistency](#orgd6c5d7e)
+    4.  [Cycle time](#org0da3058)
+3.  [How](#org6de37c4)
+    1.  [MVP: Basic module systems](#orgcfb2251)
+    2.  [Ideas](#org05d87ff)
 
 
-<a id="org9856cd3"></a>
+<a id="org0e38a25"></a>
 
 # TL;DR;
 
@@ -40,7 +40,7 @@ It replaces API dependency code and any boilerplate by leveraging contracts that
 production scripts to test, run, debug, deploy, package, build or any arbitrary task.
 
 
-<a id="org33a5640"></a>
+<a id="orgeb824f2"></a>
 
 ## Frameless signature
 
@@ -50,12 +50,12 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
 The frameless pattern is a generalization of the *serverless* or *function-as-a-service* pattern.
 
 
-<a id="orgdeb360f"></a>
+<a id="orgbe9e3d3"></a>
 
 # Why modeling modularity matters
 
 
-<a id="org6a109d9"></a>
+<a id="org9a84056"></a>
 
 ## Separation of concerns
 
@@ -65,7 +65,7 @@ one and sometimes several modularity models from which most projects pick one fo
 By defining module models a separation between module concerns and system concerns is enforced by design.
 
 
-<a id="org7dfebd2"></a>
+<a id="org75a266c"></a>
 
 ## Evolvability
 
@@ -76,7 +76,7 @@ work on platform features without blocking product stories is highly desirable. 
 as reference for both sides.
 
 
-<a id="org0e58abe"></a>
+<a id="orgd6c5d7e"></a>
 
 ## Consistency
 
@@ -86,7 +86,7 @@ boilerplate code creates a space for inconsistency that affects modular systems 
 yet defined within the "boilerplate-free" area of library and framework code.
 
 
-<a id="orga640d50"></a>
+<a id="org0da3058"></a>
 
 ## Cycle time
 
@@ -95,7 +95,7 @@ makes the work in solutions space more predictable. Also, a minimal contract red
 If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
 
 
-<a id="orgac37974"></a>
+<a id="org6de37c4"></a>
 
 # How
 
@@ -267,30 +267,22 @@ The platform can provide by proxy any framework or library-like functionality in
 This contributes to continuous improvement and agile goals because it means new developments on the platform can automatically be leveraged
 by individual modules and teams without having to make code changes to each module.
 
-Following, a couple of tech-oriented definitions for modularity from: <https://en.wikipedia.org/wiki/Modularity>
+The following are two programming-oriented definition of modularity from: <https://en.wikipedia.org/wiki/Modularity>
 
-> In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.  
-> 
+> In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.
+
+This definition seems focused on modularity as an exercise of separation of concerns within business domains. For this exercise we are looking
+for a definition more focused on modularity as an exercise of separation of concerns within module vs platform concerns. The following is more useful
+for our purposes here. Also from: <https://en.wikipedia.org/wiki/Modularity>.
+
 > In software design, modularity refers to a logical partitioning of the "software design" that allows complex software to be manageable
 > for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
 > considerations, data links, or other criteria.
 
-One interesting aspect of the last definition is the idea the relationship between complexity and software being manageable is
-and worth paying close attention to and perhaps explore with "biomimicry lenses".
-
-Let's compare the previous definitions with a biological one from: <https://en.wikipedia.org/wiki/Modularity_(biology)>
-
-> Modularity refers to the ability of a system to organize discrete, individual units that can overall increase the efficiency of network
-> activity and, in a biological sense, facilitates selective forces upon the network. Modularity is observed in all model systems, and can
-> be studied at nearly every scale of biological organization, from molecular interactions all the way up to the whole organism.
-
-The ideas behind "to be manageable" from the tech-oriented definition and of "selective forces" from the biological one seem aligned with
-the "shortest path" mentality of both nature and the agile movement within the tech industry.
-
-Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.
+This idea of modularity is clearly aligned with the *shortest path* and *incremental* principles of agile methodologies and others.
 
 
-<a id="org7101ebe"></a>
+<a id="orgcfb2251"></a>
 
 ## TODO MVP: Basic module systems
 
@@ -327,7 +319,7 @@ The documentation for this implementation, including examples can be located [he
 -   TODO Client codegen
 
 
-<a id="orge66a0e2"></a>
+<a id="org05d87ff"></a>
 
 ## Ideas
 
