@@ -1,4 +1,4 @@
-#+TITLE: frameless
+#+TITLE: Frameless
 #+AUTHOR: David Rojas
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
@@ -13,11 +13,21 @@ abstracted away as a mixture of scaffolding, library code and configuration are 
 expensive to replace later on. There is accidental complexity in most if not all boilerplate code around any /main/ function or any source
 code module that depends on a library or framework. This document describes a generalization of the /serverless/ pattern and describes it as
 the /frameless/ pattern. The generalization is driven by the application of /separation of concerns/ between module and system domains.
-The PoC project in TypeScript introduces a /RESTful/ module/system contracts with zero boilerplate and zero dependency on frameworks in the
+The PoC project in TypeScript introduces a Rest-oriented module/system contracts with zero boilerplate and zero dependency on frameworks in the
 modules source code.
 Additionally, it is discussed how this pattern can facilitate evolution and co-evolution of product and platform streams of work within the dynamics
 of the agile organization model.
 #+END_abstract
+
+#+BEGIN_QUOTE
+Modularity permits the efficient discrimination of context.\\
+-- Edward J. Laurent
+
+#+END_QUOTE
+
+#+BEGIN_export html
+<span id="end-heading"></span>
+#+END_export
 
 #+TOC: headlines 2
 

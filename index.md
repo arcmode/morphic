@@ -4,29 +4,34 @@ abstracted away as a mixture of scaffolding, library code and configuration are 
 expensive to replace later on. There is accidental complexity in most if not all boilerplate code around any *main* function or any source
 code module that depends on a library or framework. This document describes a generalization of the *serverless* pattern and describes it as
 the *frameless* pattern. The generalization is driven by the application of *separation of concerns* between module and system domains.
-The PoC project in TypeScript introduces a *RESTful* module/system contracts with zero boilerplate and zero dependency on frameworks in the
+The PoC project in TypeScript introduces a Rest-oriented module/system contracts with zero boilerplate and zero dependency on frameworks in the
 modules source code.
 Additionally, it is discussed how this pattern can facilitate evolution and co-evolution of product and platform streams of work within the dynamics
 of the agile organization model.
 
 </div>
 
+> Modularity permits the efficient discrimination of context.  
+> &#x2013; Edward J. Laurent
+
+<span id="end-heading"></span>
+
 
 # Table of Contents
 
-1.  [TL;DR;](#org0ab0013)
-    1.  [Frameless signature](#org8f2951b)
-2.  [Why modeling modularity matters](#org70d0f5a)
-    1.  [Separation of concerns](#org715629e)
-    2.  [Evolvability](#org9de797e)
-    3.  [Consistency](#orge4c3c39)
-    4.  [Cycle time](#orgedb9816)
-3.  [How](#org03104ae)
-    1.  [MVP: Basic module systems](#org17284f9)
-    2.  [Ideas](#orga3b6db0)
+1.  [TL;DR;](#org6b884db)
+    1.  [Frameless signature](#orgc09345d)
+2.  [Why modeling modularity matters](#orgb332481)
+    1.  [Separation of concerns](#orgc46f7cc)
+    2.  [Evolvability](#org3d2ca08)
+    3.  [Consistency](#orgbdae786)
+    4.  [Cycle time](#orgae34214)
+3.  [How](#org72771e2)
+    1.  [MVP: Basic module systems](#orgb961cb6)
+    2.  [Ideas](#org84ce8bd)
 
 
-<a id="org0ab0013"></a>
+<a id="org6b884db"></a>
 
 # TL;DR;
 
@@ -35,7 +40,7 @@ It replaces API dependency code and any boilerplate by leveraging contracts that
 production scripts to test, run, debug, deploy, package, build or any arbitrary task.
 
 
-<a id="org8f2951b"></a>
+<a id="orgc09345d"></a>
 
 ## Frameless signature
 
@@ -45,12 +50,12 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
 The frameless pattern is a generalization of the *serverless* or *function-as-a-service* pattern.
 
 
-<a id="org70d0f5a"></a>
+<a id="orgb332481"></a>
 
 # Why modeling modularity matters
 
 
-<a id="org715629e"></a>
+<a id="orgc46f7cc"></a>
 
 ## Separation of concerns
 
@@ -60,7 +65,7 @@ one and sometimes several modularity models from which most projects pick one fo
 By defining module models a separation between module concerns and system concerns is enforced by design.
 
 
-<a id="org9de797e"></a>
+<a id="org3d2ca08"></a>
 
 ## Evolvability
 
@@ -71,7 +76,7 @@ work on platform features without blocking product stories is highly desirable. 
 as reference for both sides.
 
 
-<a id="orge4c3c39"></a>
+<a id="orgbdae786"></a>
 
 ## Consistency
 
@@ -81,7 +86,7 @@ boilerplate code creates a space for inconsistency that affects modular systems 
 yet defined within the "boilerplate-free" area of library and framework code.
 
 
-<a id="orgedb9816"></a>
+<a id="orgae34214"></a>
 
 ## Cycle time
 
@@ -90,7 +95,7 @@ makes the work in solutions space more predictable. Also, a minimal contract red
 If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
 
 
-<a id="org03104ae"></a>
+<a id="org72771e2"></a>
 
 # How
 
@@ -285,7 +290,7 @@ the "shortest path" mentality of both nature and the agile movement within the t
 Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.
 
 
-<a id="org17284f9"></a>
+<a id="orgb961cb6"></a>
 
 ## TODO MVP: Basic module systems
 
@@ -322,7 +327,7 @@ The documentation for this implementation, including examples can be located [he
 -   TODO Client codegen
 
 
-<a id="orga3b6db0"></a>
+<a id="org84ce8bd"></a>
 
 ## Ideas
 
