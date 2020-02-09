@@ -19,19 +19,19 @@ of the agile organization model.
 
 # Table of Contents
 
-1.  [TL;DR;](#org88d24ba)
-    1.  [Frameless signature](#org260dd49)
-2.  [Why modeling modularity matters](#org39ae096)
-    1.  [Separation of concerns](#orgb1d3cf4)
-    2.  [Evolvability](#orgb39c5cf)
-    3.  [Consistency](#orgfad815b)
-    4.  [Cycle time](#org7dfb23a)
-3.  [How](#org77cc16a)
-    1.  [MVP: Basic module systems](#org243d949)
-    2.  [Ideas](#org9b7a44f)
+1.  [TL;DR;](#org9856cd3)
+    1.  [Frameless signature](#org33a5640)
+2.  [Why modeling modularity matters](#orgdeb360f)
+    1.  [Separation of concerns](#org6a109d9)
+    2.  [Evolvability](#org7dfebd2)
+    3.  [Consistency](#org0e58abe)
+    4.  [Cycle time](#orga640d50)
+3.  [How](#orgac37974)
+    1.  [MVP: Basic module systems](#org7101ebe)
+    2.  [Ideas](#orge66a0e2)
 
 
-<a id="org88d24ba"></a>
+<a id="org9856cd3"></a>
 
 # TL;DR;
 
@@ -40,7 +40,7 @@ It replaces API dependency code and any boilerplate by leveraging contracts that
 production scripts to test, run, debug, deploy, package, build or any arbitrary task.
 
 
-<a id="org260dd49"></a>
+<a id="org33a5640"></a>
 
 ## Frameless signature
 
@@ -50,12 +50,12 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
 The frameless pattern is a generalization of the *serverless* or *function-as-a-service* pattern.
 
 
-<a id="org39ae096"></a>
+<a id="orgdeb360f"></a>
 
 # Why modeling modularity matters
 
 
-<a id="orgb1d3cf4"></a>
+<a id="org6a109d9"></a>
 
 ## Separation of concerns
 
@@ -65,7 +65,7 @@ one and sometimes several modularity models from which most projects pick one fo
 By defining module models a separation between module concerns and system concerns is enforced by design.
 
 
-<a id="orgb39c5cf"></a>
+<a id="org7dfebd2"></a>
 
 ## Evolvability
 
@@ -76,7 +76,7 @@ work on platform features without blocking product stories is highly desirable. 
 as reference for both sides.
 
 
-<a id="orgfad815b"></a>
+<a id="org0e58abe"></a>
 
 ## Consistency
 
@@ -86,7 +86,7 @@ boilerplate code creates a space for inconsistency that affects modular systems 
 yet defined within the "boilerplate-free" area of library and framework code.
 
 
-<a id="org7dfb23a"></a>
+<a id="orga640d50"></a>
 
 ## Cycle time
 
@@ -95,7 +95,7 @@ makes the work in solutions space more predictable. Also, a minimal contract red
 If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
 
 
-<a id="org77cc16a"></a>
+<a id="orgac37974"></a>
 
 # How
 
@@ -290,7 +290,7 @@ the "shortest path" mentality of both nature and the agile movement within the t
 Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.
 
 
-<a id="org243d949"></a>
+<a id="org7101ebe"></a>
 
 ## TODO MVP: Basic module systems
 
@@ -327,7 +327,7 @@ The documentation for this implementation, including examples can be located [he
 -   TODO Client codegen
 
 
-<a id="org9b7a44f"></a>
+<a id="orge66a0e2"></a>
 
 ## Ideas
 

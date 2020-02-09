@@ -335,16 +335,16 @@ pre.src::before {
     text-align: center;
     font-family: var(--mono-font);
     padding: 0 20px;
-    color: var(--comment-color);
+    color: var(--light-grey);
 }
 
 #postamble {
     padding-top: 10px;
-    background-color: var(--code-bg-color);
+    background-color: var(--comment-color);
     display: flex;
     flex-direction: column;
 }
 
 #postamble p {
-    opacity: 0.318;
+    opacity: 1;
 }

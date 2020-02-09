@@ -4,8 +4,8 @@
 
 #+OPTIONS: toc:nil num:2 H:3 ^:nil pri:t
 #+EXPORT_FILE_NAME: index
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://drojas.github.io/org-html-dracula/styles/org.css">
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles/org.css">
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://drojas.github.io/org-html-dracula/styles/org.css"/>
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles/org.css"/>
 
 #+BEGIN_abstract
 Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
@@ -317,3 +317,8 @@ be studied at nearly every scale of biological organization, from molecular inte
    - Effects validation
    - HATEOAS
    - GraphQL
+
+* Local Variables :noexport:
+Local Variables:
+org-html-postamble: nil
+End:
