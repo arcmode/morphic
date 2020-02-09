@@ -296,12 +296,18 @@ be studied at nearly every scale of biological organization, from molecular inte
 ***** TODO Standarize: Bring your own framework
 ***** TODO Client codegen
 
-** Vision for v1.0
+** Ideas
    More systems and module models
 ***** TODO Frontend components
 ***** TODO ETL processes
 ***** TODO Stream processing
 ***** TODO Deployment codegen
+***** TODO Effects management
+      Using schemas and/or types
+***** TODO Effects documentation
+      Could it be embedded in swagger?
+***** TODO Effects validation
+      Is it possible to do reliable schema compatibility checks similarly to the what the Confluent platform does with the Schema Registry
 
 * Wishlist
 - HATEOAS
