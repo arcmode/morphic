@@ -83,31 +83,31 @@
 					<h1>Table of Contents</h1>
 				</a>
 				<ol>
-					<li><a href="#org6b884db">TL;DR;</a><ol>
-							<li><a href="#orgc09345d">Frameless signature</a></li>
+					<li><a href="#org88d24ba">TL;DR;</a><ol>
+							<li><a href="#org260dd49">Frameless signature</a></li>
 						</ol>
 					</li>
-					<li><a href="#orgb332481">Why modeling modularity matters</a><ol>
-							<li><a href="#orgc46f7cc">Separation of concerns</a></li>
-							<li><a href="#org3d2ca08">Evolvability</a></li>
-							<li><a href="#orgbdae786">Consistency</a></li>
-							<li><a href="#orgae34214">Cycle time</a></li>
+					<li><a href="#org39ae096">Why modeling modularity matters</a><ol>
+							<li><a href="#orgb1d3cf4">Separation of concerns</a></li>
+							<li><a href="#orgb39c5cf">Evolvability</a></li>
+							<li><a href="#orgfad815b">Consistency</a></li>
+							<li><a href="#org7dfb23a">Cycle time</a></li>
 						</ol>
 					</li>
-					<li><a href="#org72771e2">How</a><ol>
-							<li><a href="#orgb961cb6">MVP: Basic module systems</a></li>
-							<li><a href="#org84ce8bd">Ideas</a></li>
+					<li><a href="#org77cc16a">How</a><ol>
+							<li><a href="#org243d949">MVP: Basic module systems</a></li>
+							<li><a href="#org9b7a44f">Ideas</a></li>
 						</ol>
 					</li>
 				</ol>
-				<p><a id="org6b884db"></a></p>
+				<p><a id="org88d24ba"></a></p>
 				<a href="#tldr" id="tldr" style="color: inherit; text-decoration: none;">
 					<h1>TL;DR;</h1>
 				</a>
 				<p>A frameless pattern is the result of applying separation of concerns between modular functionality and boilerplate code.
 					It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
 				production scripts to test, run, debug, deploy, package, build or any arbitrary task.</p>
-				<p><a id="orgc09345d"></a></p>
+				<p><a id="org260dd49"></a></p>
 				<a href="#frameless-signature" id="frameless-signature" style="color: inherit; text-decoration: none;">
 					<h2>Frameless signature</h2>
 				</a>
@@ -116,11 +116,11 @@
 					<li>Zero module dependency on platform API</li>
 				</ul>
 				<p>The frameless pattern is a generalization of the <em>serverless</em> or <em>function-as-a-service</em> pattern.</p>
-				<p><a id="orgb332481"></a></p>
+				<p><a id="org39ae096"></a></p>
 				<a href="#why-modeling-modularity-matters" id="why-modeling-modularity-matters" style="color: inherit; text-decoration: none;">
 					<h1>Why modeling modularity matters</h1>
 				</a>
-				<p><a id="orgc46f7cc"></a></p>
+				<p><a id="orgb1d3cf4"></a></p>
 				<a href="#separation-of-concerns" id="separation-of-concerns" style="color: inherit; text-decoration: none;">
 					<h2>Separation of concerns</h2>
 				</a>
@@ -128,7 +128,7 @@
 					Also, most projects work on top of a given platform, <em>composed</em> by the set of languages, frameworks and libraries that together provide at least
 					one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
 				By defining module models a separation between module concerns and system concerns is enforced by design.</p>
-				<p><a id="org3d2ca08"></a></p>
+				<p><a id="orgb39c5cf"></a></p>
 				<a href="#evolvability" id="evolvability" style="color: inherit; text-decoration: none;">
 					<h2>Evolvability</h2>
 				</a>
@@ -137,7 +137,7 @@
 					Having a module model decouples product features from platform (see previous point about separation of concerns and modularity). Being able to
 					work on platform features without blocking product stories is highly desirable. Collaboration in parallel is facilitated by the module contract serving
 				as reference for both sides.</p>
-				<p><a id="orgbdae786"></a></p>
+				<p><a id="orgfad815b"></a></p>
 				<a href="#consistency" id="consistency" style="color: inherit; text-decoration: none;">
 					<h2>Consistency</h2>
 				</a>
@@ -145,14 +145,14 @@
 					of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
 					boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
 				yet defined within the &quot;boilerplate-free&quot; area of library and framework code.</p>
-				<p><a id="orgae34214"></a></p>
+				<p><a id="org7dfb23a"></a></p>
 				<a href="#cycle-time" id="cycle-time" style="color: inherit; text-decoration: none;">
 					<h2>Cycle time</h2>
 				</a>
 				<p>Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
 					makes the work in solutions space more predictable. Also, a minimal contract reduces the amount of glue-code which makes modules leaner.
 				If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.</p>
-				<p><a id="org72771e2"></a></p>
+				<p><a id="org77cc16a"></a></p>
 				<a href="#how" id="how" style="color: inherit; text-decoration: none;">
 					<h1>How</h1>
 				</a>
@@ -261,20 +261,20 @@ export <span class="hljs-keyword">const</span> <span class="hljs-function"><span
 				<pre><code>import fastify <span class="hljs-keyword">from</span> <span class="hljs-string">'fastify'</span>;
 import { createFastifyPlugin } <span class="hljs-keyword">from</span> <span class="hljs-string">'@frameless/rest'</span>;
 import<span class="hljs-built_in"> config </span><span class="hljs-keyword">from</span> <span class="hljs-string">'config'</span>;</code></pre><p>After the framework and libraries are imported let&#39;s import the actual Rest modules (one for this example)</p>
-				<pre><code><span class="hljs-comment">//</span>
-<span class="hljs-comment">// import rest modules</span>
-<span class="hljs-comment">//</span>
+				<pre><code><span class="hljs-comment">/*
+ * import rest modules
+ */</span>
 <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> morphicExamplesHelloRest <span class="hljs-keyword">from</span> <span class="hljs-string">'@frameless-examples/hello-rest'</span>;</code></pre><p>Let&#39;s just borrow a fastify server for this example.</p>
 				<pre><code>const<span class="hljs-built_in"> instance </span>= fastify({
     logger: <span class="hljs-literal">true</span>
 });</code></pre><p>Now we need to add the routes from all modules to the server.</p>
-				<pre><code><span class="hljs-comment">//</span>
-<span class="hljs-comment">// add base plugins for initialization</span>
-<span class="hljs-comment">//</span>
+				<pre><code><span class="hljs-comment">/*
+ * add base plugins for initialization
+ */</span>
 
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// add rest modules to the service</span>
-<span class="hljs-comment">//</span>
+<span class="hljs-comment">/*
+ * add rest modules to the service
+ */</span>
 instance.register(create<span class="hljs-constructor">FastifyPlugin(<span class="hljs-params">morphicExamplesHelloRest</span>, <span class="hljs-params">config</span>)</span>);</code></pre><p>And let&#39;s finalize the boilerplate with the usual port configuration and server initialization.</p>
 				<pre><code>const<span class="hljs-built_in"> PORT </span>= config.has(<span class="hljs-string">'PORT'</span>)
     ? parseInt(config.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">'PORT'</span>), 10)
@@ -307,7 +307,7 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 				<p>The ideas behind &quot;to be manageable&quot; from the tech-oriented definition and of &quot;selective forces&quot; from the biological one seem aligned with
 				the &quot;shortest path&quot; mentality of both nature and the agile movement within the tech industry.</p>
 				<p>Modular development pairs naturally with agile or any other paced or sprint oriented methodologies.</p>
-				<p><a id="orgb961cb6"></a></p>
+				<p><a id="org243d949"></a></p>
 				<a href="#todo-mvp-basic-module-systems" id="todo-mvp-basic-module-systems" style="color: inherit; text-decoration: none;">
 					<h2>TODO MVP: Basic module systems</h2>
 				</a>
@@ -348,7 +348,7 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 					<li><p>TODO Client codegen</p>
 					</li>
 				</ul>
-				<p><a id="org84ce8bd"></a></p>
+				<p><a id="org9b7a44f"></a></p>
 				<a href="#ideas" id="ideas" style="color: inherit; text-decoration: none;">
 					<h2>Ideas</h2>
 				</a>
