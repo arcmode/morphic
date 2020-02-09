@@ -286,6 +286,7 @@ considerations, data links, or other criteria.
        CLOSED: [2019-11-17 Sun 19:43]
 ****** DONE hygen rest-api new --in examples --name rest-simple
        CLOSED: [2019-11-17 Sun 19:43]
+***** TODO Deployment abstraction
 ***** TODO Job
 ***** TODO Cronjob
 ***** TODO Worker (Queue consumer)
@@ -301,7 +302,6 @@ considerations, data links, or other criteria.
    - Frontend components
    - ETL processes
    - Stream processing
-   - Deployment codegen
    - Effects management
    - Effects documentation
    - Effects validation

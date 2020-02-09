@@ -47,7 +47,7 @@ exports.createFastifyPlugin = (mod, cfg) => fastify_plugin_1.default((server, op
                 body: req.body,
                 options
             };
-            await promiseHandler(mod.handler(restReq, reply.context.config), reply, server);
+            await promiseHandler(mod.handler(restReq, reply.context.config, mod.actions), reply, server);
         }
     });
     done();

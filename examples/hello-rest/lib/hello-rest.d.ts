@@ -9,12 +9,10 @@ declare type Request = {
 declare type Result = {
     status: 200;
     headers: {
-        ['powered-by']: 'morphic';
+        ['powered-by']: 'frameless';
     };
     body: {
-        greetings: {
-            direct: string;
-        };
+        greetings: string;
     };
 } | {
     status: 500;
@@ -29,14 +27,6 @@ export declare const schema: {
             properties: {
                 greetings: {
                     type: string;
-                    properties: {
-                        direct: {
-                            type: string;
-                        };
-                        client: {
-                            type: string;
-                        };
-                    };
                 };
             };
         };
@@ -58,10 +48,15 @@ export declare const config: {
     NODE_ENV: string;
     ANSWER_TO_EVERYTHING: string | undefined;
 };
+export declare const actions: {
+    doSomethingDangerous(name: string): Promise<string>;
+};
 export declare const handler: (req: Request, cfg: {
     HOSTNAME: string;
     NODE_ENV: string;
     ANSWER_TO_EVERYTHING: string | undefined;
+}, act: {
+    doSomethingDangerous(name: string): Promise<string>;
 }) => Promise<Result>;
 export {};
 //# sourceMappingURL=hello-rest.d.ts.map

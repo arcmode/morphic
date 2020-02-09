@@ -46,6 +46,10 @@ type DefaultHeaders = {
 
 type DefaultBody = AnyData;
 
+type DefaultActions = {
+    [k: string]: (input: any) => Promise<any>
+};
+
 type RestMod<
     Query extends DefaultQuery,
     Params extends DefaultParams,
@@ -53,14 +57,17 @@ type RestMod<
     Body extends DefaultBody,
     Config extends string,
     Result extends RestResponse,
+    Actions extends DefaultActions,
 > = {
     url: string,
     method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
     schema: RouteSchema<object>,
     config?: Record<Config, string | undefined>,
+    actions: Actions,
     handler: (
         req: RestRequest<Query, Params, Headers, Body>,
-        cfg: Record<Config, string>
+        cfg: Record<Config, string>,
+        act: Actions
     ) => Promise<Result>
 };
 
@@ -88,7 +95,8 @@ export const createFastifyPlugin = <
     B extends DefaultBody,
     C extends string,
     R extends RestResponse,
->(mod: RestMod<Q, P, H, B, C, R>, cfg: IConfig) => fp((
+    A extends DefaultActions,
+>(mod: RestMod<Q, P, H, B, C, R, A>, cfg: IConfig) => fp((
     server: FastifyInstance,
     options: PluginOptions,
     done: nextCallback
@@ -124,7 +132,7 @@ export const createFastifyPlugin = <
             } as RestRequest<Q, P, H, B>;
 
             await promiseHandler(
-                mod.handler(restReq, reply.context.config) as Promise<RestResponse>,
+                mod.handler(restReq, reply.context.config, mod.actions) as Promise<RestResponse>,
                 reply,
                 server
             );

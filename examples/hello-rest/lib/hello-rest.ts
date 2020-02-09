@@ -1,6 +1,3 @@
-import * as direct from '@frameless-examples/hello-rpc'
-// import * as client from '@frameless-examples/rpc-client';
-
 export const url = '/hello-rest/:name'
 export const method = 'GET'
 
@@ -14,12 +11,10 @@ type Request = {
 type Result = {
     status: 200,
     headers: {
-        ['powered-by']: 'morphic'
+        ['powered-by']: 'frameless'
     },
     body: {
-        greetings: {
-            direct: string
-        }
+        greetings: string
     }
 } | {
     status: 500,
@@ -34,15 +29,7 @@ export const schema = {
             type: 'object',
             properties: {
                 greetings: {
-                    type: 'object',
-                    properties: {
-                        direct: {
-                            type: 'string'
-                        },
-                        client: {
-                            type: 'string'
-                        }
-                    }
+                    type: 'string'
                 }
             }
         },
@@ -66,28 +53,37 @@ export const config = {
     ANSWER_TO_EVERYTHING: undefined as string | undefined
 }
 
-export const handler = async (req: Request, cfg: typeof config): Promise<Result> => {
-    console.log({ cfg })
+export const actions = {
+    async doSomethingDangerous(name: string): Promise<string> {
+        return `It worked ${name}`;
+    }
+}
+
+export const handler = async (
+    req: Request,
+    cfg: typeof config,
+    act: typeof actions
+): Promise<Result> => {
+    const {
+        params: {
+            name
+        }
+    } = req
+
+    const result = await act.doSomethingDangerous(name);
+    const answer = `The answer to everything is ${cfg.ANSWER_TO_EVERYTHING}`;
+    const greetings = `${result}. ${answer}`;
+
+    console.log({ cfg, name });
 
     try {
-        const greeting = await direct.helloRpc(
-            req.params.name
-        );
-
-        // const clientResult = await client.helloRpc(
-        // req.params.name
-        // );
-
         return {
             status: 200,
             headers: {
-                ['powered-by']: 'morphic'
+                ['powered-by']: 'frameless'
             },
             body: {
-                greetings: {
-                    direct: `${greeting}. The answer to everything is ${cfg.ANSWER_TO_EVERYTHING}`,
-                    // client: clientResult
-                }
+                greetings,
             }
         }
     } catch (err) {

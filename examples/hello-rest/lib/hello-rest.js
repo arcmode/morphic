@@ -1,14 +1,5 @@
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const direct = __importStar(require("@frameless-examples/hello-rpc"));
-// import * as client from '@frameless-examples/rpc-client';
 exports.url = '/hello-rest/:name';
 exports.method = 'GET';
 exports.schema = {
@@ -17,15 +8,7 @@ exports.schema = {
             type: 'object',
             properties: {
                 greetings: {
-                    type: 'object',
-                    properties: {
-                        direct: {
-                            type: 'string'
-                        },
-                        client: {
-                            type: 'string'
-                        }
-                    }
+                    type: 'string'
                 }
             }
         },
@@ -47,22 +30,25 @@ exports.config = {
     NODE_ENV: 'dev',
     ANSWER_TO_EVERYTHING: undefined
 };
-exports.handler = async (req, cfg) => {
-    console.log({ cfg });
+exports.actions = {
+    async doSomethingDangerous(name) {
+        return `It worked ${name}`;
+    }
+};
+exports.handler = async (req, cfg, act) => {
+    const { params: { name } } = req;
+    const result = await act.doSomethingDangerous(name);
+    const answer = `The answer to everything is ${cfg.ANSWER_TO_EVERYTHING}`;
+    const greetings = `${result}. ${answer}`;
+    console.log({ cfg, name });
     try {
-        const greeting = await direct.helloRpc(req.params.name);
-        // const clientResult = await client.helloRpc(
-        // req.params.name
-        // );
         return {
             status: 200,
             headers: {
-                ['powered-by']: 'morphic'
+                ['powered-by']: 'frameless'
             },
             body: {
-                greetings: {
-                    direct: `${greeting}. The answer to everything is ${cfg.ANSWER_TO_EVERYTHING}`,
-                }
+                greetings,
             }
         };
     }
