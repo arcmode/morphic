@@ -1,3 +1,5 @@
+import { ArrayItem } from "@frameless/utils"
+
 export const url = '/hello-rest/:name'
 export const method = 'GET'
 
@@ -5,7 +7,6 @@ type Request = {
     params: {
         name: string
     },
-    options: {}
 }
 
 type Result = {
@@ -47,34 +48,41 @@ export const schema = {
     }
 }
 
-export const config = {
+export const defaultConfig = {
     HOSTNAME: 'localhost',
     NODE_ENV: 'dev',
     ANSWER_TO_EVERYTHING: undefined as string | undefined
 }
 
-export const actions = {
-    async doSomethingDangerous(name: string): Promise<string> {
-        return `It worked ${name}`;
-    }
+export const defaultManagers = {
+    DO_SOMETHING_DANGEROUS: async (query: { foo: string }) => {
+        console.log({ query });
+        return 'It worked!';
+    },
+    GET_STATE: async () => 'beep!',
+    SLEEP: (n: number) => {
+        return new Promise<number>((resolve, _reject) => {
+            setTimeout(() => resolve(n), n);
+        });
+    },
 }
 
 export const handler = async (
-    req: Request,
-    cfg: typeof config,
-    act: typeof actions
+    request: Request,
+    config: typeof defaultConfig,
+    managers: typeof defaultManagers,
 ): Promise<Result> => {
     const {
         params: {
             name
         }
-    } = req
+    } = request;
 
-    const result = await act.doSomethingDangerous(name);
-    const answer = `The answer to everything is ${cfg.ANSWER_TO_EVERYTHING}`;
+    const result = await managers.DO_SOMETHING_DANGEROUS({ foo: 'bar' });
+    const answer = `The answer to everything is ${config.ANSWER_TO_EVERYTHING}`;
     const greetings = `${result}. ${answer}`;
 
-    console.log({ cfg, name });
+    console.log({ config, name });
 
     try {
         return {
@@ -90,7 +98,7 @@ export const handler = async (
         return {
             status: 500,
             body: {
-                errors: [err.message]
+                errors: [err.message],
             }
         }
     }

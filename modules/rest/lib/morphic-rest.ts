@@ -6,7 +6,7 @@ import fp, { PluginOptions, nextCallback } from 'fastify-plugin';
 import { ServerResponse } from 'http';
 import { IConfig } from 'config';
 
-type RouteSchema<S> = {
+export type RouteSchema<S> = {
     body?: S,
     querystring?: S,
     params?: S,
@@ -24,12 +24,11 @@ type RestResponse = {
     body?: AnyData
 };
 
-type RestRequest<Q, P, H, B> = {
+export type RestRequest<Q, P, H, B> = {
     query: Q,
     params: P,
     headers: H,
     body: B,
-    options: PluginOptions
 };
 
 type DefaultQuery = {
@@ -46,28 +45,24 @@ type DefaultHeaders = {
 
 type DefaultBody = AnyData;
 
-type DefaultActions = {
-    [k: string]: (input: any) => Promise<any>
-};
-
-type RestMod<
+export type RestMod<
     Query extends DefaultQuery,
     Params extends DefaultParams,
     Headers extends DefaultHeaders,
     Body extends DefaultBody,
     Config extends string,
     Result extends RestResponse,
-    Actions extends DefaultActions,
+    K extends string,
 > = {
     url: string,
     method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
     schema: RouteSchema<object>,
-    config?: Record<Config, string | undefined>,
-    actions: Actions,
+    defaultConfig?: Record<Config, string | undefined>,
+    defaultManagers?: Record<K, (payload?: any) => Promise<any>>,
     handler: (
         req: RestRequest<Query, Params, Headers, Body>,
         cfg: Record<Config, string>,
-        act: Actions
+        act: Record<K, (payload?: any) => Promise<any>>,
     ) => Promise<Result>
 };
 
@@ -95,14 +90,14 @@ export const createFastifyPlugin = <
     B extends DefaultBody,
     C extends string,
     R extends RestResponse,
-    A extends DefaultActions,
->(mod: RestMod<Q, P, H, B, C, R, A>, cfg: IConfig) => fp((
+    K extends string,
+>(mod: RestMod<Q, P, H, B, C, R, K>, cfg: IConfig) => fp((
     server: FastifyInstance,
     options: PluginOptions,
     done: nextCallback
 ) => {
     const config = {} as Record<C, string>
-    const defaultCfg = mod.config || {} as typeof config
+    const defaultCfg = mod.defaultConfig || {} as typeof config
     // if a config key is defined via config package
     // then we read configurations via the config package
     // else by directly looking into environment variables
@@ -117,6 +112,20 @@ export const createFastifyPlugin = <
         }
         config[key] = val
     }
+    // resolve manager managers
+    const defaultManagers = mod.defaultManagers || {} as Record<K, (input: any) => Promise<any>>
+    const managers = {} as typeof defaultManagers
+    for (const key in defaultManagers) {
+        // TODO: standarize wrappers
+        //       facilitate middleware and other patterns
+        const manager = defaultManagers[key as K]
+        managers[key as K] = async (input) => {
+            server.log.info(`${key} -- INIT:`, input)
+            const result = await manager(input)
+            server.log.info(`${key} -- RESULT:`, result)
+            return result
+        }
+    }
     server.route({
         url: mod.url,
         method: mod.method,
@@ -128,11 +137,10 @@ export const createFastifyPlugin = <
                 params: req.params,
                 headers: req.headers,
                 body: req.body,
-                options
             } as RestRequest<Q, P, H, B>;
 
             await promiseHandler(
-                mod.handler(restReq, reply.context.config, mod.actions) as Promise<RestResponse>,
+                mod.handler(restReq, reply.context.config, managers) as Promise<RestResponse>,
                 reply,
                 server
             );

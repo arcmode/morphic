@@ -19,7 +19,7 @@ const promiseHandler = async (promise, reply, server) => {
 };
 exports.createFastifyPlugin = (mod, cfg) => fastify_plugin_1.default((server, options, done) => {
     const config = {};
-    const defaultCfg = mod.config || {};
+    const defaultCfg = mod.defaultConfig || {};
     // if a config key is defined via config package
     // then we read configurations via the config package
     // else by directly looking into environment variables
@@ -34,6 +34,20 @@ exports.createFastifyPlugin = (mod, cfg) => fastify_plugin_1.default((server, op
         }
         config[key] = val;
     }
+    // resolve manager managers
+    const defaultManagers = mod.defaultManagers || {};
+    const managers = {};
+    for (const key in defaultManagers) {
+        // TODO: standarize wrappers
+        //       facilitate middleware and other patterns
+        const manager = defaultManagers[key];
+        managers[key] = async (input) => {
+            server.log.info(`${key} -- INIT:`, input);
+            const result = await manager(input);
+            server.log.info(`${key} -- RESULT:`, result);
+            return result;
+        };
+    }
     server.route({
         url: mod.url,
         method: mod.method,
@@ -45,9 +59,8 @@ exports.createFastifyPlugin = (mod, cfg) => fastify_plugin_1.default((server, op
                 params: req.params,
                 headers: req.headers,
                 body: req.body,
-                options
             };
-            await promiseHandler(mod.handler(restReq, reply.context.config, mod.actions), reply, server);
+            await promiseHandler(mod.handler(restReq, reply.context.config, managers), reply, server);
         }
     });
     done();

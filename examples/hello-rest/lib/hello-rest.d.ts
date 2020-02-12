@@ -4,7 +4,6 @@ declare type Request = {
     params: {
         name: string;
     };
-    options: {};
 };
 declare type Result = {
     status: 200;
@@ -43,20 +42,28 @@ export declare const schema: {
         };
     };
 };
-export declare const config: {
+export declare const defaultConfig: {
     HOSTNAME: string;
     NODE_ENV: string;
     ANSWER_TO_EVERYTHING: string | undefined;
 };
-export declare const actions: {
-    doSomethingDangerous(name: string): Promise<string>;
+export declare const defaultManagers: {
+    DO_SOMETHING_DANGEROUS: (query: {
+        foo: string;
+    }) => Promise<string>;
+    GET_STATE: () => Promise<string>;
+    SLEEP: (n: number) => Promise<number>;
 };
-export declare const handler: (req: Request, cfg: {
+export declare const handler: (request: Request, config: {
     HOSTNAME: string;
     NODE_ENV: string;
     ANSWER_TO_EVERYTHING: string | undefined;
-}, act: {
-    doSomethingDangerous(name: string): Promise<string>;
+}, managers: {
+    DO_SOMETHING_DANGEROUS: (query: {
+        foo: string;
+    }) => Promise<string>;
+    GET_STATE: () => Promise<string>;
+    SLEEP: (n: number) => Promise<number>;
 }) => Promise<Result>;
 export {};
 //# sourceMappingURL=hello-rest.d.ts.map

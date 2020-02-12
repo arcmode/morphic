@@ -25,22 +25,29 @@ exports.schema = {
         }
     }
 };
-exports.config = {
+exports.defaultConfig = {
     HOSTNAME: 'localhost',
     NODE_ENV: 'dev',
     ANSWER_TO_EVERYTHING: undefined
 };
-exports.actions = {
-    async doSomethingDangerous(name) {
-        return `It worked ${name}`;
-    }
+exports.defaultManagers = {
+    DO_SOMETHING_DANGEROUS: async (query) => {
+        console.log({ query });
+        return 'It worked!';
+    },
+    GET_STATE: async () => 'beep!',
+    SLEEP: (n) => {
+        return new Promise((resolve, _reject) => {
+            setTimeout(() => resolve(n), n);
+        });
+    },
 };
-exports.handler = async (req, cfg, act) => {
-    const { params: { name } } = req;
-    const result = await act.doSomethingDangerous(name);
-    const answer = `The answer to everything is ${cfg.ANSWER_TO_EVERYTHING}`;
+exports.handler = async (request, config, managers) => {
+    const { params: { name } } = request;
+    const result = await managers.DO_SOMETHING_DANGEROUS({ foo: 'bar' });
+    const answer = `The answer to everything is ${config.ANSWER_TO_EVERYTHING}`;
     const greetings = `${result}. ${answer}`;
-    console.log({ cfg, name });
+    console.log({ config, name });
     try {
         return {
             status: 200,
@@ -56,7 +63,7 @@ exports.handler = async (req, cfg, act) => {
         return {
             status: 500,
             body: {
-                errors: [err.message]
+                errors: [err.message],
             }
         };
     }
