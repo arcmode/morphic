@@ -49,7 +49,7 @@ The frameless pattern is a generalization of the /serverless/ or /function-as-a-
    Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
    Also, most projects work on top of a given platform, /composed/ by the set of languages, frameworks and libraries that together provide at least
    one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
-   By defining module models a separation between module concerns and system concerns is enforced by design.
+   A modularity model provides separation between module and system concerns is enforced by design.
 
 ** Evolvability
    In modular software, any code-editing required to /migrate/ a given module into a different /framework/ can be considered evitable
