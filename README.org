@@ -312,8 +312,12 @@ considerations, data links, or other criteria.
 ***** TODO Events consumer
 ***** TODO Database app example (MongoDB)
 ***** TODO Instrumentation
-***** TODO Standarize: Bring your own framework
-***** TODO Client codegen
+***** TODO Platform as a Service Model: Bring your own framework
+***** TODO Automate Rest API documentation
+***** DONE Automate code documentation
+      CLOSED: [2020-02-13 Thu 18:51]
+***** DONE Client codegen
+      CLOSED: [2020-02-13 Thu 18:51]
 
 ** Ideas
    More systems and module models

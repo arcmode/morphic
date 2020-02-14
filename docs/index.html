@@ -69,20 +69,20 @@
 						<h1>Table of Contents</h1>
 					</a>
 					<ol>
-						<li><a href="#org51ca3e5">TL;DR;</a><ol>
-								<li><a href="#orgb7e97af">Frameless signature</a></li>
+						<li><a href="#org7de1fc5">TL;DR;</a><ol>
+								<li><a href="#org3c0fd00">Frameless signature</a></li>
 							</ol>
 						</li>
-						<li><a href="#org2c4800a">Why modeling modularity matters</a><ol>
-								<li><a href="#orgf20d990">Separation of concerns</a></li>
-								<li><a href="#orgea473c1">Evolvability</a></li>
-								<li><a href="#orge719978">Consistency</a></li>
-								<li><a href="#org1683853">Cycle time</a></li>
+						<li><a href="#orgdb9aed6">Why modeling modularity matters</a><ol>
+								<li><a href="#orgc25d240">Separation of concerns</a></li>
+								<li><a href="#org3634dbb">Evolvability</a></li>
+								<li><a href="#org5cb20ec">Consistency</a></li>
+								<li><a href="#orgb7b40be">Cycle time</a></li>
 							</ol>
 						</li>
-						<li><a href="#org055c4bd">How</a><ol>
-								<li><a href="#org1d0db56">MVP: Basic modular systems</a></li>
-								<li><a href="#orgdb4ec23">Ideas</a></li>
+						<li><a href="#org0912063">How</a><ol>
+								<li><a href="#orgb807b03">MVP: Basic modular systems</a></li>
+								<li><a href="#org200ce44">Ideas</a></li>
 							</ol>
 						</li>
 					</ol>
@@ -103,7 +103,7 @@
 						<p>Modularity permits the efficient discrimination of context.<br>&#x2013; Edward J. Laurent</p>
 					</blockquote>
 					<p><span id="end-heading"></span> </p>
-					<p><a id="org51ca3e5"></a></p>
+					<p><a id="org7de1fc5"></a></p>
 					<a href="#tldr" id="tldr" style="color: inherit; text-decoration: none;">
 						<h1>TL;DR;</h1>
 					</a>
@@ -111,7 +111,7 @@
 						It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
 					production scripts to test, run, debug, deploy, package, build or any arbitrary task.</p>
 					<p>Focus on adopting standards and implementing them reusing the best technology available and context.</p>
-					<p><a id="orgb7e97af"></a></p>
+					<p><a id="org3c0fd00"></a></p>
 					<a href="#frameless-signature" id="frameless-signature" style="color: inherit; text-decoration: none;">
 						<h2>Frameless signature</h2>
 					</a>
@@ -120,11 +120,11 @@
 						<li>Zero module dependency on platform API</li>
 					</ul>
 					<p>The frameless pattern is a generalization of the <em>serverless</em> or <em>function-as-a-service</em> pattern.</p>
-					<p><a id="org2c4800a"></a></p>
+					<p><a id="orgdb9aed6"></a></p>
 					<a href="#why-modeling-modularity-matters" id="why-modeling-modularity-matters" style="color: inherit; text-decoration: none;">
 						<h1>Why modeling modularity matters</h1>
 					</a>
-					<p><a id="orgf20d990"></a></p>
+					<p><a id="orgc25d240"></a></p>
 					<a href="#separation-of-concerns" id="separation-of-concerns" style="color: inherit; text-decoration: none;">
 						<h2>Separation of concerns</h2>
 					</a>
@@ -132,7 +132,7 @@
 						Also, most projects work on top of a given platform, <em>composed</em> by the set of languages, frameworks and libraries that together provide at least
 						one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
 					A modularity model provides separation between module and system concerns is enforced by design.</p>
-					<p><a id="orgea473c1"></a></p>
+					<p><a id="org3634dbb"></a></p>
 					<a href="#evolvability" id="evolvability" style="color: inherit; text-decoration: none;">
 						<h2>Evolvability</h2>
 					</a>
@@ -141,7 +141,7 @@
 						Having a module model decouples product features from platform (see previous point about separation of concerns and modularity). Being able to
 						work on platform features without blocking product stories is highly desirable. Collaboration in parallel is facilitated by the module contract serving
 					as reference for both sides.</p>
-					<p><a id="orge719978"></a></p>
+					<p><a id="org5cb20ec"></a></p>
 					<a href="#consistency" id="consistency" style="color: inherit; text-decoration: none;">
 						<h2>Consistency</h2>
 					</a>
@@ -149,14 +149,14 @@
 						of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
 						boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
 					yet defined within the &quot;boilerplate-free&quot; area of library and framework code.</p>
-					<p><a id="org1683853"></a></p>
+					<p><a id="orgb7b40be"></a></p>
 					<a href="#cycle-time" id="cycle-time" style="color: inherit; text-decoration: none;">
 						<h2>Cycle time</h2>
 					</a>
 					<p>Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
 						makes the work in solutions space more predictable. Also, a minimal contract reduces the amount of glue-code which makes modules leaner.
 					If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.</p>
-					<p><a id="org055c4bd"></a></p>
+					<p><a id="org0912063"></a></p>
 					<a href="#how" id="how" style="color: inherit; text-decoration: none;">
 						<h1>How</h1>
 					</a>
@@ -306,7 +306,7 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 						considerations, data links, or other criteria.</p>
 					</blockquote>
 					<p>This idea of modularity is clearly aligned with the <em>shortest path</em> and <em>incremental</em> principles of agile methodologies and others.</p>
-					<p><a id="org1d0db56"></a></p>
+					<p><a id="orgb807b03"></a></p>
 					<a href="#todo-mvp-basic-modular-systems" id="todo-mvp-basic-modular-systems" style="color: inherit; text-decoration: none;">
 						<h2>TODO MVP: Basic modular systems</h2>
 					</a>
@@ -346,12 +346,16 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 						</li>
 						<li><p>TODO Instrumentation</p>
 						</li>
-						<li><p>TODO Standarize: Bring your own framework</p>
+						<li><p>TODO Platform as a Service Model: Bring your own framework</p>
 						</li>
-						<li><p>TODO Client codegen</p>
+						<li><p>TODO Automate Rest API documentation</p>
+						</li>
+						<li><p>DONE Automate code documentation</p>
+						</li>
+						<li><p>DONE Client codegen</p>
 						</li>
 					</ul>
-					<p><a id="orgdb4ec23"></a></p>
+					<p><a id="org200ce44"></a></p>
 					<a href="#ideas" id="ideas" style="color: inherit; text-decoration: none;">
 						<h2>Ideas</h2>
 					</a>
