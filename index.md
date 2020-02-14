@@ -3,16 +3,18 @@
 
 # Table of Contents
 
-1.  [TL;DR;](#org7de1fc5)
-    1.  [Frameless signature](#org3c0fd00)
-2.  [Why modeling modularity matters](#orgdb9aed6)
-    1.  [Separation of concerns](#orgc25d240)
-    2.  [Evolvability](#org3634dbb)
-    3.  [Consistency](#org5cb20ec)
-    4.  [Cycle time](#orgb7b40be)
-3.  [How](#org0912063)
-    1.  [MVP: Basic modular systems](#orgb807b03)
-    2.  [Ideas](#org200ce44)
+1.  [TL;DR;](#orgbc09eba)
+    1.  [Frameless signature](#org0863b67)
+2.  [Why modeling modularity matters](#org2e1fa3e)
+    1.  [Separation of concerns](#orgbb1e51d)
+    2.  [Evolvability](#orgecd46d0)
+    3.  [Consistency](#orgb2b3882)
+    4.  [Cycle time](#org749bd8a)
+3.  [How](#orgec8af62)
+    1.  [PoC: Basic modular systems](#orgcc515e5)
+    2.  [MVP](#orga72d5c4)
+    3.  [Release 1.0](#org79dc4ba)
+    4.  [Ideas](#org0787e04)
 
 </div> 
 
@@ -38,7 +40,7 @@ product and platform streams of work within the dynamics of the agile organizati
 <span id="end-heading"></span> 
 
 
-<a id="org7de1fc5"></a>
+<a id="orgbc09eba"></a>
 
 # TL;DR;
 
@@ -49,7 +51,7 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
 Focus on adopting standards and implementing them reusing the best technology available and context.
 
 
-<a id="org3c0fd00"></a>
+<a id="org0863b67"></a>
 
 ## Frameless signature
 
@@ -59,12 +61,12 @@ Focus on adopting standards and implementing them reusing the best technology av
 The frameless pattern is a generalization of the *serverless* or *function-as-a-service* pattern.
 
 
-<a id="orgdb9aed6"></a>
+<a id="org2e1fa3e"></a>
 
 # Why modeling modularity matters
 
 
-<a id="orgc25d240"></a>
+<a id="orgbb1e51d"></a>
 
 ## Separation of concerns
 
@@ -74,7 +76,7 @@ one and sometimes several modularity models from which most projects pick one fo
 A modularity model provides separation between module and system concerns is enforced by design.
 
 
-<a id="org3634dbb"></a>
+<a id="orgecd46d0"></a>
 
 ## Evolvability
 
@@ -85,7 +87,7 @@ work on platform features without blocking product stories is highly desirable. 
 as reference for both sides.
 
 
-<a id="org5cb20ec"></a>
+<a id="orgb2b3882"></a>
 
 ## Consistency
 
@@ -95,7 +97,7 @@ boilerplate code creates a space for inconsistency that affects modular systems 
 yet defined within the "boilerplate-free" area of library and framework code.
 
 
-<a id="orgb7b40be"></a>
+<a id="org749bd8a"></a>
 
 ## Cycle time
 
@@ -104,7 +106,7 @@ makes the work in solutions space more predictable. Also, a minimal contract red
 If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
 
 
-<a id="org0912063"></a>
+<a id="orgec8af62"></a>
 
 # How
 
@@ -291,60 +293,63 @@ for our purposes here. Also from: <https://en.wikipedia.org/wiki/Modularity>.
 This idea of modularity is clearly aligned with the *shortest path* and *incremental* principles of agile methodologies and others.
 
 
-<a id="orgb807b03"></a>
+<a id="orgcc515e5"></a>
 
-## TODO MVP: Basic modular systems
+## TODO PoC: Basic modular systems
 
 The documentation for this implementation, including examples can be located [here](./docs/index.html).
 
 -   DONE RPC
 
-    -   DONE hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc
+    -   DONE Module: hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc
     
-    -   DONE hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple
+    -   DONE System: hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple
 
 -   DONE REST
 
-    -   DONE hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest
+    -   DONE Module: hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest
     
-    -   DONE hygen rest-api new &#x2013;in examples &#x2013;name rest-simple
+    -   DONE System: hygen rest-api new &#x2013;in examples &#x2013;name rest-simple
     
-    -   DONE hygen rest-client new &#x2013;in examples &#x2013;name rest-simple-client
-
--   TODO Deployment abstraction
-
--   TODO Job
-
--   TODO Cronjob
-
--   TODO Worker (Queue consumer)
-
--   TODO Events producer
-
--   TODO Events consumer
-
--   TODO Database app example (MongoDB)
-
--   TODO Instrumentation
-
--   TODO Platform as a Service Model: Bring your own framework
-
--   TODO Automate Rest API documentation
+    -   DONE Client: hygen rest-client new &#x2013;in examples &#x2013;name rest-simple-client
 
 -   DONE Automate code documentation
 
--   DONE Client codegen
+-   TODO Automate Rest API documentation
+
+-   TODO Database app example
 
 
-<a id="org200ce44"></a>
+<a id="orga72d5c4"></a>
+
+## TODO MVP
+
+-   TODO Deployment abstraction
+
+-   TODO Instrumentation
+
+
+<a id="org79dc4ba"></a>
+
+## TODO Release 1.0
+
+-   TODO Worker (Queue consumer)
+
+-   TODO Event Stream Processor
+
+-   TODO CI/CD
+
+-   TODO Platform as a Service Model: Bring your own framework
+
+
+<a id="org0787e04"></a>
 
 ## Ideas
 
 More systems and module models
 
 -   Frontend components
--   ETL processes
--   Stream processing
+-   Data pipelines
 -   Effects management
 -   Effects documentation
 -   Effects validation

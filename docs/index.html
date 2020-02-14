@@ -69,20 +69,22 @@
 						<h1>Table of Contents</h1>
 					</a>
 					<ol>
-						<li><a href="#org7de1fc5">TL;DR;</a><ol>
-								<li><a href="#org3c0fd00">Frameless signature</a></li>
+						<li><a href="#orgbc09eba">TL;DR;</a><ol>
+								<li><a href="#org0863b67">Frameless signature</a></li>
 							</ol>
 						</li>
-						<li><a href="#orgdb9aed6">Why modeling modularity matters</a><ol>
-								<li><a href="#orgc25d240">Separation of concerns</a></li>
-								<li><a href="#org3634dbb">Evolvability</a></li>
-								<li><a href="#org5cb20ec">Consistency</a></li>
-								<li><a href="#orgb7b40be">Cycle time</a></li>
+						<li><a href="#org2e1fa3e">Why modeling modularity matters</a><ol>
+								<li><a href="#orgbb1e51d">Separation of concerns</a></li>
+								<li><a href="#orgecd46d0">Evolvability</a></li>
+								<li><a href="#orgb2b3882">Consistency</a></li>
+								<li><a href="#org749bd8a">Cycle time</a></li>
 							</ol>
 						</li>
-						<li><a href="#org0912063">How</a><ol>
-								<li><a href="#orgb807b03">MVP: Basic modular systems</a></li>
-								<li><a href="#org200ce44">Ideas</a></li>
+						<li><a href="#orgec8af62">How</a><ol>
+								<li><a href="#orgcc515e5">PoC: Basic modular systems</a></li>
+								<li><a href="#orga72d5c4">MVP</a></li>
+								<li><a href="#org79dc4ba">Release 1.0</a></li>
+								<li><a href="#org0787e04">Ideas</a></li>
 							</ol>
 						</li>
 					</ol>
@@ -103,7 +105,7 @@
 						<p>Modularity permits the efficient discrimination of context.<br>&#x2013; Edward J. Laurent</p>
 					</blockquote>
 					<p><span id="end-heading"></span> </p>
-					<p><a id="org7de1fc5"></a></p>
+					<p><a id="orgbc09eba"></a></p>
 					<a href="#tldr" id="tldr" style="color: inherit; text-decoration: none;">
 						<h1>TL;DR;</h1>
 					</a>
@@ -111,7 +113,7 @@
 						It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
 					production scripts to test, run, debug, deploy, package, build or any arbitrary task.</p>
 					<p>Focus on adopting standards and implementing them reusing the best technology available and context.</p>
-					<p><a id="org3c0fd00"></a></p>
+					<p><a id="org0863b67"></a></p>
 					<a href="#frameless-signature" id="frameless-signature" style="color: inherit; text-decoration: none;">
 						<h2>Frameless signature</h2>
 					</a>
@@ -120,11 +122,11 @@
 						<li>Zero module dependency on platform API</li>
 					</ul>
 					<p>The frameless pattern is a generalization of the <em>serverless</em> or <em>function-as-a-service</em> pattern.</p>
-					<p><a id="orgdb9aed6"></a></p>
+					<p><a id="org2e1fa3e"></a></p>
 					<a href="#why-modeling-modularity-matters" id="why-modeling-modularity-matters" style="color: inherit; text-decoration: none;">
 						<h1>Why modeling modularity matters</h1>
 					</a>
-					<p><a id="orgc25d240"></a></p>
+					<p><a id="orgbb1e51d"></a></p>
 					<a href="#separation-of-concerns" id="separation-of-concerns" style="color: inherit; text-decoration: none;">
 						<h2>Separation of concerns</h2>
 					</a>
@@ -132,7 +134,7 @@
 						Also, most projects work on top of a given platform, <em>composed</em> by the set of languages, frameworks and libraries that together provide at least
 						one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
 					A modularity model provides separation between module and system concerns is enforced by design.</p>
-					<p><a id="org3634dbb"></a></p>
+					<p><a id="orgecd46d0"></a></p>
 					<a href="#evolvability" id="evolvability" style="color: inherit; text-decoration: none;">
 						<h2>Evolvability</h2>
 					</a>
@@ -141,7 +143,7 @@
 						Having a module model decouples product features from platform (see previous point about separation of concerns and modularity). Being able to
 						work on platform features without blocking product stories is highly desirable. Collaboration in parallel is facilitated by the module contract serving
 					as reference for both sides.</p>
-					<p><a id="org5cb20ec"></a></p>
+					<p><a id="orgb2b3882"></a></p>
 					<a href="#consistency" id="consistency" style="color: inherit; text-decoration: none;">
 						<h2>Consistency</h2>
 					</a>
@@ -149,14 +151,14 @@
 						of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
 						boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
 					yet defined within the &quot;boilerplate-free&quot; area of library and framework code.</p>
-					<p><a id="orgb7b40be"></a></p>
+					<p><a id="org749bd8a"></a></p>
 					<a href="#cycle-time" id="cycle-time" style="color: inherit; text-decoration: none;">
 						<h2>Cycle time</h2>
 					</a>
 					<p>Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
 						makes the work in solutions space more predictable. Also, a minimal contract reduces the amount of glue-code which makes modules leaner.
 					If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.</p>
-					<p><a id="org0912063"></a></p>
+					<p><a id="orgec8af62"></a></p>
 					<a href="#how" id="how" style="color: inherit; text-decoration: none;">
 						<h1>How</h1>
 					</a>
@@ -306,64 +308,69 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
 						considerations, data links, or other criteria.</p>
 					</blockquote>
 					<p>This idea of modularity is clearly aligned with the <em>shortest path</em> and <em>incremental</em> principles of agile methodologies and others.</p>
-					<p><a id="orgb807b03"></a></p>
-					<a href="#todo-mvp-basic-modular-systems" id="todo-mvp-basic-modular-systems" style="color: inherit; text-decoration: none;">
-						<h2>TODO MVP: Basic modular systems</h2>
+					<p><a id="orgcc515e5"></a></p>
+					<a href="#todo-poc-basic-modular-systems" id="todo-poc-basic-modular-systems" style="color: inherit; text-decoration: none;">
+						<h2>TODO PoC: Basic modular systems</h2>
 					</a>
 					<p>The documentation for this implementation, including examples can be located <a href="./docs/index.html">here</a>.</p>
 					<ul>
 						<li><p>DONE RPC</p>
 							<ul>
-								<li><p>DONE hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc</p>
+								<li><p>DONE Module: hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc</p>
 								</li>
-								<li><p>DONE hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple</p>
+								<li><p>DONE System: hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple</p>
 								</li>
 							</ul>
 						</li>
 						<li><p>DONE REST</p>
 							<ul>
-								<li><p>DONE hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest</p>
+								<li><p>DONE Module: hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest</p>
 								</li>
-								<li><p>DONE hygen rest-api new &#x2013;in examples &#x2013;name rest-simple</p>
+								<li><p>DONE System: hygen rest-api new &#x2013;in examples &#x2013;name rest-simple</p>
 								</li>
-								<li><p>DONE hygen rest-client new &#x2013;in examples &#x2013;name rest-simple-client</p>
+								<li><p>DONE Client: hygen rest-client new &#x2013;in examples &#x2013;name rest-simple-client</p>
 								</li>
 							</ul>
 						</li>
-						<li><p>TODO Deployment abstraction</p>
-						</li>
-						<li><p>TODO Job</p>
-						</li>
-						<li><p>TODO Cronjob</p>
-						</li>
-						<li><p>TODO Worker (Queue consumer)</p>
-						</li>
-						<li><p>TODO Events producer</p>
-						</li>
-						<li><p>TODO Events consumer</p>
-						</li>
-						<li><p>TODO Database app example (MongoDB)</p>
-						</li>
-						<li><p>TODO Instrumentation</p>
-						</li>
-						<li><p>TODO Platform as a Service Model: Bring your own framework</p>
+						<li><p>DONE Automate code documentation</p>
 						</li>
 						<li><p>TODO Automate Rest API documentation</p>
 						</li>
-						<li><p>DONE Automate code documentation</p>
-						</li>
-						<li><p>DONE Client codegen</p>
+						<li><p>TODO Database app example</p>
 						</li>
 					</ul>
-					<p><a id="org200ce44"></a></p>
+					<p><a id="orga72d5c4"></a></p>
+					<a href="#todo-mvp" id="todo-mvp" style="color: inherit; text-decoration: none;">
+						<h2>TODO MVP</h2>
+					</a>
+					<ul>
+						<li><p>TODO Deployment abstraction</p>
+						</li>
+						<li><p>TODO Instrumentation</p>
+						</li>
+					</ul>
+					<p><a id="org79dc4ba"></a></p>
+					<a href="#todo-release-10" id="todo-release-10" style="color: inherit; text-decoration: none;">
+						<h2>TODO Release 1.0</h2>
+					</a>
+					<ul>
+						<li><p>TODO Worker (Queue consumer)</p>
+						</li>
+						<li><p>TODO Event Stream Processor</p>
+						</li>
+						<li><p>TODO CI/CD</p>
+						</li>
+						<li><p>TODO Platform as a Service Model: Bring your own framework</p>
+						</li>
+					</ul>
+					<p><a id="org0787e04"></a></p>
 					<a href="#ideas" id="ideas" style="color: inherit; text-decoration: none;">
 						<h2>Ideas</h2>
 					</a>
 					<p>More systems and module models</p>
 					<ul>
 						<li>Frontend components</li>
-						<li>ETL processes</li>
-						<li>Stream processing</li>
+						<li>Data pipelines</li>
 						<li>Effects management</li>
 						<li>Effects documentation</li>
 						<li>Effects validation</li>
