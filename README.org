@@ -1,4 +1,4 @@
-#+TITLE: Frameless
+#+TITLE: Frameless: DIY Platform as a Service
 #+AUTHOR: David Rojas
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
@@ -20,7 +20,7 @@
 #+BEGIN_export html
 <div id="main"> 
 
-<h1 class="title">Frameless</h1>
+<h1 class="title">Frameless: DIY Platform as a Service</h1>
 #+END_export
 
 #+BEGIN_abstract
@@ -37,7 +37,6 @@ product and platform streams of work within the dynamics of the agile organizati
 #+BEGIN_QUOTE
 Modularity permits the efficient discrimination of context.\\
 -- Edward J. Laurent
-
 #+END_QUOTE
 
 #+BEGIN_export html
@@ -56,7 +55,10 @@ Focus on adopting standards and implementing them reusing the best technology av
    - Zero boilerplate
    - Zero module dependency on platform API
 
-The frameless pattern is a generalization of the /serverless/ or /function-as-a-service/ pattern.
+The frameless pattern is a generalization of serverless patterns focused on the following goals:
+- Separation of concerns (principle)
+- API first (pattern, paradigm)
+- Platform as a Service (architecture)
 
 * Why modeling modularity matters
 ** Separation of concerns
@@ -215,7 +217,6 @@ The frameless pattern is a generalization of the /serverless/ or /function-as-a-
   import fastify from 'fastify';
   import { createFastifyPlugin } from '@frameless/rest';
   import config from 'config';
-
 #+END_SRC
 
    After the framework and libraries are imported let's import the actual Rest modules (one for this example)
@@ -234,7 +235,6 @@ The frameless pattern is a generalization of the /serverless/ or /function-as-a-
   const instance = fastify({
       logger: true
   });
-
 #+END_SRC
 
    Now we need to add the routes from all modules to the server.
@@ -306,6 +306,7 @@ considerations, data links, or other criteria.
 ***** DONE Automate code documentation
       CLOSED: [2020-02-13 Thu 18:51]
 ***** TODO Automate Rest API documentation
+***** TODO Web Components
 ***** TODO Database app example
 ** TODO MVP
 ***** TODO Deployment abstraction
@@ -313,12 +314,12 @@ considerations, data links, or other criteria.
 ** TODO Release 1.0
 ***** TODO Worker (Queue consumer)
 ***** TODO Event Stream Processor
+***** TODO CLI
 ***** TODO CI/CD
 ***** TODO Platform as a Service Model: Bring your own framework
 
 ** Ideas
    More systems and module models
-   - Frontend components
    - Data pipelines
    - Effects management
    - Effects documentation
