@@ -41,7 +41,7 @@
     --text-font: 'Roboto', sans-serif;
     --seri-font: 'Lora', serif;
 
-    --hor-margin: 18%;
+    --hor-margin: 0;
 
     --roundness: 6px;
 }
@@ -51,7 +51,7 @@ html {
 }
 
 body {
-    margin-top: 60px;
+    /* margin-top: 60px; */
     font-family: var(--text-font);
     font-size: 120%;
     line-height: 1.4em;
@@ -60,6 +60,8 @@ body {
 .title {
     font-family: var(--text-font);
     color: var(--primary-color);
+    text-align: left;
+    padding-inline-start: 0px;
 }
 
 .title>span.accent {
@@ -95,7 +97,7 @@ body {
 }
 
 .abstract p {
-    padding: 20px;
+    padding: 20px 0px;
     box-sizing: border-box;
 }
 
@@ -179,6 +181,8 @@ button:focus {
 
 #table-of-contents > h2 {
     color: var(--secondary-color);
+    padding-inline-start: 20px;
+    font-size: 1em;
 }
 
 #table-of-contents code {
@@ -257,8 +261,41 @@ tr:nth-child(even) {
     background-color: var(--code-bg-color)
 }
 
+#content {
+    display: flex;
+    flex-direction: row;
+}
+
+#content #left-panel {
+    width: 25%;
+    display: flex;
+    flex: none;
+}
+
+#content #left-panel #table-of-contents {
+    position: fixed;
+    width: 25%;
+}
+
+#content #left-panel #text-table-of-contents {
+    /* font-size: medium; */
+}
+
+#content #main {
+    background-color: var(--white);
+    padding-inline-start: 20px;
+}
+
+blockquote {
+    margin-inline-start: var(--hor-margin);
+    margin-inline-end: var(--hor-margin);
+}
+
+#content>div {
+    /* padding: 0; */
+}
+
 #content>blockquote,
-#content>div,
 #content>h1,
 #content>h2 {
     padding: 20px var(--hor-margin) 25px var(--hor-margin);
@@ -271,12 +308,7 @@ tr:nth-child(even) {
     padding-bottom: 20px;
 }
 
-
-#content>#end-heading {
-    border-bottom: 1px solid var(--red);
-}
-
-#content>#end-heading~* {
+#content #end-heading~* {
     background-color: var(--white);
 }
 
@@ -338,10 +370,10 @@ pre.src::before {
 }
 
 #postamble {
-    padding-top: 10px;
-    background-color: var(--comment-color);
-    display: flex;
-    flex-direction: column;
+    /* padding-top: 10px; */
+    /* background-color: var(--comment-color); */
+    display: none;
+    /* flex-direction: column; */
 }
 
 #postamble p {

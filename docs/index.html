@@ -64,121 +64,125 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<div class="abstract">
-					Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
-					abstracted away as a mixture of scaffolding, library code and configuration are cheap to buy but can come as very
-					expensive to replace later on. There is accidental complexity in most if not all boilerplate code around any *main* function or any source
-					code module that depends on a library or framework. This document describes a generalization of the *serverless* pattern and describes it as
-					the *frameless* pattern. The generalization is driven by the application of *separation of concerns* between module and system domains.
-					The PoC project in TypeScript introduces Rest-oriented modularity contracts with some dependency management and example modules with zero boilerplate
-					and zero imports from platform or framework libraries. Additionally, it is discussed how this pattern can facilitate evolution and co-evolution of
-					product and platform streams of work within the dynamics of the agile organization model.
+				<div id="left-panel">
+					<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+						<h1>Table of Contents</h1>
+					</a>
+					<ol>
+						<li><a href="#org51ca3e5">TL;DR;</a><ol>
+								<li><a href="#orgb7e97af">Frameless signature</a></li>
+							</ol>
+						</li>
+						<li><a href="#org2c4800a">Why modeling modularity matters</a><ol>
+								<li><a href="#orgf20d990">Separation of concerns</a></li>
+								<li><a href="#orgea473c1">Evolvability</a></li>
+								<li><a href="#orge719978">Consistency</a></li>
+								<li><a href="#org1683853">Cycle time</a></li>
+							</ol>
+						</li>
+						<li><a href="#org055c4bd">How</a><ol>
+								<li><a href="#org1d0db56">MVP: Basic modular systems</a></li>
+								<li><a href="#orgdb4ec23">Ideas</a></li>
+							</ol>
+						</li>
+					</ol>
 				</div>
-				<blockquote>
-					<p>Modularity permits the efficient discrimination of context.<br>&#x2013; Edward J. Laurent</p>
-				</blockquote>
-				<p><span id="end-heading"></span> </p>
-				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
-					<h1>Table of Contents</h1>
-				</a>
-				<ol>
-					<li><a href="#orgb6f1581">TL;DR;</a><ol>
-							<li><a href="#orgea60516">Frameless signature</a></li>
-						</ol>
-					</li>
-					<li><a href="#org59eb0bd">Why modeling modularity matters</a><ol>
-							<li><a href="#org5a3396e">Separation of concerns</a></li>
-							<li><a href="#org26dcd0e">Evolvability</a></li>
-							<li><a href="#org80be8f7">Consistency</a></li>
-							<li><a href="#org8366dbc">Cycle time</a></li>
-						</ol>
-					</li>
-					<li><a href="#org7ef939a">How</a><ol>
-							<li><a href="#orgbd11810">MVP: Basic module systems</a></li>
-							<li><a href="#org39b892f">Ideas</a></li>
-						</ol>
-					</li>
-				</ol>
-				<p><a id="orgb6f1581"></a></p>
-				<a href="#tldr" id="tldr" style="color: inherit; text-decoration: none;">
-					<h1>TL;DR;</h1>
-				</a>
-				<p>A frameless pattern is the result of applying separation of concerns between modular functionality and boilerplate code.
-					It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
-				production scripts to test, run, debug, deploy, package, build or any arbitrary task.</p>
-				<p>Focus on adopting standards and implementing them reusing the best technology available and context.</p>
-				<p><a id="orgea60516"></a></p>
-				<a href="#frameless-signature" id="frameless-signature" style="color: inherit; text-decoration: none;">
-					<h2>Frameless signature</h2>
-				</a>
-				<ul>
-					<li>Zero boilerplate</li>
-					<li>Zero module dependency on platform API</li>
-				</ul>
-				<p>The frameless pattern is a generalization of the <em>serverless</em> or <em>function-as-a-service</em> pattern.</p>
-				<p><a id="org59eb0bd"></a></p>
-				<a href="#why-modeling-modularity-matters" id="why-modeling-modularity-matters" style="color: inherit; text-decoration: none;">
-					<h1>Why modeling modularity matters</h1>
-				</a>
-				<p><a id="org5a3396e"></a></p>
-				<a href="#separation-of-concerns" id="separation-of-concerns" style="color: inherit; text-decoration: none;">
-					<h2>Separation of concerns</h2>
-				</a>
-				<p>Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
-					Also, most projects work on top of a given platform, <em>composed</em> by the set of languages, frameworks and libraries that together provide at least
-					one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
-				By defining module models a separation between module concerns and system concerns is enforced by design.</p>
-				<p><a id="org26dcd0e"></a></p>
-				<a href="#evolvability" id="evolvability" style="color: inherit; text-decoration: none;">
-					<h2>Evolvability</h2>
-				</a>
-				<p>In modular software, any code-editing required to <em>migrate</em> a given module into a different <em>framework</em> can be considered evitable
-					and patterns that add work to that task can be considered anti-patterns.
-					Having a module model decouples product features from platform (see previous point about separation of concerns and modularity). Being able to
-					work on platform features without blocking product stories is highly desirable. Collaboration in parallel is facilitated by the module contract serving
-				as reference for both sides.</p>
-				<p><a id="org80be8f7"></a></p>
-				<a href="#consistency" id="consistency" style="color: inherit; text-decoration: none;">
-					<h2>Consistency</h2>
-				</a>
-				<p>Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties
-					of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
-					boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
-				yet defined within the &quot;boilerplate-free&quot; area of library and framework code.</p>
-				<p><a id="org8366dbc"></a></p>
-				<a href="#cycle-time" id="cycle-time" style="color: inherit; text-decoration: none;">
-					<h2>Cycle time</h2>
-				</a>
-				<p>Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
-					makes the work in solutions space more predictable. Also, a minimal contract reduces the amount of glue-code which makes modules leaner.
-				If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.</p>
-				<p><a id="org7ef939a"></a></p>
-				<a href="#how" id="how" style="color: inherit; text-decoration: none;">
-					<h1>How</h1>
-				</a>
-				<a href="#modularity-model" id="modularity-model" style="color: inherit; text-decoration: none;">
-					<h3>Modularity Model</h3>
-				</a>
-				<p>Let&#39;s pretend we are going to start a new project. Instead of going through the usual ritual of:</p>
-				<ol>
-					<li>Select framework and libraries</li>
-					<li>Write some boilerplate code</li>
-					<li>Implement a set of modules following the modularity model from framework</li>
-				</ol>
-				<p>Let&#39;s try the frameless approach:</p>
-				<ol>
-					<li>Define modularity model via a <em>platform</em> function: <code>platform : modules -&gt; features</code></li>
-					<li>Implement the platform function as a thin wrapper that can include a module as part of predefined boilerplate</li>
-					<li>Define boilerplate according to <em>your</em> platform</li>
-					<li>Implement set of modules following <em>your</em> modularity model</li>
-				</ol>
-				<p>Let&#39;s imagine for example a common kind of project for &quot;web&quot; projects: Rest API in NodeJS.</p>
-				<p>Let&#39;s define our <em>Rest module</em> model in TypeScript trying to achieve the <em>minimum viable interface</em>
-				required to know what the module <em>does</em> in the context of the specific project (Rest API).</p>
-				<p>A Rest module must define a url and method.</p>
-				<pre><code>export <span class="hljs-keyword">const</span> url = <span class="hljs-string">'/hello-rest/:name'</span>
+				<div id="main">
+					<h1 class="title">Frameless</h1>
+					<div class="abstract">
+						Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
+						abstracted away as a mixture of scaffolding, library code and configuration are cheap to buy but can come as very
+						expensive to replace later on. There is accidental complexity in most if not all boilerplate code around any *main* function or any source
+						code module that depends on a library or framework. This document describes a generalization of the *serverless* pattern and describes it as
+						the *frameless* pattern. The generalization is driven by the application of *separation of concerns* between module and system domains.
+						The PoC project in TypeScript introduces Rest-oriented modularity contracts with some dependency management and example modules with zero boilerplate
+						and zero imports from platform or framework libraries. Additionally, it is discussed how this pattern can facilitate evolution and co-evolution of
+						product and platform streams of work within the dynamics of the agile organization model.
+					</div>
+					<blockquote>
+						<p>Modularity permits the efficient discrimination of context.<br>&#x2013; Edward J. Laurent</p>
+					</blockquote>
+					<p><span id="end-heading"></span> </p>
+					<p><a id="org51ca3e5"></a></p>
+					<a href="#tldr" id="tldr" style="color: inherit; text-decoration: none;">
+						<h1>TL;DR;</h1>
+					</a>
+					<p>A frameless pattern is the result of applying separation of concerns between modular functionality and boilerplate code.
+						It replaces API dependency code and any boilerplate by leveraging contracts that task the platform to provide development and
+					production scripts to test, run, debug, deploy, package, build or any arbitrary task.</p>
+					<p>Focus on adopting standards and implementing them reusing the best technology available and context.</p>
+					<p><a id="orgb7e97af"></a></p>
+					<a href="#frameless-signature" id="frameless-signature" style="color: inherit; text-decoration: none;">
+						<h2>Frameless signature</h2>
+					</a>
+					<ul>
+						<li>Zero boilerplate</li>
+						<li>Zero module dependency on platform API</li>
+					</ul>
+					<p>The frameless pattern is a generalization of the <em>serverless</em> or <em>function-as-a-service</em> pattern.</p>
+					<p><a id="org2c4800a"></a></p>
+					<a href="#why-modeling-modularity-matters" id="why-modeling-modularity-matters" style="color: inherit; text-decoration: none;">
+						<h1>Why modeling modularity matters</h1>
+					</a>
+					<p><a id="orgf20d990"></a></p>
+					<a href="#separation-of-concerns" id="separation-of-concerns" style="color: inherit; text-decoration: none;">
+						<h2>Separation of concerns</h2>
+					</a>
+					<p>Most projects grow in a modular pace, adding new features incrementally to do the work that is required.
+						Also, most projects work on top of a given platform, <em>composed</em> by the set of languages, frameworks and libraries that together provide at least
+						one and sometimes several modularity models from which most projects pick one for each kind of module (job, route, library, DOM component, cli, etc).
+					A modularity model provides separation between module and system concerns is enforced by design.</p>
+					<p><a id="orgea473c1"></a></p>
+					<a href="#evolvability" id="evolvability" style="color: inherit; text-decoration: none;">
+						<h2>Evolvability</h2>
+					</a>
+					<p>In modular software, any code-editing required to <em>migrate</em> a given module into a different <em>framework</em> can be considered evitable
+						and patterns that add work to that task can be considered anti-patterns.
+						Having a module model decouples product features from platform (see previous point about separation of concerns and modularity). Being able to
+						work on platform features without blocking product stories is highly desirable. Collaboration in parallel is facilitated by the module contract serving
+					as reference for both sides.</p>
+					<p><a id="orge719978"></a></p>
+					<a href="#consistency" id="consistency" style="color: inherit; text-decoration: none;">
+						<h2>Consistency</h2>
+					</a>
+					<p>Most web projects require significant boilerplate code in order to run production applications. One of the most obvios properties
+						of modular systems is the bigger number of running programs. The combination of modularity with patterns and tools that increase
+						boilerplate code creates a space for inconsistency that affects modular systems as they adopt new features and behavior not
+					yet defined within the &quot;boilerplate-free&quot; area of library and framework code.</p>
+					<p><a id="org1683853"></a></p>
+					<a href="#cycle-time" id="cycle-time" style="color: inherit; text-decoration: none;">
+						<h2>Cycle time</h2>
+					</a>
+					<p>Short and predictable cycle times are an important contributing factor to the success of agile teams. During development, having a defined modularity model
+						makes the work in solutions space more predictable. Also, a minimal contract reduces the amount of glue-code which makes modules leaner.
+					If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.</p>
+					<p><a id="org055c4bd"></a></p>
+					<a href="#how" id="how" style="color: inherit; text-decoration: none;">
+						<h1>How</h1>
+					</a>
+					<a href="#modularity-model" id="modularity-model" style="color: inherit; text-decoration: none;">
+						<h3>Modularity Model</h3>
+					</a>
+					<p>Let&#39;s pretend we are going to start a new project. Instead of going through the usual ritual of:</p>
+					<ol>
+						<li>Select framework and libraries</li>
+						<li>Write some boilerplate code</li>
+						<li>Implement a set of modules following the modularity model from framework</li>
+					</ol>
+					<p>Let&#39;s try the frameless approach:</p>
+					<ol>
+						<li>Define modularity model via a <em>platform</em> function: <code>platform : modules -&gt; features</code></li>
+						<li>Implement the platform function as a thin wrapper that can include a module as part of predefined boilerplate</li>
+						<li>Define boilerplate according to <em>your</em> platform</li>
+						<li>Implement set of modules following <em>your</em> modularity model</li>
+					</ol>
+					<p>Let&#39;s imagine for example a common kind of project for &quot;web&quot; projects: Rest API in NodeJS.</p>
+					<p>Let&#39;s define our <em>Rest module</em> model in TypeScript trying to achieve the <em>minimum viable interface</em>
+					required to know what the module <em>does</em> in the context of the specific project (Rest API).</p>
+					<p>A Rest module must define a url and method.</p>
+					<pre><code>export <span class="hljs-keyword">const</span> url = <span class="hljs-string">'/hello-rest/:name'</span>
 export <span class="hljs-keyword">const</span> <span class="hljs-function"><span class="hljs-keyword">method</span> = '<span class="hljs-title">GET</span>'</span></code></pre><p>Also, it must define a <em>schema</em>.</p>
-				<pre><code>export const schema = {
+					<pre><code>export const schema = {
     response: {
         <span class="hljs-number">200</span>: {
             <span class="hljs-class"><span class="hljs-keyword">type</span></span>: <span class="hljs-symbol">'objec</span>t',
@@ -201,7 +205,7 @@ export <span class="hljs-keyword">const</span> <span class="hljs-function"><span
         }
     }
 }</code></pre><p>And finally a <em>handler</em> that is to be invoked with requests and expected to return responses.</p>
-				<pre><code>export const handler = async (req: Request): Promise<span class="hljs-params">&lt;Result&gt;</span> =&gt; {
+					<pre><code>export const handler = async (req: Request): Promise<span class="hljs-params">&lt;Result&gt;</span> =&gt; {
     <span class="hljs-class">try </span>{
         <span class="hljs-class">return </span>{
 <span class="hljs-symbol">            status:</span> <span class="hljs-number">200</span>,
@@ -218,9 +222,9 @@ export <span class="hljs-keyword">const</span> <span class="hljs-function"><span
         }
     }
 }</code></pre><p>Note how the auxiliary types <em>Request</em> and <em>Response</em> are not exported or imported which means
-					zero source-code dependency with platform API&#39;s. The request/response model follows the HTTP
-				protocol. HTTP is a stable and standard family of specs and is in the guts of every Rest service.</p>
-				<pre><code><span class="hljs-attr">type</span> <span class="hljs-string">Request = {</span>
+						zero source-code dependency with platform API&#39;s. The request/response model follows the HTTP
+					protocol. HTTP is a stable and standard family of specs and is in the guts of every Rest service.</p>
+					<pre><code><span class="hljs-attr">type</span> <span class="hljs-string">Request = {</span>
     <span class="hljs-attr">params</span>: <span class="hljs-string">{</span>
         <span class="hljs-attr">name</span>: <span class="hljs-string">string</span>
     <span class="hljs-attr">}</span>
@@ -237,7 +241,7 @@ export <span class="hljs-keyword">const</span> <span class="hljs-function"><span
         <span class="hljs-attr">errors</span>: <span class="hljs-string">string[]</span>
     <span class="hljs-attr">}</span>
 <span class="hljs-attr">}</span></code></pre><p>Then, the <em>minimum viable interface</em> for our newly born Rest module can be defined as</p>
-				<pre><code>type RestMod&lt;
+					<pre><code>type RestMod&lt;
     Query,
     Params,
     Headers,
@@ -254,21 +258,21 @@ export <span class="hljs-keyword">const</span> <span class="hljs-function"><span
         cfg: Record&lt;Config, string&gt;
     ) =&gt; Promise&lt;Result&gt;
 };</code></pre><p>The complete implementation can be found in the following git <a href="https://github.com/drojas/morphic/blob/master/modules/rest/lib/morphic-rest.ts">repository</a>.</p>
-				<p>Now let&#39;s solve the boilerplate from the requirements we know given the module type definition. The first
-					chunk has to be about importing dependencies. In this case the implementation is based on a function that
-					takes a Rest module and returns a <em>fastify</em> plugin and the corresponding boilerplate code required to put them
-				to work.</p>
-				<pre><code>import fastify <span class="hljs-keyword">from</span> <span class="hljs-string">'fastify'</span>;
+					<p>Now let&#39;s solve the boilerplate from the requirements we know given the module type definition. The first
+						chunk has to be about importing dependencies. In this case the implementation is based on a function that
+						takes a Rest module and returns a <em>fastify</em> plugin and the corresponding boilerplate code required to put them
+					to work.</p>
+					<pre><code>import fastify <span class="hljs-keyword">from</span> <span class="hljs-string">'fastify'</span>;
 import { createFastifyPlugin } <span class="hljs-keyword">from</span> <span class="hljs-string">'@frameless/rest'</span>;
 import<span class="hljs-built_in"> config </span><span class="hljs-keyword">from</span> <span class="hljs-string">'config'</span>;</code></pre><p>After the framework and libraries are imported let&#39;s import the actual Rest modules (one for this example)</p>
-				<pre><code><span class="hljs-comment">/*
+					<pre><code><span class="hljs-comment">/*
  * import rest modules
  */</span>
 <span class="hljs-keyword">import</span> * <span class="hljs-keyword">as</span> morphicExamplesHelloRest <span class="hljs-keyword">from</span> <span class="hljs-string">'@frameless-examples/hello-rest'</span>;</code></pre><p>Let&#39;s just borrow a fastify server for this example.</p>
-				<pre><code>const<span class="hljs-built_in"> instance </span>= fastify({
+					<pre><code>const<span class="hljs-built_in"> instance </span>= fastify({
     logger: <span class="hljs-literal">true</span>
 });</code></pre><p>Now we need to add the routes from all modules to the server.</p>
-				<pre><code><span class="hljs-comment">/*
+					<pre><code><span class="hljs-comment">/*
  * add base plugins for initialization
  */</span>
 
@@ -276,7 +280,7 @@ import<span class="hljs-built_in"> config </span><span class="hljs-keyword">from
  * add rest modules to the service
  */</span>
 instance.register(create<span class="hljs-constructor">FastifyPlugin(<span class="hljs-params">morphicExamplesHelloRest</span>, <span class="hljs-params">config</span>)</span>);</code></pre><p>And let&#39;s finalize the boilerplate with the usual port configuration and server initialization.</p>
-				<pre><code>const<span class="hljs-built_in"> PORT </span>= config.has(<span class="hljs-string">'PORT'</span>)
+					<pre><code>const<span class="hljs-built_in"> PORT </span>= config.has(<span class="hljs-string">'PORT'</span>)
     ? parseInt(config.<span class="hljs-builtin-name">get</span>(<span class="hljs-string">'PORT'</span>), 10)
     : 0;
 
@@ -286,198 +290,200 @@ instance.listen(PORT, (err: Error, address: string) =&gt; {
     }
     instance.log.<span class="hljs-builtin-name">info</span>(`server listening on <span class="hljs-variable">${address}</span>`);
 });</code></pre><p>This pattern allows your to provide <em>features as a service</em> implemented as a (platform) function of your modules.
-					The platform can provide by proxy any framework or library-like functionality including configurations, dependencies, scripts, etc.
-					This contributes to continuous improvement and agile goals because it means new developments on the platform can automatically be leveraged
-				by individual modules and teams without having to make code changes to each module.</p>
-				<p>The following are two programming-oriented definition of modularity from: <a href="https://en.wikipedia.org/wiki/Modularity">https://en.wikipedia.org/wiki/Modularity</a></p>
-				<blockquote>
-					<p>In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.</p>
-				</blockquote>
-				<p>This definition seems focused on modularity as an exercise of separation of concerns within business domains. For this exercise we are looking
-					for a definition more focused on modularity as an exercise of separation of concerns within module vs platform concerns. The following is more useful
-				for our purposes here. Also from: <a href="https://en.wikipedia.org/wiki/Modularity">https://en.wikipedia.org/wiki/Modularity</a>.</p>
-				<blockquote>
-					<p>In software design, modularity refers to a logical partitioning of the &quot;software design&quot; that allows complex software to be manageable
-						for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
-					considerations, data links, or other criteria.</p>
-				</blockquote>
-				<p>This idea of modularity is clearly aligned with the <em>shortest path</em> and <em>incremental</em> principles of agile methodologies and others.</p>
-				<p><a id="orgbd11810"></a></p>
-				<a href="#todo-mvp-basic-module-systems" id="todo-mvp-basic-module-systems" style="color: inherit; text-decoration: none;">
-					<h2>TODO MVP: Basic module systems</h2>
-				</a>
-				<p>The documentation for this implementation, including examples can be located <a href="./docs/index.html">here</a>.</p>
-				<ul>
-					<li><p>DONE RPC</p>
-						<ul>
-							<li><p>DONE hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc</p>
-							</li>
-							<li><p>DONE hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple</p>
-							</li>
-						</ul>
-					</li>
-					<li><p>DONE REST</p>
-						<ul>
-							<li><p>DONE hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest</p>
-							</li>
-							<li><p>DONE hygen rest-api new &#x2013;in examples &#x2013;name rest-simple</p>
-							</li>
-						</ul>
-					</li>
-					<li><p>TODO Deployment abstraction</p>
-					</li>
-					<li><p>TODO Job</p>
-					</li>
-					<li><p>TODO Cronjob</p>
-					</li>
-					<li><p>TODO Worker (Queue consumer)</p>
-					</li>
-					<li><p>TODO Events producer</p>
-					</li>
-					<li><p>TODO Events consumer</p>
-					</li>
-					<li><p>TODO Database app example (MongoDB)</p>
-					</li>
-					<li><p>TODO Instrumentation</p>
-					</li>
-					<li><p>TODO Standarize: Bring your own framework</p>
-					</li>
-					<li><p>TODO Client codegen</p>
-					</li>
+						The platform can provide by proxy any framework or library-like functionality including configurations, dependencies, scripts, etc.
+						This contributes to continuous improvement and agile goals because it means new developments on the platform can automatically be leveraged
+					by individual modules and teams without having to make code changes to each module.</p>
+					<p>The following are two programming-oriented definition of modularity from: <a href="https://en.wikipedia.org/wiki/Modularity">https://en.wikipedia.org/wiki/Modularity</a></p>
+					<blockquote>
+						<p>In modular programming, modularity refers to the compartmentalization and interrelation of the parts of a software package.</p>
+					</blockquote>
+					<p>This definition seems focused on modularity as an exercise of separation of concerns within business domains. For this exercise we are looking
+						for a definition more focused on modularity as an exercise of separation of concerns within module vs platform concerns. The following is more useful
+					for our purposes here. Also from: <a href="https://en.wikipedia.org/wiki/Modularity">https://en.wikipedia.org/wiki/Modularity</a>.</p>
+					<blockquote>
+						<p>In software design, modularity refers to a logical partitioning of the &quot;software design&quot; that allows complex software to be manageable
+							for the purpose of implementation and maintenance. The logic of partitioning may be based on related functions, implementation
+						considerations, data links, or other criteria.</p>
+					</blockquote>
+					<p>This idea of modularity is clearly aligned with the <em>shortest path</em> and <em>incremental</em> principles of agile methodologies and others.</p>
+					<p><a id="org1d0db56"></a></p>
+					<a href="#todo-mvp-basic-modular-systems" id="todo-mvp-basic-modular-systems" style="color: inherit; text-decoration: none;">
+						<h2>TODO MVP: Basic modular systems</h2>
+					</a>
+					<p>The documentation for this implementation, including examples can be located <a href="./docs/index.html">here</a>.</p>
+					<ul>
+						<li><p>DONE RPC</p>
+							<ul>
+								<li><p>DONE hygen rpc-mod new &#x2013;in examples &#x2013;name hello-rpc</p>
+								</li>
+								<li><p>DONE hygen rpc-api new &#x2013;in examples &#x2013;name rpc-simple</p>
+								</li>
+							</ul>
+						</li>
+						<li><p>DONE REST</p>
+							<ul>
+								<li><p>DONE hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest</p>
+								</li>
+								<li><p>DONE hygen rest-api new &#x2013;in examples &#x2013;name rest-simple</p>
+								</li>
+								<li><p>DONE hygen rest-client new &#x2013;in examples &#x2013;name rest-simple-client</p>
+								</li>
+							</ul>
+						</li>
+						<li><p>TODO Deployment abstraction</p>
+						</li>
+						<li><p>TODO Job</p>
+						</li>
+						<li><p>TODO Cronjob</p>
+						</li>
+						<li><p>TODO Worker (Queue consumer)</p>
+						</li>
+						<li><p>TODO Events producer</p>
+						</li>
+						<li><p>TODO Events consumer</p>
+						</li>
+						<li><p>TODO Database app example (MongoDB)</p>
+						</li>
+						<li><p>TODO Instrumentation</p>
+						</li>
+						<li><p>TODO Standarize: Bring your own framework</p>
+						</li>
+						<li><p>TODO Client codegen</p>
+						</li>
+					</ul>
+					<p><a id="orgdb4ec23"></a></p>
+					<a href="#ideas" id="ideas" style="color: inherit; text-decoration: none;">
+						<h2>Ideas</h2>
+					</a>
+					<p>More systems and module models</p>
+					<ul>
+						<li>Frontend components</li>
+						<li>ETL processes</li>
+						<li>Stream processing</li>
+						<li>Effects management</li>
+						<li>Effects documentation</li>
+						<li>Effects validation</li>
+						<li>HATEOAS</li>
+						<li>GraphQL</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+				<nav class="tsd-navigation primary">
+					<ul>
+						<li class="globals  ">
+							<a href="globals.html"><em>Globals</em></a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_examples_hello_rest.html">@frameless-<wbr>examples/hello-<wbr>rest</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_examples_hello_rpc.html">@frameless-<wbr>examples/hello-<wbr>rpc</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_examples_pack_simple.html">@frameless-<wbr>examples/pack-<wbr>simple</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_examples_rest_simple.html">@frameless-<wbr>examples/rest-<wbr>simple</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_examples_rest_simple_client.html">@frameless-<wbr>examples/rest-<wbr>simple-<wbr>client</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_examples_rpc_client.html">@frameless-<wbr>examples/rpc-<wbr>client</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_examples_rpc_simple.html">@frameless-<wbr>examples/rpc-<wbr>simple</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_client.html">@frameless/client</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_pack.html">@frameless/pack</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_rest.html">@frameless/rest</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_rpc.html">@frameless/rpc</a>
+						</li>
+						<li class=" tsd-kind-module">
+							<a href="modules/_frameless_utils.html">@frameless/utils</a>
+						</li>
+					</ul>
+				</nav>
+				<nav class="tsd-navigation secondary menu-sticky">
+					<ul class="before-current">
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</div>
+	<footer class="with-border-bottom">
+		<div class="container">
+			<h2>Legend</h2>
+			<div class="tsd-legend-group">
+				<ul class="tsd-legend">
+					<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+					<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+					<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+					<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+					<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+					<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+					<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+					<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 				</ul>
-				<p><a id="org39b892f"></a></p>
-				<a href="#ideas" id="ideas" style="color: inherit; text-decoration: none;">
-					<h2>Ideas</h2>
-				</a>
-				<p>More systems and module models</p>
-				<ul>
-					<li>Frontend components</li>
-					<li>ETL processes</li>
-					<li>Stream processing</li>
-					<li>Effects management</li>
-					<li>Effects documentation</li>
-					<li>Effects validation</li>
-					<li>HATEOAS</li>
-					<li>GraphQL</li>
+				<ul class="tsd-legend">
+					<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+					<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+					<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+					<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+				</ul>
+				<ul class="tsd-legend">
+					<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+					<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+					<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+					<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+					<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+					<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+				</ul>
+				<ul class="tsd-legend">
+					<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+					<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+					<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+					<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+					<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+					<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+					<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+				</ul>
+				<ul class="tsd-legend">
+					<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+					<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+					<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+					<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+				</ul>
+				<ul class="tsd-legend">
+					<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+					<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+					<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+				</ul>
+				<ul class="tsd-legend">
+					<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+					<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+					<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+				</ul>
+				<ul class="tsd-legend">
+					<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+					<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 				</ul>
 			</div>
 		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class="globals  ">
-						<a href="globals.html"><em>Globals</em></a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_examples_hello_rest.html">@frameless-<wbr>examples/hello-<wbr>rest</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_examples_hello_rpc.html">@frameless-<wbr>examples/hello-<wbr>rpc</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_examples_pack_simple.html">@frameless-<wbr>examples/pack-<wbr>simple</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_examples_rest_simple.html">@frameless-<wbr>examples/rest-<wbr>simple</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_examples_rest_simple_client.html">@frameless-<wbr>examples/rest-<wbr>simple-<wbr>client</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_examples_rpc_client.html">@frameless-<wbr>examples/rpc-<wbr>client</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_examples_rpc_simple.html">@frameless-<wbr>examples/rpc-<wbr>simple</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_client.html">@frameless/client</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_pack.html">@frameless/pack</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_rest.html">@frameless/rest</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_rpc.html">@frameless/rpc</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/_frameless_utils.html">@frameless/utils</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
+	</footer>
+	<div class="container tsd-generator">
+		<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+	<div class="overlay"></div>
+	<script src="assets/js/main.js"></script>
+	<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

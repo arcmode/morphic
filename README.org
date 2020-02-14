@@ -2,10 +2,26 @@
 #+AUTHOR: David Rojas
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
-#+OPTIONS: toc:nil num:2 H:3 ^:nil pri:t
+#+OPTIONS: toc:nil num:2 H:3 ^:nil pri:t title:nil
 #+EXPORT_FILE_NAME: index
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://drojas.github.io/org-html-dracula/styles/org.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles/org.css"/>
+
+#+BEGIN_export html
+<div id="left-panel"> 
+#+END_export
+
+#+TOC: headlines 2
+
+#+BEGIN_export html
+</div> 
+#+END_export
+
+#+BEGIN_export html
+<div id="main"> 
+
+<h1 class="title">Frameless</h1>
+#+END_export
 
 #+BEGIN_abstract
 Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
@@ -27,8 +43,6 @@ Modularity permits the efficient discrimination of context.\\
 #+BEGIN_export html
 <span id="end-heading"></span> 
 #+END_export
-
-#+TOC: headlines 2
 
 * TL;DR;
 
@@ -270,7 +284,7 @@ considerations, data links, or other criteria.
 #+END_QUOTE
    This idea of modularity is clearly aligned with the /shortest path/ and /incremental/ principles of agile methodologies and others.
    
-** TODO MVP: Basic module systems
+** TODO MVP: Basic modular systems
    :PROPERTIES:
    :ID:       f613d9b7-afe5-4898-89e6-9885aa66e4cc
    :END:
@@ -287,6 +301,9 @@ considerations, data links, or other criteria.
        CLOSED: [2019-11-17 Sun 19:43]
 ****** DONE hygen rest-api new --in examples --name rest-simple
        CLOSED: [2019-11-17 Sun 19:43]
+****** DONE hygen rest-client new --in examples --name rest-simple-client
+       CLOSED: [2020-02-13 Thu 18:45]
+
 ***** TODO Deployment abstraction
 ***** TODO Job
 ***** TODO Cronjob
@@ -313,3 +330,7 @@ considerations, data links, or other criteria.
 Local Variables:
 org-html-postamble: nil
 End:
+
+#+BEGIN_export html
+<div id="main"> 
+#+END_export

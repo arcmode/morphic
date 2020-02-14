@@ -1,3 +1,25 @@
+<div id="left-panel"> 
+
+
+# Table of Contents
+
+1.  [TL;DR;](#org51ca3e5)
+    1.  [Frameless signature](#orgb7e97af)
+2.  [Why modeling modularity matters](#org2c4800a)
+    1.  [Separation of concerns](#orgf20d990)
+    2.  [Evolvability](#orgea473c1)
+    3.  [Consistency](#orge719978)
+    4.  [Cycle time](#org1683853)
+3.  [How](#org055c4bd)
+    1.  [MVP: Basic modular systems](#org1d0db56)
+    2.  [Ideas](#orgdb4ec23)
+
+</div> 
+
+<div id="main"> 
+
+<h1 class="title">Frameless</h1>
+
 <div class="abstract">
 Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
 abstracted away as a mixture of scaffolding, library code and configuration are cheap to buy but can come as very
@@ -16,21 +38,7 @@ product and platform streams of work within the dynamics of the agile organizati
 <span id="end-heading"></span> 
 
 
-# Table of Contents
-
-1.  [TL;DR;](#org87ca971)
-    1.  [Frameless signature](#org7b7038e)
-2.  [Why modeling modularity matters](#org50812b0)
-    1.  [Separation of concerns](#orga82d361)
-    2.  [Evolvability](#org7d45116)
-    3.  [Consistency](#orgce43624)
-    4.  [Cycle time](#orgc91801d)
-3.  [How](#org4d14e51)
-    1.  [MVP: Basic module systems](#org1f2851f)
-    2.  [Ideas](#orge97c2cc)
-
-
-<a id="org87ca971"></a>
+<a id="org51ca3e5"></a>
 
 # TL;DR;
 
@@ -41,7 +49,7 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
 Focus on adopting standards and implementing them reusing the best technology available and context.
 
 
-<a id="org7b7038e"></a>
+<a id="orgb7e97af"></a>
 
 ## Frameless signature
 
@@ -51,12 +59,12 @@ Focus on adopting standards and implementing them reusing the best technology av
 The frameless pattern is a generalization of the *serverless* or *function-as-a-service* pattern.
 
 
-<a id="org50812b0"></a>
+<a id="org2c4800a"></a>
 
 # Why modeling modularity matters
 
 
-<a id="orga82d361"></a>
+<a id="orgf20d990"></a>
 
 ## Separation of concerns
 
@@ -66,7 +74,7 @@ one and sometimes several modularity models from which most projects pick one fo
 A modularity model provides separation between module and system concerns is enforced by design.
 
 
-<a id="org7d45116"></a>
+<a id="orgea473c1"></a>
 
 ## Evolvability
 
@@ -77,7 +85,7 @@ work on platform features without blocking product stories is highly desirable. 
 as reference for both sides.
 
 
-<a id="orgce43624"></a>
+<a id="orge719978"></a>
 
 ## Consistency
 
@@ -87,7 +95,7 @@ boilerplate code creates a space for inconsistency that affects modular systems 
 yet defined within the "boilerplate-free" area of library and framework code.
 
 
-<a id="orgc91801d"></a>
+<a id="org1683853"></a>
 
 ## Cycle time
 
@@ -96,7 +104,7 @@ makes the work in solutions space more predictable. Also, a minimal contract red
 If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
 
 
-<a id="org4d14e51"></a>
+<a id="org055c4bd"></a>
 
 # How
 
@@ -283,9 +291,9 @@ for our purposes here. Also from: <https://en.wikipedia.org/wiki/Modularity>.
 This idea of modularity is clearly aligned with the *shortest path* and *incremental* principles of agile methodologies and others.
 
 
-<a id="org1f2851f"></a>
+<a id="org1d0db56"></a>
 
-## TODO MVP: Basic module systems
+## TODO MVP: Basic modular systems
 
 The documentation for this implementation, including examples can be located [here](./docs/index.html).
 
@@ -300,6 +308,8 @@ The documentation for this implementation, including examples can be located [he
     -   DONE hygen rest-mod new &#x2013;in examples &#x2013;name hello-rest
     
     -   DONE hygen rest-api new &#x2013;in examples &#x2013;name rest-simple
+    
+    -   DONE hygen rest-client new &#x2013;in examples &#x2013;name rest-simple-client
 
 -   TODO Deployment abstraction
 
@@ -322,7 +332,7 @@ The documentation for this implementation, including examples can be located [he
 -   TODO Client codegen
 
 
-<a id="orge97c2cc"></a>
+<a id="orgdb4ec23"></a>
 
 ## Ideas
 
