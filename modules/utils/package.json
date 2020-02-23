@@ -1,0 +1,25 @@
+{
+    "name": "@frameless/utils",
+    "version": "0.0.0",
+    "description": "> TODO: description",
+    "author": "David Rojas Camaggi <drojascamaggi@gmail.com>",
+    "homepage": "",
+    "license": "ISC",
+    "main": "lib/morphic-types.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "files": [
+        "lib"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "build-debuggable": "npm run build -- --sourceMap false --inlineSourceMap true",
+        "inspector": "node --inspect-brk node_modules/.bin/jest --runInBand",
+        "debug": "npm run build-debuggable && npm run inspector"
+    },
+    "devDependencies": {
+        "@frameless/ops": "^0.0.0",
+        "typescript": "3.7.5"
+    }
+}

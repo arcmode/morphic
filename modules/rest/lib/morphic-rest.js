@@ -17,18 +17,13 @@ const promiseHandler = async (promise, reply, server) => {
         reply.send(500);
     }
 };
-exports.createFastifyPlugin = (mod, cfg) => fastify_plugin_1.default((server, options, done) => {
+exports.createFastifyPlugin = (mod, cfg) => fastify_plugin_1.default((server, _options, done) => {
     const config = {};
     const defaultCfg = mod.defaultConfig || {};
-    // if a config key is defined via config package
-    // then we read configurations via the config package
-    // else by directly looking into environment variables
     for (const key in defaultCfg) {
-        const val = cfg.has(key) ?
-            cfg.get(key) :
-            key in process.env ?
-                process.env[key] :
-                defaultCfg[key];
+        const val = key in cfg
+            ? cfg[key]
+            : defaultCfg[key];
         if (typeof val !== 'string') {
             throw new TypeError(`Configuration Error: "${key}" not found`);
         }

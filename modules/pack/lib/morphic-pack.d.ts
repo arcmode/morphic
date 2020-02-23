@@ -14,7 +14,7 @@ export declare const pack: <Q extends DefaultQuery, P extends DefaultParams, O e
     options: O;
 }) => Promise<Readable>;
 export declare const genTempDir: (prefix: string) => Promise<string>;
-export declare const generate: <Q extends DefaultQuery, P extends DefaultParams>(templates: string, cwd: string, query: Q, params: P, resource: "hygen" | "package") => Promise<string>;
+export declare const generate: <Q extends DefaultQuery, P extends DefaultParams>(templates: string, cwd: string, query: Q, params: P, resource: "hygen" | "package") => Promise<import("hygen/dist/types").RunnerResult>;
 export declare const genNpmPackage: (folder: string) => Promise<unknown>;
 export declare const genHygenParams: <Q extends DefaultQuery, P extends DefaultParams>(query: Q, params: P) => string;
 export declare const readPackageFile: (pathToPackageFile: string) => Promise<{

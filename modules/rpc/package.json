@@ -26,10 +26,11 @@
         "rpc_ts": "2.1.0"
     },
     "devDependencies": {
+        "@frameless/ops": "^0.0.0",
+        "@frameless/utils": "^0.0.0",
         "@types/node": "12.12.5",
         "jest": "^24.9.0",
         "make-error": "^1.3.5",
-        "@frameless/utils": "^0.0.0",
         "type-zoo": "^3.4.1",
         "typescript": "^3.7.2"
     }

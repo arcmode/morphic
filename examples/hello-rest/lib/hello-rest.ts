@@ -1,5 +1,3 @@
-import { ArrayItem } from "@frameless/utils"
-
 export const url = '/hello-rest/:name'
 export const method = 'GET'
 

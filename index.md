@@ -3,27 +3,27 @@
 
 # Table of Contents
 
-1.  [TL;DR;](#orgbc09eba)
-    1.  [Frameless signature](#org0863b67)
-2.  [Why modeling modularity matters](#org2e1fa3e)
-    1.  [Separation of concerns](#orgbb1e51d)
-    2.  [Evolvability](#orgecd46d0)
-    3.  [Consistency](#orgb2b3882)
-    4.  [Cycle time](#org749bd8a)
-3.  [How](#orgec8af62)
-    1.  [PoC: Basic modular systems](#orgcc515e5)
-    2.  [MVP](#orga72d5c4)
-    3.  [Release 1.0](#org79dc4ba)
-    4.  [Ideas](#org0787e04)
+1.  [TL;DR;](#orge2a8a39)
+    1.  [Frameless signature](#org79fb1b5)
+2.  [Why modeling modularity matters](#orgd4cca3f)
+    1.  [Separation of concerns](#org6789eeb)
+    2.  [Evolvability](#org0f545c7)
+    3.  [Consistency](#org1fe9d7e)
+    4.  [Cycle time](#org87b6d4a)
+3.  [How](#org62a25f4)
+    1.  [PoC: Basic modular systems](#orgf7e08bd)
+    2.  [MVP](#org61cbdd1)
+    3.  [Release 1.0](#orga8914b5)
+    4.  [Ideas](#org9122f67)
 
 </div> 
 
 <div id="main"> 
 
-<h1 class="title">Frameless</h1>
+<h1 class="title">Frameless: DIY Platform as a Service</h1>
 
 <div class="abstract">
-Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
+Boilerplate code is an underrated problem and reveals gaps in a system's model: one-time chunks of non-reusable code and other necessary evils that are usually
 abstracted away as a mixture of scaffolding, library code and configuration are cheap to buy but can come as very
 expensive to replace later on. There is accidental complexity in most if not all boilerplate code around any *main* function or any source
 code module that depends on a library or framework. This document describes a generalization of the *serverless* pattern and describes it as
@@ -40,7 +40,7 @@ product and platform streams of work within the dynamics of the agile organizati
 <span id="end-heading"></span> 
 
 
-<a id="orgbc09eba"></a>
+<a id="orge2a8a39"></a>
 
 # TL;DR;
 
@@ -51,22 +51,26 @@ production scripts to test, run, debug, deploy, package, build or any arbitrary 
 Focus on adopting standards and implementing them reusing the best technology available and context.
 
 
-<a id="org0863b67"></a>
+<a id="org79fb1b5"></a>
 
 ## Frameless signature
 
 -   Zero boilerplate
 -   Zero module dependency on platform API
 
-The frameless pattern is a generalization of the *serverless* or *function-as-a-service* pattern.
+The frameless pattern is a generalization of serverless patterns focused on the following goals:
+
+-   Separation of concerns (principle)
+-   API first (pattern, paradigm)
+-   Platform as a Service (architecture)
 
 
-<a id="org2e1fa3e"></a>
+<a id="orgd4cca3f"></a>
 
 # Why modeling modularity matters
 
 
-<a id="orgbb1e51d"></a>
+<a id="org6789eeb"></a>
 
 ## Separation of concerns
 
@@ -76,7 +80,7 @@ one and sometimes several modularity models from which most projects pick one fo
 A modularity model provides separation between module and system concerns is enforced by design.
 
 
-<a id="orgecd46d0"></a>
+<a id="org0f545c7"></a>
 
 ## Evolvability
 
@@ -87,7 +91,7 @@ work on platform features without blocking product stories is highly desirable. 
 as reference for both sides.
 
 
-<a id="orgb2b3882"></a>
+<a id="org1fe9d7e"></a>
 
 ## Consistency
 
@@ -97,7 +101,7 @@ boilerplate code creates a space for inconsistency that affects modular systems 
 yet defined within the "boilerplate-free" area of library and framework code.
 
 
-<a id="org749bd8a"></a>
+<a id="org87b6d4a"></a>
 
 ## Cycle time
 
@@ -106,7 +110,7 @@ makes the work in solutions space more predictable. Also, a minimal contract red
 If adopting new technology involves touching the internal modules of a project then innovation faces resistance as it can easily disrupt agile workflows.
 
 
-<a id="orgec8af62"></a>
+<a id="org62a25f4"></a>
 
 # How
 
@@ -293,7 +297,7 @@ for our purposes here. Also from: <https://en.wikipedia.org/wiki/Modularity>.
 This idea of modularity is clearly aligned with the *shortest path* and *incremental* principles of agile methodologies and others.
 
 
-<a id="orgcc515e5"></a>
+<a id="orgf7e08bd"></a>
 
 ## TODO PoC: Basic modular systems
 
@@ -315,12 +319,20 @@ The documentation for this implementation, including examples can be located [he
 
 -   DONE Automate code documentation
 
+-   TODO Abstract main boilerplate as "head" module
+
 -   TODO Automate Rest API documentation
+
+-   TODO Web Components
 
 -   TODO Database app example
 
+-   TODO Migrate as much codegen as possible and reasonable into library code
 
-<a id="orga72d5c4"></a>
+    Idea: Result of codegen only imports modules and invokes library code passing the modules as input
+
+
+<a id="org61cbdd1"></a>
 
 ## TODO MVP
 
@@ -329,7 +341,7 @@ The documentation for this implementation, including examples can be located [he
 -   TODO Instrumentation
 
 
-<a id="org79dc4ba"></a>
+<a id="orga8914b5"></a>
 
 ## TODO Release 1.0
 
@@ -337,18 +349,19 @@ The documentation for this implementation, including examples can be located [he
 
 -   TODO Event Stream Processor
 
+-   TODO CLI
+
 -   TODO CI/CD
 
 -   TODO Platform as a Service Model: Bring your own framework
 
 
-<a id="org0787e04"></a>
+<a id="org9122f67"></a>
 
 ## Ideas
 
 More systems and module models
 
--   Frontend components
 -   Data pipelines
 -   Effects management
 -   Effects documentation

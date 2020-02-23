@@ -1,0 +1,22 @@
+{
+    "name": "@frameless-examples/pack-rpc-client",
+    "version": "0.0.0",
+    "description": "> TODO: description",
+    "author": "David Rojas Camaggi <drojascamaggi@gmail.com>",
+    "homepage": "",
+    "license": "ISC",
+    "morphic": {
+        "url": "/hello-pack/:name/:scope/:of/:version",
+        "templates": "_templates"
+    },
+    "directories": {
+        "templates": "_templates"
+    },
+    "files": [
+        "_templates"
+    ],
+    "devDependencies": {
+        "@frameless/ops": "0.0.0",
+        "typescript": "3.7.5"
+    }
+}

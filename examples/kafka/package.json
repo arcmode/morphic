@@ -1,0 +1,13 @@
+{
+    "name": "@frameless-examples/kafka",
+    "version": "1.0.0",
+    "description": "Kafka stack provided via Confluent",
+    "scripts": {
+        "deploy": "kubectl apply -f ksqldb-server-service.yaml,ksqldb-server-deployment.yaml,ksqldb-cli-deployment.yaml"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@frameless/ops": "^0.0.0"
+    }
+}

@@ -4,7 +4,6 @@ import fastify, {
 import { AnyData } from '@frameless/utils';
 import fp, { PluginOptions, nextCallback } from 'fastify-plugin';
 import { ServerResponse } from 'http';
-import { IConfig } from 'config';
 
 export type RouteSchema<S> = {
     body?: S,
@@ -91,22 +90,17 @@ export const createFastifyPlugin = <
     C extends string,
     R extends RestResponse,
     K extends string,
->(mod: RestMod<Q, P, H, B, C, R, K>, cfg: IConfig) => fp((
+>(mod: RestMod<Q, P, H, B, C, R, K>, cfg: Record<C, string>) => fp((
     server: FastifyInstance,
-    options: PluginOptions,
+    _options: PluginOptions,
     done: nextCallback
 ) => {
-    const config = {} as Record<C, string>
+    const config = {} as typeof cfg
     const defaultCfg = mod.defaultConfig || {} as typeof config
-    // if a config key is defined via config package
-    // then we read configurations via the config package
-    // else by directly looking into environment variables
     for (const key in defaultCfg) {
-        const val = cfg.has(key) ?
-            cfg.get(key) :
-            key in process.env ?
-                process.env[key] :
-                defaultCfg[key]
+        const val = key in cfg
+            ? cfg[key]
+            : defaultCfg[key]
         if (typeof val !== 'string') {
             throw new TypeError(`Configuration Error: "${key}" not found`)
         }

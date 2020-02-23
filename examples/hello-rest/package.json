@@ -22,8 +22,7 @@
         "debug": "npm run build-debuggable && npm run inspector"
     },
     "dependencies": {
-        "@frameless-examples/hello-rpc": "0.0.0",
-        "@frameless-examples/rpc-client": "0.0.0"
+        "@frameless-examples/hello-rpc": "0.0.0"
     },
     "devDependencies": {
         "@frameless/rest": "0.0.0",

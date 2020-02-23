@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    service: ksqldb-server
+  name: ksqldb-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      service: ksqldb-server
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        service: ksqldb-server
+    spec:
+      containers:
+      - env:
+        - name: KSQL_BOOTSTRAP_SERVERS
+          value: kafka-cp-kafka:9092
+        - name: KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE
+          value: "true"
+        - name: KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE
+          value: "true"
+        - name: KSQL_LISTENERS
+          value: http://0.0.0.0:8088
+        image: confluentinc/ksqldb-server:0.7.0
+        name: ksqldb-server
+        ports:
+        - containerPort: 8088
+        resources: {}
+      hostname: ksqldb-server
+      restartPolicy: Always
+status: {}

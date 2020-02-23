@@ -5,15 +5,17 @@ import fp, { PluginOptions, nextCallback } from 'fastify-plugin';
 import { DefaultQuery, DefaultParams } from 'fastify';
 import { Readable } from 'stream';
 import { exec } from 'child_process';
-import { mkdtemp, createReadStream, readFile, unlink, ReadStream } from 'fs';
+import { mkdtemp, createReadStream, readFile, unlink, promises } from 'fs';
 import { tmpdir } from 'os';
-import { join, dirname } from 'path'
+import { join, dirname } from 'path';
+import { runner } from 'hygen';
 
+// TODO: write cli first and then use same cli to build/replace @frameless-examples/pack-service
+// TODO: move this to @frameless-examples/pack-head
 export type PackagerMod = {
     url: string,
     templates: string
 }
-
 export const createFastifyPlugin = <
     Q extends DefaultQuery,
     P extends DefaultParams,
@@ -41,7 +43,7 @@ export const createFastifyPlugin = <
                     options: options as O
                 }
             );
-            reply.send(result);
+            reply.send(result)
         }
     });
     done();
@@ -61,16 +63,16 @@ export const pack = async <
     const pkgDir = `${hygenDir}/package`;
     const file = await genNpmPackage(pkgDir);
     const filepath = `${pkgDir}/${file}`;
+
     return new Promise((resolve, reject) => {
-        const stream = createReadStream(filepath).on('finish', (..._args) => {
+        const stream = createReadStream(filepath).on('end', () => {
             unlink(filepath, (err) => {
                 if (err) {
-                    reject(err);
-                } else {
-                    resolve(stream);
-                }
+                    throw new Error('CANNOT UNLINK')
+                };
             });
-        })
+        });
+        resolve(stream)
     });
 };
 
@@ -95,22 +97,30 @@ export const generate = <
     query: Q,
     params: P,
     resource: 'hygen' | 'package'
-) => new Promise<string>((resolve, reject) => {
-    const environ = `HYGEN_TMPLS=${templates}`;
-    const baseCmd = `npx hygen ${resource} new`;
-    const fullCmd = `${environ} ${baseCmd} ${genHygenParams(query, params)}`;
-    exec(
-        fullCmd,
-        { cwd },
-        (err, stdout, _stderr) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(stdout);
-            }
-        }
-    )
-});
+) => {
+    // const environ = `HYGEN_TMPLS=${templates}`;
+    const baseCmd = `${resource} new`;
+    const fullCmd = `${baseCmd} ${genHygenParams(query, params)}`;
+    const log = console.log.bind(console);
+    const err = console.error.bind(console);
+    return runner(fullCmd.split(' '), {
+        templates,
+        cwd,
+        logger: {
+            ...console,
+            err,
+            ok: log,
+            notice: log,
+            colorful: log
+        },
+        debug: !!process.env.DEBUG,
+        exec: (action, body) => {
+            const opts = body && body.length > 0 ? { input: body } : {}
+            return require('execa').shell(action, opts)
+        },
+        createPrompter: () => require('enquirer'),
+    })
+}
 
 export const genNpmPackage = (folder: string) => new Promise((resolve, reject) => {
     exec('npm pack', { cwd: folder }, (err, stdout, _stderr) => {

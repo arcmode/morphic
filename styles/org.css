@@ -284,6 +284,7 @@ tr:nth-child(even) {
 #content #main {
     background-color: var(--white);
     padding-inline-start: 20px;
+    padding-inline-end: 20px;
 }
 
 blockquote {

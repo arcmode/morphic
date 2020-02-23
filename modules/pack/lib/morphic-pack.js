@@ -8,6 +8,7 @@ const child_process_1 = require("child_process");
 const fs_1 = require("fs");
 const os_1 = require("os");
 const path_1 = require("path");
+const hygen_1 = require("hygen");
 exports.createFastifyPlugin = (pathToPackageFile) => fastify_plugin_1.default(async (server, options, done) => {
     const pkg = await exports.readPackageFile(pathToPackageFile);
     const templatesAbsolutePath = path_1.join(path_1.dirname(pathToPackageFile), pkg.morphic.templates);
@@ -38,16 +39,15 @@ exports.pack = async (templates, input) => {
     const file = await exports.genNpmPackage(pkgDir);
     const filepath = `${pkgDir}/${file}`;
     return new Promise((resolve, reject) => {
-        const stream = fs_1.createReadStream(filepath).on('finish', (..._args) => {
+        const stream = fs_1.createReadStream(filepath).on('end', () => {
             fs_1.unlink(filepath, (err) => {
                 if (err) {
-                    reject(err);
+                    throw new Error('CANNOT UNLINK');
                 }
-                else {
-                    resolve(stream);
-                }
+                ;
             });
         });
+        resolve(stream);
     });
 };
 exports.genTempDir = (prefix) => new Promise((resolve, reject) => {
@@ -60,19 +60,30 @@ exports.genTempDir = (prefix) => new Promise((resolve, reject) => {
         }
     });
 });
-exports.generate = (templates, cwd, query, params, resource) => new Promise((resolve, reject) => {
-    const environ = `HYGEN_TMPLS=${templates}`;
-    const baseCmd = `npx hygen ${resource} new`;
-    const fullCmd = `${environ} ${baseCmd} ${exports.genHygenParams(query, params)}`;
-    child_process_1.exec(fullCmd, { cwd }, (err, stdout, _stderr) => {
-        if (err) {
-            reject(err);
-        }
-        else {
-            resolve(stdout);
-        }
+exports.generate = (templates, cwd, query, params, resource) => {
+    // const environ = `HYGEN_TMPLS=${templates}`;
+    const baseCmd = `${resource} new`;
+    const fullCmd = `${baseCmd} ${exports.genHygenParams(query, params)}`;
+    const log = console.log.bind(console);
+    const err = console.error.bind(console);
+    return hygen_1.runner(fullCmd.split(' '), {
+        templates,
+        cwd,
+        logger: {
+            ...console,
+            err,
+            ok: log,
+            notice: log,
+            colorful: log
+        },
+        debug: !!process.env.DEBUG,
+        exec: (action, body) => {
+            const opts = body && body.length > 0 ? { input: body } : {};
+            return require('execa').shell(action, opts);
+        },
+        createPrompter: () => require('enquirer'),
     });
-});
+};
 exports.genNpmPackage = (folder) => new Promise((resolve, reject) => {
     child_process_1.exec('npm pack', { cwd: folder }, (err, stdout, _stderr) => {
         if (err) {

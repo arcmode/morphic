@@ -14,16 +14,17 @@ mkShell {
     unstable.kubectl
     unstable.kind
     unstable.kubernetes-helm
+    unstable.kompose
     pkgs.mkcert
   ];
 
   shellHook =
     let
       setupNpm = writeScriptBin "setupNpm" ''
-      mkcert -key-file key.pem -cert-file cert.pem npm.morphic.iolocalhost 127.0.0.1 &&\
+      mkcert -key-file key.pem -cert-file cert.pem npm.frameless.iolocalhost 127.0.0.1 &&\
       mkcert -install -cert-file cert.pem -key-file key.pem &&\
       npm config set registry https://localhost/npm &&\
-      npm config --registry https://npm.morphic.io set cafile /home/$(whoami)/.local/share/mkcert/rootCA.pem &&\
+      npm config --registry https://npm.frameless.io set cafile /home/$(whoami)/.local/share/mkcert/rootCA.pem &&\
 
       kubectl create namespace npm;
       kubectl create secret tls npm --key ./key.pem --cert ./cert.pem --namespace npm &&\
@@ -54,11 +55,16 @@ mkShell {
       };
     in ''
     down () {
-        kind delete cluster --name="morphic"
+        kind delete cluster --name="frameless"
     }
 
     up () {
-        kind create cluster --name="morphic" --config ${kindConfig}
+        kind create cluster --name="frameless" --config ${kindConfig}
+
+        helm repo add confluentinc https://confluentinc.github.io/cp-helm-charts/
+        helm repo update
+
+        helm install kafka --set cp-kafka-rest.enabled=false,cp-kafka-connect.enabled=false,cp-kafka-ksql-server.enabled=false confluentinc/cp-helm-charts
     }
 
     status () {
@@ -69,12 +75,8 @@ mkShell {
         lerna bootstrap --use-workspaces
     }
 
-    installIngress() {
-        kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/mandatory.yaml
-
-        kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/deploy/static/provider/baremetal/service-nodeport.yaml
-
-        kubectl patch deployments -n ingress-nginx nginx-ingress-controller -p '{"spec":{"template":{"spec":{"containers":[{"name":"nginx-ingress-controller","ports":[{"containerPort":80,"hostPort":80},{"containerPort":443,"hostPort":443}]}],"nodeSelector":{"ingress-ready":"true"},"tolerations":[{"key":"node-role.kubernetes.io/master","operator":"Equal","effect":"NoSchedule"}]}}}}'
+    deploy () {
+        lerna run deploy --stream
     }
 
     trap down EXIT
@@ -82,7 +84,6 @@ mkShell {
     up
     status
     bootstrap
-    # installIngress
-    # ${setupNpm}/bin/setupNpm
+    deploy
   '';
 }

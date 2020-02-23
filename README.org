@@ -1,11 +1,12 @@
 #+TITLE: Frameless: DIY Platform as a Service
-#+AUTHOR: David Rojas
+#+AUTHOR: David Rojas Camaggi
 #+EMAIL: (concat "drojascamaggi" at-sign "gmail.com")
 
 #+OPTIONS: toc:nil num:2 H:3 ^:nil pri:t title:nil
 #+EXPORT_FILE_NAME: index
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="https://drojas.github.io/org-html-dracula/styles/org.css"/>
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="styles/org.css"/>
+# Service/Platform as a Function
 
 #+BEGIN_export html
 <div id="left-panel"> 
@@ -24,7 +25,7 @@
 #+END_export
 
 #+BEGIN_abstract
-Boilerplate code is an underrated problem: one-time chunks of non-reusable code and other necessary evils that are usually
+Boilerplate code is an underrated problem and reveals gaps in a system's model: one-time chunks of non-reusable code and other necessary evils that are usually
 abstracted away as a mixture of scaffolding, library code and configuration are cheap to buy but can come as very
 expensive to replace later on. There is accidental complexity in most if not all boilerplate code around any /main/ function or any source
 code module that depends on a library or framework. This document describes a generalization of the /serverless/ pattern and describes it as
@@ -305,9 +306,12 @@ considerations, data links, or other criteria.
        CLOSED: [2020-02-13 Thu 18:45]
 ***** DONE Automate code documentation
       CLOSED: [2020-02-13 Thu 18:51]
+***** TODO Abstract main boilerplate as "head" module
 ***** TODO Automate Rest API documentation
 ***** TODO Web Components
 ***** TODO Database app example
+***** TODO Migrate as much codegen as possible and reasonable into library code
+      Idea: Result of codegen only imports modules and invokes library code passing the modules as input
 ** TODO MVP
 ***** TODO Deployment abstraction
 ***** TODO Instrumentation

@@ -3,7 +3,6 @@ import fastify from 'fastify';
 import { AnyData } from '@frameless/utils';
 import fp from 'fastify-plugin';
 import { ServerResponse } from 'http';
-import { IConfig } from 'config';
 export declare type RouteSchema<S> = {
     body?: S;
     querystring?: S;
@@ -43,6 +42,6 @@ export declare type RestMod<Query extends DefaultQuery, Params extends DefaultPa
     defaultManagers?: Record<K, (payload?: any) => Promise<any>>;
     handler: (req: RestRequest<Query, Params, Headers, Body>, cfg: Record<Config, string>, act: Record<K, (payload?: any) => Promise<any>>) => Promise<Result>;
 };
-export declare const createFastifyPlugin: <Q extends DefaultQuery, P extends DefaultParams, H extends DefaultHeaders, B extends AnyData, C extends string, R extends RestResponse, K extends string>(mod: RestMod<Q, P, H, B, C, R, K>, cfg: IConfig) => (instance: fastify.FastifyInstance<import("http").Server, import("http").IncomingMessage, ServerResponse>, options: fp.PluginOptions, callback: (err?: fastify.FastifyError | undefined) => void) => void;
+export declare const createFastifyPlugin: <Q extends DefaultQuery, P extends DefaultParams, H extends DefaultHeaders, B extends AnyData, C extends string, R extends RestResponse, K extends string>(mod: RestMod<Q, P, H, B, C, R, K>, cfg: Record<C, string>) => (instance: fastify.FastifyInstance<import("http").Server, import("http").IncomingMessage, ServerResponse>, options: fp.PluginOptions, callback: (err?: fastify.FastifyError | undefined) => void) => void;
 export {};
 //# sourceMappingURL=morphic-rest.d.ts.map
