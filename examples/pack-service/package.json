@@ -26,7 +26,7 @@
     "dependencies": {
         "@frameless-examples/pack-rpc-client": "0.0.0",
         "@frameless/pack": "0.0.0",
-        "fastify": "2.12.0"
+        "fastify": "3.1.1"
     },
     "devDependencies": {
         "@frameless/ops": "^0.0.0",
